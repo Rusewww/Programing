@@ -1,10 +1,8 @@
 int main()
 {
-int a1=50;
-int a2=53;
-int n=a2-a1+1;
-float sum=a1+a2;
-float polSum=sum/2;
-float result=polSum*n;
+float a1=50;//Перше число арефметичної прогресії
+float  a2=53;//Останнє число арефметичної прогресії
+float n=a2-a1+1;//Кількість чисел в цій прогресії
+float result= ((a1+a2)/2)*n;//Обчислення сумми всіх чисел прогресії
  return 0;
 }
