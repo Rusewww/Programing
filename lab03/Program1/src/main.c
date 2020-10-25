@@ -1,8 +1,7 @@
-int main()
-{
- const float R1= 0.5; // Опір першого резистора
- const float R2= 0.5;// Опір другого резистора
- const float R3= 0.5;// Опір трерього резистора
- float Opir=(R1*R2*R3)/(R2*R3+R1*R3+R1*R2);//Загальний опір кола та формула його обчислення
-  return 0;
+int main() {
+    const float firstResistorResistance= 0.5; // Опір першого резистора
+    const float secondResistorResistance= 0.5;// Опір другого резистора
+    const float thirdResistorResistance= 0.5;// Опір трерього резистора
+    float totalResistance=(firstResistorResistance*secondResistorResistance*thirdResistorResistance)/(secondResistorResistance*thirdResistorResistance+firstResistorResistance*thirdResistorResistance+firstResistorResistance*secondResistorResistance);//Загальний опір кола та формула його обчислення
+    return 0;
 }
