@@ -1,22 +1,26 @@
+// Розставити числа від меншого до найбільшого
 int main() {
-        int k = 4 ;
-        int m = 5 ;
-        int n = 1 ;
-        int flag = 0 ;
+        int k = 4 ; // Перше число
+        int m = 5 ; // Друге число
+        int n = 1 ; // Третє число
+        int flag = 0 ; // Флаг чисел
+        // Порівняння першого і другого чисел
         if (k > m) {
-            flag = k ;
-            k = m ;
-            m = flag ;
+                flag = k ;
+                k = m ;
+                m = flag ;  
         }
+        // Порівняння другого і третього чисел
         if (m > n) {
-            flag = m ;
-            m = n ;
-            n = flag ;
+                flag = m ;
+                m = n ;
+                n = flag ; 
         }
+        // Порівняння першого і другого чисел х2
         if (k > m) {
-            flag = k ;
-            k = m ;
-            m = flag ;
+                flag = k ;
+                k = m ;
+                m = flag ; 
         }
         return 0 ;
 }
