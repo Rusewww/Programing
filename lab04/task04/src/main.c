@@ -5,11 +5,9 @@ int main() {
         // Заданий графік:
         if (x <= -1) {
                 y = -1 / x ;
-        }
-        if (x > -1 && x < 1) {
+        } else if (x > -1 && x < 1) {
                 y = x * x ;
-        }    
-        if (x >= 1) { 
+        } else if (x >= 1) { 
                 y = 1 ;
         }           
         return 0 ;

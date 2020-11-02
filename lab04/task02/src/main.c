@@ -5,7 +5,7 @@ int main() {
         float fraction = num - (int)num ; // Обчислення дробової частини числа
         int flag = num ; // Копія заданого числа 
         int grade = 1 ; // Розрядність
-        float risn ; // Різниця дробової та цілої частини
+        float difference ; // Різниця дробової та цілої частини
         // Визначення числа на яке потрібно домножити дробну частину
         while (flag != 0) {
                  grade *= 10 ;
@@ -13,14 +13,14 @@ int main() {
         }
         fraction *= grade ; // Домноження дробної частини
         if ((int)num != 0) {
-                risn = fraction / (int)num ; // Різниця дробної та цілої частини 
+                difference = fraction / (int)num ; // Різниця дробної та цілої частини 
         } else {
-            risn = 0 ; // Рішення у випадку якщо ціла частина дорівнює нулю
+            difference = 0 ; // Рішення у випадку якщо ціла частина дорівнює нулю
         }  
         // Округлення числа до двох знаків після коми
-        risn = risn * 100 ;
-        risn = (int)risn ;
-        risn /= 100 ; 
+        difference = difference * 100 ;
+        difference = (int)difference ;
+        difference /= 100 ; 
         return 0 ;
 }
         
