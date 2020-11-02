@@ -2,5 +2,5 @@
 
 1.Виконати всі завдання з категорії “на оцінку “відмінно””.
 
-@aurhor Zozulia I.
+@author Zozulia I.
 @date 01-nov-2020

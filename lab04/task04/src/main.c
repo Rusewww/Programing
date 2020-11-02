@@ -9,7 +9,7 @@ int main() {
         if (x > -1 && x < 1) {
                 y = x * x ;
         }    
-        if (x > 1) { 
+        if (x >= 1) { 
                 y = 1 ;
         }           
         return 0 ;
