@@ -15,7 +15,7 @@ int main() {
                         result = r * r * PI ; // Виконання команди 's'
                 break ;
                 case 'v' :   
-                      result = 4 * r * r * r / 3 * PI ; // Виконання команди 'v'
+                        result = 4 * r * r * r / 3 * PI ; // Виконання команди 'v'
                 break ;
         }
         return 0 ;
