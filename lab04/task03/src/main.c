@@ -3,24 +3,24 @@ int main() {
         int k = 4 ; // Перше число
         int m = 5 ; // Друге число
         int n = 1 ; // Третє число
-        int flag = 0 ; // Флаг чисел
+        int reserve = 0 ; // Резерв чисел
         // Порівняння першого і другого чисел
         if (k > m) {
-                flag = k ;
+                reserve = k ;
                 k = m ;
-                m = flag ;  
+                m = reserve ;  
         }
         // Порівняння другого і третього чисел
         if (m > n) {
-                flag = m ;
+                reserve = m ;
                 m = n ;
-                n = flag ; 
+                n = reserve ; 
         }
         // Порівняння першого і другого чисел х2
         if (k > m) {
-                flag = k ;
+                reserve = k ;
                 k = m ;
-                m = flag ; 
+                m = reserve ; 
         }
         return 0 ;
 }
