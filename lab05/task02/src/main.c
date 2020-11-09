@@ -1,10 +1,17 @@
+//Перевірте, чи є задане число простим.
 int main() {
-        const int num = 21 ;
-        int primeNum = 1 ; //Якщо primeNum = 1, тоді число просте
-        for (int i = 2 ; i < num; i++) {
-                if (num % i == 0) {
-                       primeNum = 0 ; 
+        const int num = 21 ; //Задане число.
+        int primeNum = 1 ; //Якщо primeNum = 1, тоді число просте.
+//Перевірка на одиницю(бо одиниця не є простим числом):
+        if (num == 1) {
+                primeNum = 0 ;
+        }else{
+//Перевірка на те, чи є число простим:
+                for (int i = 2; i < num; i++) {
+                        if (num % i == 0) {
+                                primeNum = 0 ; 
+                        }
                 }
-        }
+        }        
         return 0 ;
 }

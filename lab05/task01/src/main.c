@@ -1,8 +1,10 @@
+//Визначити найбільший спільний дільник для двох заданих чисел.
 int main () {
-        const int a = 561 ;
-        const int b = 143 ;
+        const int a = 561 ; //
+        const int b = 143 ;//
         int num1;
         int num2;
+//Перестановка чисел від більшого до найменшого
         if (a > b) {
                 num1 = a;
                 num2 = b;
@@ -11,7 +13,8 @@ int main () {
                 num2 = a;
         }
         int remainder = 1;
-        int divider ; 
+        int divider ; // Найбільший спільний дільник двох чисел
+//Знаходження НСД с допомогою алгоритму Євкліда
         while (remainder > 0) {
                 remainder = num1 % num2 ;
                 num1 = num2 ;
