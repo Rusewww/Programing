@@ -4,7 +4,7 @@ int main() {
         int sum = 0;
         int perfect; ////Якщо perfect = 1, тоді число досконале.
         //Розподіл числа на дільники, та визначення їх сумми:
-        for (int i = 1; i < num; i++) {
+        for (int i = 1; i <= num / 2; i++) {
                 if (num % i == 0) {
                           sum += i;
                 }
