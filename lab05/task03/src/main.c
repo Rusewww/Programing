@@ -1,25 +1,25 @@
 //Визначити, чи є ціле 6-значне число "щасливим"(числа в якому сумма цифр з першої половини дорівнює суммі чисел другої половини.
 int main() {
-        const int num = 102300 ; //Задане 6-значне число.
-        int sum1 = 0 ;
-        int sum2 = 0 ;
-        int numb = 0 ;
-        int luckyNum = 0 ; //Якщо luckyNum = 1, тоді число "щасливе".
+        const int num = 102300; //Задане 6-значне число.
+        int sum1 = 0;
+        int sum2 = 0;
+        int numb = 0;
+        int luckyNum = 0; //Якщо luckyNum = 1, тоді число "щасливе".
 //Визначення сумми цифр обох половин:
-        for (int i = 100000; i >=1; i /= 10) {
-                numb = num % (i * 10) ;
-                numb /= i ;
+        for (int i = 100000; i >= 1; i /= 10) {
+                numb = num % (i * 10);
+                numb /= i;
                 if ( i > 100) {
-                        sum1 += numb ;
+                        sum1 += numb;
                 }else{ 
-                        sum2 += numb ;
+                        sum2 += numb;
                 }
         }
-//Перевірка на те, чи є число простим:
+//Перевірка на те, чи є число "щасливим":
         if (sum1 == sum2) {
-                luckyNum = 1 ;
+                luckyNum = 1;
         }else{
-                luckyNum = 0 ;
+                luckyNum = 0;
         }
         return 0 ;
 }                
