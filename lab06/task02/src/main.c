@@ -1,11 +1,13 @@
+//Заповнити масив із заданої кількості елементів простими числами що не повторюються
 #include <stdbool.h>
 #include <stdlib.h>
 int main() {
-        const int size = 7;
-        int a[size];
+        #define SIZE 5 //Розмір масиву
+        int a[SIZE];//Заданий масив
         int num;
-        int max = 100;
-        for (int i = 0; i < size; i++) {        
+        int max = 101;//Максимальне число для запису в масив
+        //Цикл заповнення масиву випадковими натуральними числами
+        for (int i = 0; i < SIZE; i++) {        
                 bool primeNum;
                 do {
                         num = rand() % max;
