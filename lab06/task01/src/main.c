@@ -12,10 +12,10 @@ int main() {
         }
         int fillersize = (SIZE - namelength) / 2 ; // Необхідна кількість заповнювача
         char copyA[SIZE];
-        //Цикл центрування
         for (int i = 0; i <= SIZE; i++) {
                 copyA[i] = a[i];
         }
+        //Цикл центрування
         for (int i = fillersize; i < (SIZE - fillersize); i++) {
                 a[i] = copyA[i - fillersize];
         }
