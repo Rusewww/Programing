@@ -15,7 +15,7 @@ int main() {
         for (int i = 0; i <= SIZE; i++) {
                 copyA[i] = a[i];
         }
-        //Цикл центрування
+        //Цикли центрування
         for (int i = fillersize; i < (SIZE - fillersize); i++) {
                 a[i] = copyA[i - fillersize];
         }

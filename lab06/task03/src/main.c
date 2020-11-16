@@ -19,9 +19,9 @@ int main() {
        //Перевірка на те, чи не дорівнює число нулю
        if (b[0] == 0 && b[1] == 0 && b[2] == 0 && b[3] == 0) {
                for (int j = 0; j < LENTH; j++) {
-                       result[0][j] = '\0';
-                       result[1][j] = '\0';
-                       result[2][j] = '\0';
+                       result[0][j] = ' ';
+                       result[1][j] = ' ';
+                       result[2][j] = ' ';
                        result[3][j] = units[9][j];
                }
        }else{
@@ -30,7 +30,7 @@ int main() {
                        if (i == 0) {
                                if(b[i] == 0) {
                                        for (int j = 0; j < LENTH; j++) {
-                                               result[i][j] = '\0';
+                                               result[i][j] = ' ';
                                        }
                                }else{                
                                        for (int j = 0; j < LENTH; j++) {
@@ -42,7 +42,7 @@ int main() {
                        if (i == 1) {
                                if(b[i] == 0) {
                                         for (int j = 0; j < LENTH; j++) {
-                                                result[i][j] = '\0';
+                                                result[i][j] = ' ';
                                         }
                                }else{                
                                         for (int j = 0; j < LENTH; j++) {
@@ -59,7 +59,7 @@ int main() {
                                }else{
                                         if(b[i] == 0) {
                                                 for (int j = 0; j < LENTH; j++) {
-                                                        result[i][j] = '\0';
+                                                        result[i][j] = ' ';
                                                        }
                                         }else{                
                                                 for (int j = 0; j < LENTH; j++) {
@@ -71,12 +71,12 @@ int main() {
                        //Цикл підстановки одиниць               
                        if (i == 3 && b[i-1] == 1) {
                                for (int j = 0; j < LENTH; j++) {
-                                                               result[i][j] = '\0';
+                                                               result[i][j] = ' ';
                                }
                        }else if (i == 3) {
                                if(b[i] == 0) {
                                        for (int j = 0; j < LENTH; j++) {
-                                               result[i][j] = '\0';
+                                               result[i][j] = ' ';
                                        }
                                }else{                
                                        
