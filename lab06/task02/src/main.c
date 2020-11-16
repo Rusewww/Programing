@@ -1,7 +1,9 @@
 //Заповнити масив із заданої кількості елементів простими числами що не повторюються
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 int main() {
+        srand(time(NULL));
         #define SIZE 100 //Розмір масиву
         int a[SIZE];//Заданий масив
         int num;

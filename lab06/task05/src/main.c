@@ -1,6 +1,8 @@
 //Дано масив. Виконати циклічне зміщення масиву справа на ліво
 #include <stdlib.h>
+#include <time.h>
 int main() {
+        srand(time(NULL));
         #define SIZE 3 //Розміри масиву
         int a[SIZE][SIZE];//Заданий масив
         int temp;
