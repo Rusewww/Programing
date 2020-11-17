@@ -90,7 +90,7 @@ int main() {
                }
        }
        for (int i = 0; i < RESSIZE; i++) {
-       	result[i] = resultsq[0][i];
+               result[i] = resultsq[0][i];
        }
        return 0;
 }              
