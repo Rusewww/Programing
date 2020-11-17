@@ -1,11 +1,13 @@
 //Перетворити число в рядок
 int main() {
-       #define LENTH 20 //Максимальна довжина одного слова
+       #define LENTH 15 //Максимальна довжина одного слова
        #define SIZE 4 //Довжина масиву
+       #define RESSIZE 60
        #define COUNT 10 //Кількість слів в масиві
        int num = 4116; //Задане число
        int b[SIZE]; //Масив в який записуватимется число в зворотному порядку
-       char result[SIZE][LENTH]; //Масив з результатом виконання завдання
+       char result [RESSIZE];
+       char resultsq[SIZE][LENTH]; //Масив з результатом виконання завдання
        char units[COUNT][LENTH] = {"one","two","tree","four","five","six","seven","eigth","nine","zero"}; //Одиниці
        char dozensUnder20[COUNT][LENTH] = {"eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen","ten"}; //Числа від 11 до 19
        char dozens[COUNT][LENTH] = {"twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"}; //Десятки 
@@ -19,10 +21,10 @@ int main() {
        //Перевірка на те, чи не дорівнює число нулю
        if (b[0] == 0 && b[1] == 0 && b[2] == 0 && b[3] == 0) {
                for (int j = 0; j < LENTH; j++) {
-                       result[0][j] = ' ';
-                       result[1][j] = ' ';
-                       result[2][j] = ' ';
-                       result[3][j] = units[9][j];
+                       resultsq[0][j] = ' ';
+                       resultsq[1][j] = ' ';
+                       resultsq[2][j] = ' ';
+                       resultsq[3][j] = units[9][j];
                }
        }else{
                for (int i = 0; i < SIZE; i++) {
@@ -30,11 +32,11 @@ int main() {
                        if (i == 0) {
                                if(b[i] == 0) {
                                        for (int j = 0; j < LENTH; j++) {
-                                               result[i][j] = ' ';
+                                               resultsq[i][j] = ' ';
                                        }
                                }else{                
                                        for (int j = 0; j < LENTH; j++) {
-                                               result[i][j] = thouthens[b[i]-1][j];
+                                               resultsq[i][j] = thouthens[b[i]-1][j];
                                        }
                                }
                        }
@@ -42,11 +44,11 @@ int main() {
                        if (i == 1) {
                                if(b[i] == 0) {
                                         for (int j = 0; j < LENTH; j++) {
-                                                result[i][j] = ' ';
+                                                resultsq[i][j] = ' ';
                                         }
                                }else{                
                                         for (int j = 0; j < LENTH; j++) {
-                                                result[i][j] = hundreds[b[i]-1][j];
+                                                resultsq[i][j] = hundreds[b[i]-1][j];
                                         }   
                                }
                        }
@@ -54,16 +56,16 @@ int main() {
                        if (i == 2) {
                                if(b[i] == 1) {                
                                         for (int j = 0; j < LENTH; j++) {
-                                                result[i][j] = dozensUnder20[b[i + 1] - 1][j];
+                                                resultsq[i][j] = dozensUnder20[b[i + 1] - 1][j];
                                         }     
                                }else{
                                         if(b[i] == 0) {
                                                 for (int j = 0; j < LENTH; j++) {
-                                                        result[i][j] = ' ';
+                                                        resultsq[i][j] = ' ';
                                                        }
                                         }else{                
                                                 for (int j = 0; j < LENTH; j++) {
-                                                        result[i][j] = dozens[b[i]-2][j];
+                                                        resultsq[i][j] = dozens[b[i]-2][j];
                                                 }
                                         }                
                                }       
@@ -71,21 +73,24 @@ int main() {
                        //Цикл підстановки одиниць               
                        if (i == 3 && b[i-1] == 1) {
                                for (int j = 0; j < LENTH; j++) {
-                                                               result[i][j] = ' ';
+                                                               resultsq[i][j] = ' ';
                                }
                        }else if (i == 3) {
                                if(b[i] == 0) {
                                        for (int j = 0; j < LENTH; j++) {
-                                               result[i][j] = ' ';
+                                               resultsq[i][j] = ' ';
                                        }
                                }else{                
                                        
                                        for (int j = 0; j < LENTH; j++) {
-                                               result[i][j] = units[b[i] - 1][j];
+                                               resultsq[i][j] = units[b[i] - 1][j];
                                        }
                                }
                        }
                }
+       }
+       for (int i = 0; i < RESSIZE; i++) {
+       	result[i] = resultsq[0][i];
        }
        return 0;
 }              
