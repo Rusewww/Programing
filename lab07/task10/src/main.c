@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 /**
  * @file main.c Завдання 5 лабораторної роботи №6.
  *
@@ -11,13 +10,12 @@
  * @param a - заданий масив;
  * @param SIZE - розміри масиву;
  */
-
+static int ROL_array(int SSIZE, int a[][SSIZE]);
 /**
 Функція main: задає мансимальне значення числа для запису в масив, масив та його розміри,
               і заповнює його випадковими числами, і передає все до функції ROL_array.
 */
 int main () {
-        srand(time(NULL));
         #define SIZE 3
         int a[SIZE][SIZE];
         int max = 10;
@@ -32,7 +30,7 @@ int main () {
 /**
 Функція ROL_array: виконує циклічне зміщення масиву справа на ліво.
 */
-void ROL_array(int SSIZE, int a[][SSIZE]) {
+int ROL_array(int SSIZE, int a[][SSIZE]) {
         int temp;
         //Алгоритм циклічного зміщення масиву вліво
         for (int i = 0; i < SSIZE; i++){
@@ -48,4 +46,5 @@ void ROL_array(int SSIZE, int a[][SSIZE]) {
                         }
                 }
         }
+        return 0;
 }

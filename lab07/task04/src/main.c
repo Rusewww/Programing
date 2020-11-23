@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 #include <stdbool.h>
 /**
  * @file main.c Завдання 4 лабораторної роботи №5.
@@ -12,12 +11,11 @@
  * @param num - число;
  * @param result - результат, чи є число досконалим;
  */
-
+int perfect(int);
 /**
 Функція main: формує 1 випадкове число < 100, і передає його до функції perfect.
 */
 int main() {
-        srand(time(NULL));
         int rand_max = 100;
         const int num = rand() % rand_max + 1;
         bool result = perfect(num);

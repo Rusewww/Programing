@@ -9,7 +9,7 @@
  * @param a - массив;
  * @param SIZE - розмір  масиву;
  */
-
+static int quantity(char a[], int size, int quantityOfWords);
 /**
 Функція main: задає масив та його розміри, і передає все до функції quantity.
 */

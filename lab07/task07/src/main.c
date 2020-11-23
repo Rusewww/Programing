@@ -1,6 +1,5 @@
 #include <stdbool.h>
 #include <stdlib.h>
-#include <time.h>
 /**
  * @file main.c Завдання 2 лабораторної роботи №6.
  *
@@ -12,11 +11,11 @@
  * @param a - массив;
  * @param FSIZE - розмір масиву;
  */
-
+static void fill_prime(int SIZE, int a[], int max);
 /**
 Функція main: задає мансимальне значення числа для запису в масив, масив та його розмір, і передає все до функції fill_prime.
 */
-int main(){
+int main() {
         #define FSIZE 10
         int a[FSIZE];
         int max = 100;
@@ -27,7 +26,6 @@ int main(){
 Функція fill_prime: заповнює масив випадковими натуральними числами.
 */
 void fill_prime(int SIZE, int a[], int max) {
-        srand(time(NULL));
         int num;
         if (SIZE > max / 4) {
                 for (int i = 0; i < SIZE; i++) {
@@ -60,7 +58,7 @@ void fill_prime(int SIZE, int a[], int max) {
                                                 }
                                         }
                                 }
-                        }while (primeNum == false);
+                        } while (primeNum == false);
                         a[i] = num;
                 }
         }

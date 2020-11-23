@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 #include <stdbool.h>
 /**
  * @file main.c Завдання 2 лабораторної роботи №5.
@@ -10,14 +9,13 @@
 /**
  * @param rand_max - максисальне значення якого можуть набути числа;
  * @param num - число;
- * @param result - результат, чи є число простим; 
+ * @param result - результат, чи є число простим;
  */
-
+int prime_num(int);
 /**
 Функція main: формує 1 випадкове число < 100, і передає його до функції prime_num.
 */
 int main () {
-        srand(time(NULL));
         int rand_max = 100;
         const int num = rand() % rand_max + 1;
         bool result = prime_num(num) ;
@@ -33,7 +31,7 @@ int prime_num(int num) {
                 primeNum = false;
         }else if (num == 2){
                 primeNum = true;
-        }else if (num % 2 == 0){
+        }else if (num % 2 == 0) {
                 primeNum = false;
         }else{
         //Перевірка на те, чи є число простим:

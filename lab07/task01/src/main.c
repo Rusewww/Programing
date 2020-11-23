@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 /**
  * @file main.c Завдання 1 лабораторної роботи №5.
  *
@@ -12,12 +11,11 @@
  * @param b - друге число;
  * @param div - НСД;
  */
-
+int findGCF(int, int);
 /**
 Функція main: формує 2 випадкових числа < 100, і передає їх до функції findGCF.
  */
 int main() {
-        srand(time(NULL));
         int rand_max = 100;
         const int a = rand() % rand_max + 1;
         const int b = rand() % rand_max + 1;

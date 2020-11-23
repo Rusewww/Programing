@@ -9,15 +9,15 @@
  * @param a - массив з строкою;
  * @param SIZE - розмір масиву;
  */
-
+static void center(int SSIZE, char a[], char filler);
 /**
 Функція main: задає заповнювач,строку та її розмір, і передає все до функції root.
 */
 int main(){
-        #define SIZE 15 
-        char filler = '_' ;
-        char a[SIZE] = {'I','v','a','n','o','v',' ',' ',' ',' ',' ',' ',' ',' ','\0'} ;
-        center(SIZE, a , filler);
+        #define SIZE 15
+        char filler = '_';
+        char a[SIZE] = {'I','v','a','n','o','v',' ',' ',' ',' ',' ',' ',' ',' ','\0'};
+        center(SIZE, a, filler);
         return 0;
 }
 /**

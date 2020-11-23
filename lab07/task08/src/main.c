@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <time.h>
 /**
  * @file main.c Завдання 3 лабораторної роботи №6.
  *
@@ -11,12 +10,11 @@
  * @param result - результуючий массив;
  * @param RESULTSIZE - розмір результуючого масиву;
  */
-
+static void converting(int num, int RESSIZE, char result[]);
 /**
 Функція main: задає число, масив результату та його розміри, і передає все до функції converting.
 */
 int main(){
-        srand(time(NULL));
         int num = rand() % 10000;
         #define RESULTSIZE 60
         char result[RESULTSIZE];
