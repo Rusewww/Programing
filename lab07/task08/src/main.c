@@ -1,9 +1,24 @@
+#include <stdlib.h>
+#include <time.h>
+/**
+ * @file main.c Завдання 3 лабораторної роботи №6.
+ *
+ * Перетворити число в рядок.
+ */
+
+/**
+ * @param num - число для переводу;
+ * @param result - результуючий массив;
+ * @param RESULTSIZE - розмір результуючого масиву;
+ */
+
 /**
 Функція main: задає число, масив результату та його розміри, і передає все до функції converting.
 */
 int main(){
+        srand(time(NULL));
+        int num = rand() % 10000;
         #define RESULTSIZE 60
-        int num = 4116;
         char result[RESULTSIZE];
         converting(num, RESULTSIZE, result);
         return 0;
@@ -30,10 +45,10 @@ void converting(int num, int RESSIZE, char result[]){
                //Перевірка на те, чи не дорівнює число нулю
                if (b[0] == 0 && b[1] == 0 && b[2] == 0 && b[3] == 0) {
                        for (int j = 0; j < LENTH; j++) {
-                               resultsq[0][j] = ' ';
+                               resultsq[0][j] = units[9][j];
                                resultsq[1][j] = ' ';
                                resultsq[2][j] = ' ';
-                               resultsq[3][j] = units[9][j];
+                               resultsq[3][j] = ' ';
                        }
                }else{
                        for (int i = 0; i < SIZE; i++) {
@@ -41,7 +56,7 @@ void converting(int num, int RESSIZE, char result[]){
                                if (i == 0) {
                                        if(b[i] == 0) {
                                                for (int j = 0; j < LENTH; j++) {
-                                                       resultsq[i][j] = ' ';
+                                                       resultsq[i][j] = '\0';
                                                }
                                        }else{
                                                for (int j = 0; j < LENTH; j++) {
@@ -53,7 +68,7 @@ void converting(int num, int RESSIZE, char result[]){
                                if (i == 1) {
                                        if(b[i] == 0) {
                                                 for (int j = 0; j < LENTH; j++) {
-                                                        resultsq[i][j] = ' ';
+                                                        resultsq[i][j] = '\0';
                                                 }
                                        }else{
                                                 for (int j = 0; j < LENTH; j++) {
@@ -70,7 +85,7 @@ void converting(int num, int RESSIZE, char result[]){
                                        }else{
                                                 if(b[i] == 0) {
                                                         for (int j = 0; j < LENTH; j++) {
-                                                                resultsq[i][j] = ' ';
+                                                                resultsq[i][j] = '\0';
                                                                }
                                                 }else{
                                                         for (int j = 0; j < LENTH; j++) {
@@ -82,12 +97,12 @@ void converting(int num, int RESSIZE, char result[]){
                                //Цикл підстановки одиниць
                                if (i == 3 && b[i-1] == 1) {
                                        for (int j = 0; j < LENTH; j++) {
-                                                                       resultsq[i][j] = ' ';
+                                                                       resultsq[i][j] = '\0';
                                        }
                                }else if (i == 3) {
                                        if(b[i] == 0) {
                                                for (int j = 0; j < LENTH; j++) {
-                                                       resultsq[i][j] = ' ';
+                                                       resultsq[i][j] = '\0';
                                                }
                                        }else{
 
