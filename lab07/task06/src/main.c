@@ -11,7 +11,7 @@ int main(){
 /**
 Функція center: центрує заданий рядок.
 */
-void center(int SIZE, char a[], char filler) {
+void center(int SSIZE, char a[], char filler) {
         int namelength = 0; //Довжина імені
         //Цикл для визначення довжини імені
         for (int i = 0; a[i] != '\0'; i++) {
@@ -19,16 +19,16 @@ void center(int SIZE, char a[], char filler) {
                         namelength++;
                 }
         }
-        int fillersize = (SIZE - namelength) / 2 ; // Необхідна кількість заповнювача
-        char copyA[SIZE];
-        for (int i = 0; i <= SIZE; i++) {
+        int fillersize = (SSIZE - namelength) / 2 ; // Необхідна кількість заповнювача
+        char copyA[SSIZE];
+        for (int i = 0; i <= SSIZE; i++) {
                 copyA[i] = a[i];
         }
         //Цикли центрування
-        for (int i = fillersize; i < (SIZE - fillersize); i++) {
+        for (int i = fillersize; i < (SSIZE - fillersize); i++) {
                 a[i] = copyA[i - fillersize];
         }
-        for (int i = 0; i < SIZE; i++) {
+        for (int i = 0; i < SSIZE; i++) {
                 if ( i < fillersize || a[i] == ' ' ) {
                         a[i] = filler;
                 }

@@ -5,10 +5,10 @@
 Функція main: задає мансимальне значення числа для запису в масив, масив та його розмір, і передає все до функції fill_prime.
 */
 int main(){
-        #define SIZE 10 //Розмір масиву
-        int a[SIZE];//Заданий масив
+        #define FSIZE 10 //Розмір масиву
+        int a[FSIZE];//Заданий масив
         int max = 100;//Максимальне число для запису в масив
-        fill_prime(SIZE, a, max);
+        fill_prime(FSIZE, a, max);
         return 0;
 }
 /**

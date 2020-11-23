@@ -1,16 +1,6 @@
 #include <stdlib.h>
 #include <time.h>
 /**
-Функція main: формує 1 випадкове число < 100, і передає його до функції root.
-*/
-int main () {
-        srand(time(NULL));
-        int rand_max = 100;
-        const int num = rand() % rand_max + 1;
-        float result = root(num);
-        return 0;
-}
-/**
 Функція root: без допомоги зовнішніх бібліотек, отримує корінь заданого числа.
 */
 float root(float num) {
@@ -24,4 +14,14 @@ float root(float num) {
                 }
         }
         return (root);
+}
+/**
+Функція main: формує 1 випадкове число < 100, і передає його до функції root.
+*/
+int main () {
+        srand(time(NULL));
+        int rand_max = 100;
+        const float num = rand() % rand_max + 1;
+        float result = root(num);
+        return 0;
 }
