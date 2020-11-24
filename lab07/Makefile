@@ -8,6 +8,8 @@ clean:
 	rm -rf dist
 prep:
 	mkdir dist
+format:
+	doxygen
 compile: main1.bin main2.bin main3.bin main4.bin main5.bin main6.bin main7.bin main8.bin main9.bin main10.bin main11.bin main12.bin
 
 main1.bin: task01/src/main.c
@@ -34,7 +36,7 @@ main11.bin: task11/src/main.c
 	$(CC) $(C_OPTS) $< -o ./dist/$@
 main12.bin: task12/src/main.c
 	$(CC) $(C_OPTS) $< -o ./dist/$@
-run1: clean prep compile
+run: clean prep compile
 	./dist/main1.bin ./dist/main2.bin ./dist/main3.bin ./dist/main4.bin ./dist/main5.bin ./dist/main6.bin ./dist/main7.bin ./dist/main8.bin ./dist/main9.bin ./dist/main10.bin ./dist/main11.bin ./dist/main12.bin
 doxygen:
 	doxygen Doxyfile
