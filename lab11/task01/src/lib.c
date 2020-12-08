@@ -1,13 +1,27 @@
-//
-// Created by Rusewww on 12/5/20.
-//
 #include <malloc.h>
 #include <stdlib.h>
+
+/**
+* @file lib.c
+* @brief Реалізвція функцій для файлу main.c.
+* @author Зозуля Ігор.
+* @date 07-dec-2020
+* @version 1.0
+*/
+
+/**
+Функція randomize: заповнює масив випадковими числами.
+*/
+
 void randomize(int arr[], int size, int max) {
         for (int i = 0; i < size; i++) {
                 arr[i] = rand() % max;
         }
 }
+
+/**
+Функція sizeCheck: дізнається розмір результуючого масиву.
+*/
 
 int sizeCheck(int arr[], int size) {
         int n = size;
@@ -21,6 +35,10 @@ int sizeCheck(int arr[], int size) {
         int result = n * 2;
         return (result);
 }
+
+/**
+Функція findFrequency: знаходить частоту зустрічання певного елементу в масиві.
+*/
 
 void findFrequency(int* res, int n, int arr[], int size){
         int cor = 0;

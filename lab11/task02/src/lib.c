@@ -1,6 +1,15 @@
-//
-// Created by Rusewww on 12/5/20.
-//
+/**
+* @file lib.c
+* @brief Реалізвція функцій для файлу main.c.
+* @author Зозуля Ігор.
+* @date 07-dec-2020
+* @version 1.0
+*/
+
+/**
+Функція randomizeWithMin: заповнює масив випадковими числами з відємними числами, які дорівнюють -max.
+*/
+
 #include <stdlib.h>
 void randomizeWithMin(int arr[], int size, int max) {
         for (int i = 0; i < size; ++i) {
@@ -8,7 +17,11 @@ void randomizeWithMin(int arr[], int size, int max) {
         }
 }
 
-int findMaxLenght(int array[], int size){
+/**
+Функція findMaxLength: дізнається довжину найбльщої послідовності.
+*/
+
+int findMaxLength(int array[], int size){
         int maxHead = -1;
         int curHead = -1;
         int maxSum = 0;
@@ -37,6 +50,10 @@ int findMaxLenght(int array[], int size){
         }
         return (maxLength);
 }
+
+/**
+Функція findMaxHead: знаходить позицію першого елемента найбільшої послідовності.
+*/
 
 int findMaxHead(int array[], int size) {
         int maxHead = -1;
