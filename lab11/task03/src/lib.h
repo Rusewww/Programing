@@ -10,10 +10,10 @@
 #ifndef LAB11_LIB_H
 #define LAB11_LIB_H
 
-int findCount(int arr[], int size);
+int findCount(double arr[], int size);
 
-int findLength(int arr[], int size);
+int findLength(double arr[], int size);
 
-int findHead(int arr[], int size);
+int findHead(double arr[], int size);
 
 #endif //LAB11_LIB_H

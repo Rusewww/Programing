@@ -11,7 +11,7 @@
 
 void randomizeWithMin(int arr[], int size, int max);
 
-int findMaxLength(int array[], int size);
+int findMaxLength(int array[], int size, int maxHead);
 
 int findMaxHead(int array[], int size);
 

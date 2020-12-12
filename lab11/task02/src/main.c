@@ -15,7 +15,7 @@
  * @param array - заданий масив;
  * @param maxHead - координата першого єлементу потрібної послідовності ;
  * @param maxLeangth - довжина потрібної послідовності ;
- * @param *res - масив с результатом виконання програми ;
+ * @param res - масив с результатом виконання програми ;
  */
 
 /**
@@ -29,7 +29,7 @@ int main() {
         int array[SIZE];
         randomizeWithMin(array, SIZE, max);
         int maxHead = findMaxHead(array, SIZE);
-        int maxLength = findMaxLength(array, SIZE);
+        int maxLength = findMaxLength(array, SIZE, maxHead);
         int *res = (int*) malloc((unsigned int)maxLength * sizeof(int));
         for (int i = maxHead; i < maxHead + maxLength; i++ ) {
                 *(res + i - maxHead) = array[i];

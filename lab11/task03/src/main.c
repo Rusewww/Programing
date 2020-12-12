@@ -13,7 +13,7 @@
 /**
  * @param SIZE - розміри масиву;
  * @param arr - заданий масив;
- * @param count - координата першого єлементу потрібної послідовності ;
+ * @param count - кількість послідовностей ;
  * @param maxLength - довжина потрібної послідовності ;
  * @param maxHead - номер останнього числа потрібної послідовності в заданому масиві ;
  * @param *res - результуючий масив
@@ -26,11 +26,11 @@
 
 int main() {
         #define SIZE 10
-        float arr[SIZE] ={0.1, 0.5, 1, 0.2, 11.3, 13, 14.2, 14.5, 1, 0.7} ;
+        double arr[SIZE] ={0.1, 0.5, 1, 0.2, 11.3, 10, 14.2, 15.5, 17, 0.7} ;
         int count = findCount(arr, SIZE);
         int maxLength = findLength(arr, SIZE);
         int maxHead = findHead(arr, SIZE);
-        float *res = (float*) malloc((float)maxLength * sizeof(float));
+        double *res = (double*) malloc((unsigned long)maxLength * sizeof(double));
         for (int i = ((maxHead - maxLength) + 1); i <= maxHead; i++ ) {
                 *(res + (i - (maxHead - maxLength) - 1)) = arr[i];
         }
