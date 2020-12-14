@@ -25,9 +25,9 @@
 
 int main(){
         int size = 7;
-        char* input = (char*)malloc((size * 10) * sizeof(char*));
-        char** arr  = (char**)malloc(size * sizeof(char*));
-        char* key  = (char*)malloc(10 * sizeof(char *));
+        char* input = (char*)malloc(((unsigned int)size * 10) * sizeof(char*));
+        char** arr = (char**)malloc((unsigned int)size * sizeof(char*));
+        char* key = (char*)malloc(10 * sizeof(char *));
         key = strdup(",");
         input = strdup("Macarenco,Zozulia,Klymenko,Macarenco,Gudzumanuk,Zuravlov,Klymenko");
         char * pch = strtok (input, key);
@@ -38,7 +38,7 @@ int main(){
                 i++;
         }
         size = deleteRepeat(arr, size);
-        char* res = (char*)malloc((size * 10) * sizeof(char*));
+        char* res = (char*)malloc(((unsigned int)size * 10) * sizeof(char*));
         for (int j = 0; j < size; j++){
                 strcat(res, arr[j]);
                 if (j != size -1) {
