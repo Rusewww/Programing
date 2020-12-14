@@ -1,8 +1,27 @@
-//
-// Created by Rusewww on 12/13/20.
-//
 #include <string.h>
 #include <malloc.h>
+
+/**
+ * @file main.c
+ * @brief Знайти числа в тексті.
+ * @author Зозуля Ігор.
+ * @date 14-dec-2020
+ * @version 1.0
+ */
+
+/**
+ * @param size - розміри масиву;
+ * @param arr - заданий масив;
+ * @param key - масив-ключ, для виконання функцій;
+ * @param pch - допоміжний масив;
+ * @param res - масив результату;
+ * @param arr - заданий масивв;
+ */
+
+/**
+Функція findLength: знаходить довжину масиву.
+*/
+
 int findLength(char *arr, char *key){
         int size = 0;
         char * pch = strpbrk (arr, key);
@@ -12,6 +31,10 @@ int findLength(char *arr, char *key){
         }
         return size;
 }
+
+/**
+Функція findNumb: знаходить числа які зустрічаються в тексті.
+*/
 
 void findNumb(char *arr, char *key, int *res){
         char * pch = strpbrk (arr, key);
