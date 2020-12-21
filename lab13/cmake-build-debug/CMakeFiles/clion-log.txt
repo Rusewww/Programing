@@ -1,1 +1,0 @@
-CMakeLists.txt not found in /home/Rusewww/Programing/lab13 Select CMakeLists.txt

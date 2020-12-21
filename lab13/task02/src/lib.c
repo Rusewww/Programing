@@ -1,8 +1,8 @@
 #include <string.h>
 
 /**
- * @file main.c
- * @brief Знайти числа в тексті.
+ * @file lib.c
+ * @brief Реалізвція функцій для файлу main.c.
  * @author Зозуля Ігор.
  * @date 14-dec-2020
  * @version 1.0
