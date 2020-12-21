@@ -24,10 +24,8 @@
 int main() {
         #define SIZE 37
         char* input = (char*)malloc(SIZE * sizeof(char*));
-        char* key = (char*)malloc(1 * sizeof(char *));
-        key = strdup(",");
         input = strdup("This function can find count of words");
         int count = findCount(input);
-        free(arr);
+        free(input);
         return 0;
 }
