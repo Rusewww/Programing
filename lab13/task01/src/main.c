@@ -1,6 +1,7 @@
 #include "lib.h"
 #include <string.h>
 #include <malloc.h>
+#include <stdlib.h>
 
 /**
  * @file main.c
@@ -22,9 +23,11 @@
 
 int main() {
         #define SIZE 37
-        char* arr = (char*)malloc(SIZE * sizeof(char*));
-        arr = strdup("This function can find count of words");
-        int count = findCount(arr);
+        char* input = (char*)malloc(SIZE * sizeof(char*));
+        char* key = (char*)malloc(1 * sizeof(char *));
+        key = strdup(",");
+        input = strdup("This function can find count of words");
+        int count = findCount(input);
         free(arr);
         return 0;
 }

@@ -1,5 +1,5 @@
 #include "lib.h"
-#include <malloc.h>
+//#include <malloc.h>
 #include <stdlib.h>
 
 /**
@@ -23,7 +23,7 @@
 */
 
 int main () {
-    #define SIZE 10
+    #define SIZE 5
     char a[SIZE];
     randomizeLetter(a, SIZE);
     int ressize = sizeCheck(a, SIZE);
