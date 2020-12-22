@@ -30,6 +30,7 @@ int findLength(char *arr, char *key){
             pch = strpbrk (pch+1, key);
         }
         return size;
+        free(pch);
 }
 
 /**
@@ -44,4 +45,5 @@ void findNumb(char *arr, char *key, int *res){
                 pch = strpbrk (pch+1, key);
                 i++;
         }
+        free(pch);
 }

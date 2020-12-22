@@ -14,6 +14,6 @@ void randomizeLetter(char arr[], int size);
 
 int sizeCheck(char arr[], int size);
 
-void findFrequency(char* res, int n, char arr[], int size);
+void findFrequency(char* res, char arr[], int size);
 
 #endif //LAB13_LIB_H

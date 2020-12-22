@@ -23,10 +23,8 @@
 
 int main(){
         #define SIZE 16
-        char* arr = (char*)malloc(SIZE * sizeof(char*));
-        char* key = (char*)malloc(10 * sizeof(char *));
-        arr = strdup("F1nd1 the nu6mb3rs");
-        key = strdup("0123456789");
+        char* arr = strdup("F1nd the nu6mb3rs");
+        char* key = strdup("0123456789");
         int size = findLength(arr, key);
         int* res = (int*)malloc((unsigned int)size * sizeof(int*));
         findNumb(arr, key, res);

@@ -23,8 +23,7 @@
 
 int main() {
         #define SIZE 37
-        char* input = (char*)malloc(SIZE * sizeof(char*));
-        input = strdup("This function can find count of words");
+        char* input = strdup("This function can find count of words");
         int count = findCount(input);
         free(input);
         return 0;

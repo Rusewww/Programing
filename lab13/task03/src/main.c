@@ -29,7 +29,7 @@ int main () {
     int ressize = sizeCheck(a, SIZE);
     char *res = (char*) malloc((unsigned int)ressize * sizeof(char));
     *res = 0;
-    findFrequency(res, ressize, a, SIZE);
+    findFrequency(res, a, SIZE);
     free(res);
     return 0;
 }

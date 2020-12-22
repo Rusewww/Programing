@@ -51,7 +51,7 @@ int sizeCheck(char arr[], int size) {
 Функція findFrequency: знаходить частоту зустрічання певного елементу в масиві.
 */
 
-void findFrequency(char* res, int n, char arr[], int size){
+void findFrequency(char* res, char arr[], int size){
     int cor = 0;
     for (int i = 0; i < size; i++) {
         for (int k = 0; k < size; k++) {
