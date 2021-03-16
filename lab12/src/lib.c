@@ -91,7 +91,7 @@ function : .
 
 void charToInt(char *mass1, int *help)
 {
-	for (int i = 0; i < strlen(mass1); i++) {
+	for (int i = 0; i < (int)strlen(mass1); i++) {
 		if (mass1[i] != ' ' && mass1[i] != '\n') {
 			help[i / 2] = ((int)mass1[i]) - '0';
 		}
@@ -108,7 +108,7 @@ function : .
 
 void intToChar(char *mass1, const int *help)
 {
-	for (int i = 0; i < (strlen(mass1) / 2); i++) {
+	for (int i = 0; i < (int)(strlen(mass1) / 2); i++) {
 		mass1[i * 2] = (char)(help[i] + 48);
 		if ((i % 2) == 0) {
 			mass1[i + 1] = ' ';
@@ -129,11 +129,13 @@ void usePutsAndGets()
 	char *mass1 = (char *)calloc(255, sizeof(char));
 	char *mass2 = (char *)calloc(255, sizeof(char));
 	int *help = (int *)calloc(255, sizeof(int));
+
 	printf("Enter first array: \n");
 	fgets(mass1, 255, stdin);
 
 	printf("Enter second array: \n");
 	fgets(mass2, 255, stdin);
+
 	strcat(mass1, mass2);
 
 	charToInt(mass1, help);
@@ -144,6 +146,7 @@ void usePutsAndGets()
 
 	puts("Result of combination arrays: ");
 	puts(mass1);
+
 	free(mass1);
 	free(mass2);
 	free(help);
@@ -156,6 +159,42 @@ void usePutsAndGets()
 /**
 function : .
 */
+
+void useReadAndWrite()
+{
+	int count = inputWithScanfCount("first");
+	char *mass1 = (char *)malloc((unsigned long)((count * 2)) * sizeof(char));
+	printf("Enter first array: \n");
+	fread(mass1, (unsigned long)(count * 2), 1, stdin);
+
+	int sCount = inputWithScanfCount("second");
+	char *mass2 = (char *)malloc((unsigned long)((sCount * 2)) * sizeof(char));
+	printf("Enter second array: \n");
+	fread(mass2, (unsigned long)(sCount * 2), 1, stdin);
+
+	strcat(mass1, mass2);
+
+	int *help = (int *)calloc(255, sizeof(int));
+
+	charToInt(mass1, help);
+
+	sort_array((int)strlen(mass1) / 2, help);
+
+	for (int i = 0; i < (int)strlen(mass1); i++) {
+		mass1[i] = ' ';
+	}
+	int j = 0;
+	for (int i = 0; i < (int)strlen(mass1); i += 2) {
+		mass1[i] = (char)(help[j] + 48);
+		j++;
+	}
+
+	puts("Result of combination arrays: ");
+	puts(mass1);
+	free(mass1);
+	free(mass2);
+	free(help);
+}
 
 /**
  * @param mass1 - array one;

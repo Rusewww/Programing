@@ -23,12 +23,14 @@ void combine(const int *mass1, const int *mass2, int *res, int n, int m);
 
 void sort_array(int n, int *arr);
 
-void useScanfAndPrintf();
-
 void charToInt(char *mass1, int *help);
 
 void intToChar(char *mass1, const int *help);
 
+void useScanfAndPrintf();
+
 void usePutsAndGets();
+
+void useReadAndWrite();
 
 #endif //PROGRAMING_LIB_H
