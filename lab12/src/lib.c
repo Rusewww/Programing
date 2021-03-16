@@ -25,26 +25,28 @@ int inputWithScanfCount(char *pos)
 }
 
 /**
- * @param  - ;
+ * @param arr - input array;
+ * @param count - length of array;
 */
 
 /**
-function : .
+function fillArrayScanf: fill array using scanf.
 */
-void fillArrayScanf(int *mass, int count)
+void fillArrayScanf(int *arr, int count)
 {
 	printf("Enter %d numbers:\n", count);
 	for (int i = 0; i < count; i++) {
-		fscanf(stdin, "%d", &mass[i]);
+		fscanf(stdin, "%d", &arr[i]);
 	}
 }
 
 /**
- * @param  - ;
+ * @param arr - input array;
+ * @param count - length of array;
 */
 
 /**
-function printfOutArray: .
+function printfOutArray: display array using printf.
 */
 
 void printfOutArray(int *arr, int count)
@@ -56,11 +58,7 @@ void printfOutArray(int *arr, int count)
 }
 
 /**
- * @param  - ;
-*/
-
-/**
-function useScanfAndPrintf: .
+function useScanfAndPrintf: use printf and scanf for interaction with the user.
 */
 
 void useScanfAndPrintf()
@@ -82,46 +80,44 @@ void useScanfAndPrintf()
 }
 
 /**
- * @param  - ;
+ * @param arr - input array;
+ * @param help - helpful array;
 */
 
 /**
-function : .
+function charToInt: convert char to int.
 */
 
-void charToInt(char *mass1, int *help)
+void charToInt(char *arr, int *help)
 {
-	for (int i = 0; i < (int)strlen(mass1); i++) {
-		if (mass1[i] != ' ' && mass1[i] != '\n') {
-			help[i / 2] = ((int)mass1[i]) - '0';
+	for (int i = 0; i < (int)strlen(arr); i++) {
+		if (arr[i] != ' ' && arr[i] != '\n') {
+			help[i / 2] = ((int)arr[i]) - '0';
 		}
 	}
 }
 
 /**
- * @param  - ;
+ * @param arr - input array;
+ * @param help - helpful array;
 */
 
 /**
-function : .
+function intToChar: convert int to char.
 */
 
-void intToChar(char *mass1, const int *help)
+void intToChar(char *arr, const int *help)
 {
-	for (int i = 0; i < (int)(strlen(mass1) / 2); i++) {
-		mass1[i * 2] = (char)(help[i] + 48);
+	for (int i = 0; i < (int)(strlen(arr) / 2); i++) {
+		arr[i * 2] = (char)(help[i] + 48);
 		if ((i % 2) == 0) {
-			mass1[i + 1] = ' ';
+			arr[i + 1] = ' ';
 		}
 	}
 }
 
 /**
- * @param  - ;
-*/
-
-/**
-function : .
+function usePutsAndGets: use puts and gets for interaction with the user.
 */
 
 void usePutsAndGets()
@@ -153,22 +149,18 @@ void usePutsAndGets()
 }
 
 /**
- * @param  - ;
-*/
-
-/**
-function : .
+function useReadAndWrite: use read and write for interaction with the user.
 */
 
 void useReadAndWrite()
 {
 	int count = inputWithScanfCount("first");
-	char *mass1 = (char *)malloc((unsigned long)((count * 2)) * sizeof(char));
+	char *mass1 = (char *)calloc(255, sizeof(char));
 	printf("Enter first array: \n");
 	fread(mass1, (unsigned long)(count * 2), 1, stdin);
 
 	int sCount = inputWithScanfCount("second");
-	char *mass2 = (char *)malloc((unsigned long)((sCount * 2)) * sizeof(char));
+	char *mass2 = (char *)calloc(255, sizeof(char));
 	printf("Enter second array: \n");
 	fread(mass2, (unsigned long)(sCount * 2), 1, stdin);
 
@@ -178,13 +170,15 @@ void useReadAndWrite()
 
 	charToInt(mass1, help);
 
-	sort_array((int)strlen(mass1) / 2, help);
+	int length = (int)strlen(mass1);
 
-	for (int i = 0; i < (int)strlen(mass1); i++) {
+	sort_array(length / 2, help);
+
+	for (int i = 0; i < length; i++) {
 		mass1[i] = ' ';
 	}
 	int j = 0;
-	for (int i = 0; i < (int)strlen(mass1); i += 2) {
+	for (int i = 0; i < length; i += 2) {
 		mass1[i] = (char)(help[j] + 48);
 		j++;
 	}
