@@ -1,5 +1,4 @@
 #include "lib.h"
-#include <malloc.h>
 #include <stdlib.h>
 
 /**
