@@ -24,6 +24,7 @@ int main()
 	scanf("%256s", directory);
 	showFileStruct(directory, 2);
 	showSize(directory);
+	showCount();
 	free(directory);
 	return 0;
 }

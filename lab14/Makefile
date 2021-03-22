@@ -8,6 +8,7 @@ clean:
 	rm -rf dist
 prep:
 	mkdir dist
+	touch dist/output.txt
 format:
 	doxygen
 compile: main.bin

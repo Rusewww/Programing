@@ -22,4 +22,8 @@ void showSize();
 
 double findDirectorySize(char *directory);
 
+int findCount(char * arr);
+
+void showCount();
+
 #endif //PROGRAMING_LIB_H

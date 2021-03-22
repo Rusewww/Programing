@@ -92,3 +92,50 @@ double findDirectorySize(char *directory)
 	closedir(folder);
 	return sizeOfDir;
 }
+
+void showCount()
+{
+	char *fileName = (char *)calloc(256, sizeof(char));
+	printf("Enter way to the input file: \n");
+	scanf("%s", fileName);
+	FILE *fp;
+	if ((fp = fopen(fileName, "r")) == NULL) {
+		printf("%s\n", "Error opening file.");
+		exit(1);
+	}
+
+	char *input = (char *)calloc(256, sizeof(char));
+	fgets(input, 255, fp);
+
+	int count = findCount(input);
+
+	char *outFile = (char *)calloc(256, sizeof(char));
+	printf("Enter way to the output file: \n");
+	scanf("%s", outFile);
+	FILE *fd;
+	if ((fd = fopen(outFile, "w")) == NULL) {
+		printf("%s\n", "Error opening file.");
+		exit(1);
+	}
+
+	printf("Count of words: %i\n", count);
+	fprintf(fd, "Count of words: %i\n", count);
+
+	fclose(fp);
+	fclose(fd);
+	free(fileName);
+	free(input);
+	free(outFile);
+}
+
+int findCount(char *arr)
+{
+	char keys[] = { " " };
+	int count = 0;
+	char *phc = strtok(arr, keys);
+	while (phc != NULL) {
+		phc = strtok(NULL, keys);
+		count++;
+	}
+	return count;
+}
