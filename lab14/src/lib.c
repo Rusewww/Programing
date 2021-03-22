@@ -41,6 +41,14 @@ void showFileStruct(char *directory, int spaceCount)
 	closedir(folder);
 }
 
+/**
+ * @param directory - directory name;
+ */
+
+/**
+Функція showSize: show size of directory on Kb.
+*/
+
 void showSize(char *directory)
 {
 	double sizeOfDir = findDirectorySize(directory);
@@ -56,6 +64,14 @@ void showSize(char *directory)
 	printf("Size of '%s': %s Kb\n", directory, sSizeOfDir);
 	free(sSizeOfDir);
 }
+
+/**
+ * @param directory - directory name;
+ */
+
+/**
+Функція findDirectorySize: find size of directory.
+*/
 
 double findDirectorySize(char *directory)
 {
@@ -93,6 +109,10 @@ double findDirectorySize(char *directory)
 	return sizeOfDir;
 }
 
+/**
+Функція showCount: show count of words in console and file.
+*/
+
 void showCount()
 {
 	char *fileName = (char *)calloc(256, sizeof(char));
@@ -127,6 +147,14 @@ void showCount()
 	free(input);
 	free(outFile);
 }
+
+/**
+ * @param arr - array;
+ */
+
+/**
+Функція findCount: find count of words.
+*/
 
 int findCount(char *arr)
 {

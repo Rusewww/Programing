@@ -8,9 +8,6 @@
  */
 
 /**
- * @param mass1 - first array;
- * @param mass2 - second array;
- * @param res - result array;
  * @return успішний код повернення з програми (0).
  */
 

@@ -9,6 +9,7 @@
  */
 
 /**
+ * @param directory - directory name;
  * @return успішний код повернення з програми (0).
 */
 
