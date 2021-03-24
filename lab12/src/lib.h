@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 #ifndef PROGRAMING_LIB_H
 #define PROGRAMING_LIB_H
@@ -23,14 +24,20 @@ void combine(const int *mass1, const int *mass2, int *res, int n, int m);
 
 void sort_array(int n, int *arr);
 
-void charToInt(char *mass1, int *help);
+int charToInt(char *string, int *numbers);
 
-void intToChar(char *mass1, const int *help);
+void intToChar(char *output, const int *numbers, int count_of_numbers);
+
+void outByWrite(int *numbers, int count_of_numbers);
 
 void useScanfAndPrintf();
 
 void usePutsAndGets();
 
 void useReadAndWrite();
+
+void read(int i, char *mass1, size_t nbytes);
+
+void write(int i, char string[13], size_t i1);
 
 #endif //PROGRAMING_LIB_H

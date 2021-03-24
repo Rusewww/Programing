@@ -32,6 +32,7 @@ int inputWithScanfCount(char *pos)
 /**
 function fillArrayScanf: fill array using scanf.
 */
+
 void fillArrayScanf(int *arr, int count)
 {
 	printf("Enter %d numbers:\n", count);
@@ -74,6 +75,7 @@ void useScanfAndPrintf()
 	combine(mass1, mass2, res, count, sCount);
 	sort_array(resCount, res);
 	printfOutArray(res, resCount);
+	puts("\n↑____USING_SCANF_AND_PRINTF____↑\n");
 	free(mass1);
 	free(mass2);
 	free(res);
@@ -88,30 +90,48 @@ void useScanfAndPrintf()
 function charToInt: convert char to int.
 */
 
-void charToInt(char *arr, int *help)
+int charToInt(char *string, int *numbers)
 {
-	for (int i = 0; i < (int)strlen(arr); i++) {
-		if (arr[i] != ' ' && arr[i] != '\n') {
-			help[i / 2] = ((int)arr[i]) - '0';
+	char *endptr, *ptr = string;
+	int count = 0;
+
+	while (*ptr != '\0') {
+		if (isdigit(*ptr)) {
+			numbers[count++] = (int)strtol(ptr, &endptr, 10);
+		} else {
+			endptr = ptr + 1;
+		}
+
+		ptr = endptr;
+	}
+	for (int i = 0; i < count; i++) {
+		if (numbers[i] == 0) {
+			int buf = numbers[i];
+			numbers[i] = numbers[i + 1];
+			numbers[i + 1] = buf;
 		}
 	}
+	return (count);
 }
 
 /**
- * @param arr - input array;
- * @param help - helpful array;
+ * @param output - output array;
+ * @param numbers - array of numbers;
+ * @param count - count of numbers in array;
 */
 
 /**
 function intToChar: convert int to char.
 */
 
-void intToChar(char *arr, const int *help)
+void intToChar(char *output, const int *numbers, int count)
 {
-	for (int i = 0; i < (int)(strlen(arr) / 2); i++) {
-		arr[i * 2] = (char)(help[i] + 48);
-		if ((i % 2) == 0) {
-			arr[i + 1] = ' ';
+	for (int i = 0; i < count; i++) {
+		char sNumber[25];
+		sprintf(sNumber, "%d", *(numbers + i));
+		strcat(output, sNumber);
+		if (i < count - 1) {
+			strcat(output, " ");
 		}
 	}
 }
@@ -132,19 +152,23 @@ void usePutsAndGets()
 	printf("Enter second array: \n");
 	fgets(mass2, 255, stdin);
 
+	strcat(mass1, " ");
 	strcat(mass1, mass2);
 
-	charToInt(mass1, help);
+	int count = charToInt(mass1, help);
 
-	sort_array((int)strlen(mass1) / 2, help);
+	sort_array(count, help);
 
-	intToChar(mass1, help);
+	char *result = (char *)calloc(255, sizeof(char));
+
+	intToChar(result, help, count);
 
 	puts("Result of combination arrays: ");
-	puts(mass1);
-
+	puts(result);
+	puts("↑____USING_GETS_AND_PUTS____↑\n");
 	free(mass1);
 	free(mass2);
+	free(result);
 	free(help);
 }
 
@@ -154,40 +178,52 @@ function useReadAndWrite: use read and write for interaction with the user.
 
 void useReadAndWrite()
 {
-	int count = inputWithScanfCount("first");
+	size_t bytes = 255 * sizeof(char);
 	char *mass1 = (char *)calloc(255, sizeof(char));
 	printf("Enter first array: \n");
-	fread(mass1, (unsigned long)(count * 2), 1, stdin);
+	read(1, mass1, bytes);
 
-	int sCount = inputWithScanfCount("second");
 	char *mass2 = (char *)calloc(255, sizeof(char));
 	printf("Enter second array: \n");
-	fread(mass2, (unsigned long)(sCount * 2), 1, stdin);
+	read(1, mass2, bytes);
 
+	strcat(mass1, " ");
 	strcat(mass1, mass2);
 
 	int *help = (int *)calloc(255, sizeof(int));
 
-	charToInt(mass1, help);
+	int count = charToInt(mass1, help);
 
-	int length = (int)strlen(mass1);
-
-	sort_array(length / 2, help);
-
-	for (int i = 0; i < length; i++) {
-		mass1[i] = ' ';
-	}
-	int j = 0;
-	for (int i = 0; i < length; i += 2) {
-		mass1[i] = (char)(help[j] + 48);
-		j++;
-	}
+	sort_array(count, help);
 
 	puts("Result of combination arrays: ");
-	puts(mass1);
+	outByWrite(help, count);
+	puts("↑____USING_READ_AND_WRITE____↑\n");
 	free(mass1);
 	free(mass2);
 	free(help);
+}
+
+/**
+ * @param numbers - array of numbers;
+ * @param count - count of numbers in array;
+*/
+
+/**
+function outByWrit: show content of string using write.
+*/
+
+void outByWrite(int *numbers, int count)
+{
+	char *output = (char *)calloc(256, sizeof(char));
+	intToChar(output, numbers, count);
+	size_t nbytes;
+	int fields = 1;
+	nbytes = strlen(output);
+	write(fields, output, nbytes);
+	char buf = '\n';
+	write(1, &buf, 1);
+	free(output);
 }
 
 /**
