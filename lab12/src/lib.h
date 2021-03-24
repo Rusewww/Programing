@@ -28,8 +28,6 @@ int charToInt(char *string, int *numbers);
 
 void intToChar(char *output, const int *numbers, int count_of_numbers);
 
-void outByWrite(int *numbers, int count_of_numbers);
-
 void useScanfAndPrintf();
 
 void usePutsAndGets();

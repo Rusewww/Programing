@@ -11,7 +11,7 @@ DOXYFILE_ENCODING = UTF-8
 ## input options
 INPUT_ENCODING = UTF-8
 RECURSIVE = YES
-FILE_PATTERNS = *.c *.md
+FILE_PATTERNS = *.c  *.h *.md
 ###########
 #USE_MDFILE_AS_MAINPAGE = README.md
 ###########

@@ -67,15 +67,20 @@ void useScanfAndPrintf()
 	int count = inputWithScanfCount("first");
 	int *mass1 = (int *)malloc((unsigned long)count * sizeof(int));
 	fillArrayScanf(mass1, count);
+
 	int sCount = inputWithScanfCount("second");
 	int *mass2 = (int *)malloc((unsigned int)sCount * sizeof(int));
 	fillArrayScanf(mass2, sCount);
+
 	int resCount = count + sCount;
 	int *res = (int *)malloc((unsigned long)resCount * sizeof(int));
 	combine(mass1, mass2, res, count, sCount);
+
 	sort_array(resCount, res);
+
 	printfOutArray(res, resCount);
 	puts("\n↑____USING_SCANF_AND_PRINTF____↑\n");
+
 	free(mass1);
 	free(mass2);
 	free(res);
@@ -166,6 +171,7 @@ void usePutsAndGets()
 	puts("Result of combination arrays: ");
 	puts(result);
 	puts("↑____USING_GETS_AND_PUTS____↑\n");
+
 	free(mass1);
 	free(mass2);
 	free(result);
@@ -196,34 +202,17 @@ void useReadAndWrite()
 
 	sort_array(count, help);
 
+	char *output = (char *)calloc(256, sizeof(char));
+	intToChar(output, help, count);
+
 	puts("Result of combination arrays: ");
-	outByWrite(help, count);
-	puts("↑____USING_READ_AND_WRITE____↑\n");
+	write(1, output, strlen(output));
+	puts("\n↑____USING_READ_AND_WRITE____↑\n");
+
 	free(mass1);
 	free(mass2);
-	free(help);
-}
-
-/**
- * @param numbers - array of numbers;
- * @param count - count of numbers in array;
-*/
-
-/**
-function outByWrit: show content of string using write.
-*/
-
-void outByWrite(int *numbers, int count)
-{
-	char *output = (char *)calloc(256, sizeof(char));
-	intToChar(output, numbers, count);
-	size_t nbytes;
-	int fields = 1;
-	nbytes = strlen(output);
-	write(fields, output, nbytes);
-	char buf = '\n';
-	write(1, &buf, 1);
 	free(output);
+	free(help);
 }
 
 /**
