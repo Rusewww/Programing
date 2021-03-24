@@ -76,7 +76,7 @@ void useScanfAndPrintf()
 	int *res = (int *)malloc((unsigned long)resCount * sizeof(int));
 	combine(mass1, mass2, res, count, sCount);
 
-	sort_array(resCount, res);
+	sortArray(resCount, res);
 
 	printfOutArray(res, resCount);
 	puts("\n↑____USING_SCANF_AND_PRINTF____↑\n");
@@ -162,7 +162,7 @@ void usePutsAndGets()
 
 	int count = charToInt(mass1, help);
 
-	sort_array(count, help);
+	sortArray(count, help);
 
 	char *result = (char *)calloc(255, sizeof(char));
 
@@ -200,7 +200,7 @@ void useReadAndWrite()
 
 	int count = charToInt(mass1, help);
 
-	sort_array(count, help);
+	sortArray(count, help);
 
 	char *output = (char *)calloc(256, sizeof(char));
 	intToChar(output, help, count);
@@ -249,7 +249,7 @@ void combine(const int *mass1, const int *mass2, int *res, int n, int m)
 function sort_array: sort array.
 */
 
-void sort_array(int n, int *arr)
+void sortArray(int n, int *arr)
 {
 	for (int i = 0; i < n - 1; i++) {
 		for (int j = 0; j < n - 1; j++) {

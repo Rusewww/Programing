@@ -22,7 +22,7 @@ void printfOutArray(int *arr, int count);
 
 void combine(const int *mass1, const int *mass2, int *res, int n, int m);
 
-void sort_array(int n, int *arr);
+void sortArray(int n, int *arr);
 
 int charToInt(char *string, int *numbers);
 
