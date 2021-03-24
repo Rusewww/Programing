@@ -19,11 +19,11 @@ int main()
 {
 	printf("%s\n", "Laboratory 12. Author: Zozulia Igor. Interaction with the user by the mechanism of input and output.");
 
-	//useScanfAndPrintf();
+	useScanfAndPrintf();
 
 	//usePutsAndGets();
 
-	useReadAndWrite();
+	//useReadAndWrite();
 
 	return 0;
 }

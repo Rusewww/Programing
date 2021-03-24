@@ -9,27 +9,35 @@
 * *Опис логічної структури* :
    * Функція `main`. Викликає функції `useScanfAndPrintf`, `usePutsAndGets`, `useReadAndWrite`. Схема алгоритму функції:
 
-     ![enter image description here](assets/.png)
+     ![Схема алгоритму функції main](assets/main.png)
 
-   * Функція `useScanfAndPrintf`. Знаходить найбільший спільний дільник для двох чисел. Параметри: a - перше число; b - друге число; div - НСД. Схема алгоритму функції:
+   * Функції `useScanfAndPrintf`, `usePutsAndGets`, `useReadAndWrite`. Считують і виводять інформацію за допомогою функцій printf(), scanf(), gets(), puts(), read(), write(), а також викликають функцію. `sortArray`. Схема алгоритмів функцій:
 
-     ![Схема алгоритму функції  sort_array](assets/.png)
+     ![Схема алгоритмів функції useScanfAndPrintf, usePutsAndGets, useReadAndWrite](assets/mainFunction.png)
+       
+   * Функція `inputWithScanfCount`. Считуютє довжину масиву за допомогою функції scanf(). Схема алгоритмів функцій:
 
-   * Функція `usePutsAndGets`. Знаходить найбільший спільний дільник для двох чисел. Параметри: a - перше число; b - друге число; div - НСД. Схема алгоритму функції:
+     ![Схема алгоритмів функції useScanfAndPrintf, usePutsAndGets, useReadAndWrite](assets/inputWithScanfCount.png)
+  
+   * Функції `printfOutArray`. Виводить масив за допомогою функції printf().Схема алгоритмів функцій:
 
-     ![Схема алгоритму функції  sort_array](assets/.png)
-    
-   * Функція `useReadAndWrite`. Знаходить найбільший спільний дільник для двох чисел. Параметри: a - перше число; b - друге число; div - НСД. Схема алгоритму функції:
-
-     ![Схема алгоритму функції  sort_array](assets/.png)
-
+     ![Схема алгоритмів функції useScanfAndPrintf, usePutsAndGets, useReadAndWrite](assets/printfOutArray.png) 
 * *Структура програми*:
 ```
 .
 ├── doc
 │   ├── assets
-│   │   ├── func.png
-│   │   └── lab12.drawio
+│   │   ├── charToInt.png
+│   │   ├── combine.png
+│   │   ├── fillArrayScanf.png
+│   │   ├── inputWithScanfCount.png
+│   │   ├── intToChar.png
+│   │   ├── lab12.drawio
+│   │   ├── mainFunction.png
+│   │   ├── main.png
+│   │   ├── printfOutArray.png
+│   │   ├── run_program.png
+│   │   └── sortArray.png
 │   └── lab12.md
 ├── Doxyfile
 ├── Makefile
@@ -39,36 +47,29 @@
     ├── lib.h
     └── main.c
 
-
 ```
 * *Важливі елементи програми*:
-   * Формування змінних. Формуємо два числа з випадковими значеннями.
+   *  Підключення заголовочного файлу. Підключаємо заголовочний файл `string.h`.
 
    ```
-   int rand_max = 100;
-   const int a = rand() % rand_max + 1;
-   const int b = rand() % rand_max + 1;
+   #include <string.h>
    ```
-   *  Виконання алгоритму Євкліда. Знаходимо остачу при діленні двох чисел, присвоюємо дільнику значення остачі.
+   *  Считування масиву з потоку вводу. Считуємо посимвольно масив за допомогою `printf()`.
    ```
-   while (remainder > 0) {
-           remainder = num1 % num2;
-           num1 = num2;
-           num2 = remainder;
-           if (remainder != 0) {
-                   divider = remainder;
-           }
-   }
+	for (int i = 0; i < count; i++) {
+		fscanf(stdin, "%d", &arr[i]);
+	}
+   ```
+    *  Виведення масиву до консолі. Виводимо посимвольно масив за допомогою `scanf()`.
+   ```
+	for (int i = 0; i < count; i++) {
+		printf("%d ", arr[i]);
+	}
    ```
 ## Варіанти використання:
-З допомогою відлогаднику ставимо точку зупинки на строках визову функції (для визначення початкового стану змінних)  та `return 0;` (для визначення стану змінних).
-Виклик функції `findGCF` з початковими данними:
+Программа считує інформацію з потоку вводу, та відображує результат виконання в консолі:
 
-![enter image description here](assets/.png)
-
-Після знаходження НСК:
-
-![enter image description here](assets/.png)
+![Run_program](assets/run_program.png)
 
 ## Висновки:
-Для виконання лабораторної роботи я навчився створювати та реалізовувати алгоритми функції, створювати схеми алгоритмів, та оформлювати документацію.
+В результаті виконання лабораторної роботи я навчився створювати программи з використанням механізму введення/виведення.
