@@ -5,5 +5,4 @@ set(CMAKE_C_STANDARD 11)
 
 add_executable(Programing
         lab14/src/lib.c
-        lab14/src/lib.h
         lab14/src/main.c)

@@ -22,6 +22,14 @@
    * Функції `printfOutArray`. Виводить масив за допомогою функції printf().Схема алгоритмів функцій:
 
      ![Схема алгоритмів функції useScanfAndPrintf, usePutsAndGets, useReadAndWrite](assets/printfOutArray.png) 
+  
+   * Функції `combine`. Обєднує два масиви чисел в один.Схема алгоритмів функцій:
+
+     ![Схема алгоритмів функції useScanfAndPrintf, usePutsAndGets, useReadAndWrite](assets/combine.png)
+  
+   * Функції `sortArray`. Сортує масив від більшого числа до меншого.Схема алгоритмів функцій:
+
+     ![Схема алгоритмів функції useScanfAndPrintf, usePutsAndGets, useReadAndWrite](assets/sortArray.png)
 * *Структура програми*:
 ```
 .
