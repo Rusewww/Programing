@@ -30,55 +30,15 @@ int main()
 
 	readFromFile("./assets/input.txt", watchs, count);
 
-	//by cost
-	/*for (int j = 1; j < count; j++) {
-		for (int i = 0; i < count - 1; i++) {
-			if ((*(watchs + i))->cost > (*(watchs + i + 1))->cost) {
-				struct watch *temp = *(watchs + i);
-				*(watchs + i) = *(watchs + i + 1);
-				*(watchs + i + 1) = temp;
-			}
-		}
-	}*/
+	//sortByCriterion(watchs,count,"manufacturer");
 
-	//by waterproof
-	/*for (int j = 1; j < count; j++) {
-		for (int i = 0; i < count - 1; i++) {
-			if ((*(watchs + i))->waterproof < (*(watchs + i + 1))->waterproof) {
-				struct watch *temp = *(watchs + i);
-				*(watchs + i) = *(watchs + i + 1);
-				*(watchs + i + 1) = temp;
-			}
-		}
-	}*/
+	int maxCost = 400;
+	findLowPrice(watchs,count,maxCost);
 
-	//by style alphabet
-	/*for (int j = 1; j < count; j++) {
-		for (int i = 0; i < count - 1; i++) {
-			if ((*(watchs + i))->style > (*(watchs + i + 1))->style) {
-				struct watch *temp = *(watchs + i);
-				*(watchs + i) = *(watchs + i + 1);
-				*(watchs + i + 1) = temp;
-			}
-		}
-	}*/
+	//showInConsole(watchs, count);
+	randomWatch("./dist/output.txt");
 
-	/*for (int j = 1; j < count; j++) {
-		for (int i = 0; i < count - 1; i++) {
-			if (strcmp((*(watchs + i))->manufacturer.firm,(*(watchs + i + 1))->manufacturer.firm) > 0){
-				struct watch *temp = *(watchs + i);
-				*(watchs + i) = *(watchs + i + 1);
-				*(watchs + i + 1) = temp;
-			}
-		}
-	}*/
-
-	sortByCriterion(watchs,count,"cost");
-
-	showInConsole(watchs, count);
-
-	writeToFile("./dist/output.txt", watchs, count);
-
+	//writeToFile("./dist/output.txt", watchs, count);
 	for (int i = 0; i < count; i++) {
 		free(*(watchs + i));
 	}
