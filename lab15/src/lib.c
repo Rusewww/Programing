@@ -11,6 +11,7 @@
 /**
  * @param filename - name of file;
  * @param input - structure for read;
+ * @param count - count of structures;
  */
 
 /**
@@ -39,6 +40,7 @@ void readFromFile(char *filename, struct watch **input, int count)
 /**
  * @param filename - name of file;
  * @param output - structure for write;
+ * @param count - count of structures;
 */
 
 /**
@@ -70,6 +72,7 @@ void writeToFile(char *filename, struct watch **output, int count)
 
 /**
  * @param out - structure for show in console;
+ * @param count - count of structures;
 */
 
 /**
@@ -97,6 +100,12 @@ void showInConsole(struct watch **out, int count)
 		printf("\n");
 	}
 }
+
+/**
+ * @param fSort - structure for sort;
+ * @param count - count of structures;
+ * @param criterion - sort criterion;
+*/
 
 /**
 function sortByCriterion: sort structures according to criterion.
@@ -135,6 +144,12 @@ void sortByCriterion(struct watch **fSort, int count, char *criterion)
 }
 
 /**
+ * @param fCost - structure where need to find lowest cost;
+ * @param count - count of structures;
+ * @param maxCost - max cost of watch;
+*/
+
+/**
 function findLowPrice: find and show all watches that under maxCost.
 */
 
@@ -162,10 +177,14 @@ void findLowPrice(struct watch **fCost, int count, int maxCost)
 }
 
 /**
+ * @param output - output structure;
+*/
+
+/**
 function randomWatch: generate one random struct.
 */
 
-void randomWatch( char *output)
+void randomWatch(char *output)
 {
 	FILE *file = fopen(output, "a");
 	if (file == NULL) {
@@ -179,14 +198,14 @@ void randomWatch( char *output)
 
 	char modelS[4][5] = { "CA-", "ZP-", "PIA-", "SEG-" };
 
-	char *numbers = strdup("2144421435");
+	char *numbers = strdup("0123456789");
 
 	int numb = (int)(random() % 4);
 
 	char *model = (char *)calloc(SIZE, sizeof(char));
 	strcat(model, "Model: ");
 	strcat(model, modelS[numb]);
-	strcat(model, (numbers + (rand()%10)));
+	strcat(model, (numbers + (rand() % 10)));
 
 	char *firm = (char *)calloc(SIZE, sizeof(char));
 	strcat(firm, "Firm: ");
@@ -200,7 +219,21 @@ void randomWatch( char *output)
 	int cost = rand() % (13 * 10 - 13) + 13;
 	int style = rand() % 3;
 
-	fprintf(file, "%s\n%s\n%s\nWaterproof: %d\nCost: %dUSD\nStyle: %d\n", model, firm, country, waterproof, cost, style);
+	if (waterproof == 1) {
+		fprintf(file, "Waterproof: have\n");
+	} else {
+		fprintf(file, "Waterproof: no\n");
+	}
+
+	fprintf(file, "%s\n%s\n%s\nCost: %dUSD\n", model, firm, country, cost);
+
+	if (style == CLASSIC) {
+		fprintf(file, "Style: classic\n");
+	} else if (style == SPORT) {
+		fprintf(file, "Style: sport\n");
+	} else {
+		fprintf(file, "Style: armoured\n");
+	}
 
 	free(model);
 	free(firm);

@@ -30,17 +30,25 @@ int main()
 
 	readFromFile("./assets/input.txt", watchs, count);
 
-	//sortByCriterion(watchs,count,"manufacturer");
+	char *criterion = (char *)calloc(255, sizeof(char));
+	printf("Enter criterion for sort: \n");
+	scanf("%s", criterion);
+	sortByCriterion(watchs,count,criterion);
 
-	int maxCost = 400;
+	int maxCost;
+	printf("Enter max cost of watch: \n");
+	scanf("%i", &maxCost);
 	findLowPrice(watchs,count,maxCost);
 
-	//showInConsole(watchs, count);
-	randomWatch("./dist/output.txt");
+	showInConsole(watchs, count);
 
-	//writeToFile("./dist/output.txt", watchs, count);
+	randomWatch("./dist/outputRand.txt");
+
+	writeToFile("./dist/output.txt", watchs, count);
+
 	for (int i = 0; i < count; i++) {
 		free(*(watchs + i));
 	}
+	free(watchs);
 	return 0;
 }
