@@ -33,14 +33,14 @@ int main()
 	char *criterion = (char *)calloc(255, sizeof(char));
 	printf("Enter criterion for sort: \n");
 	scanf("%s", criterion);
-	sortByCriterion(watchs,count,criterion);
+	sortWithCriterion(watchs,count,criterion);
+
+	showInConsole(watchs, count);
 
 	int maxCost;
 	printf("Enter max cost of watch: \n");
 	scanf("%i", &maxCost);
 	findLowPrice(watchs,count,maxCost);
-
-	showInConsole(watchs, count);
 
 	randomWatch("./dist/outputRand.txt");
 

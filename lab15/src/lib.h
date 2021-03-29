@@ -43,7 +43,7 @@ void writeToFile(char *filename, struct watch **output, int count);
 
 void showInConsole(struct watch **out,int count);
 
-void sortByCriterion(struct watch **fSort, int count, char *criterion);
+void sortWithCriterion(struct watch **fSort, int count, char *criterion);
 
 void findLowPrice(struct watch **out, int count, int maxCost);
 

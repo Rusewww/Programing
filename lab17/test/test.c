@@ -1,6 +1,6 @@
 #include "lib.h"
 
-bool testSortWithCriterion()
+bool testSortWithCriterion(char *error)
 {
 	struct watch **watches = malloc(3 * sizeof(struct watch));
 	for (int i = 0; i < 3; i++) {
@@ -137,37 +137,57 @@ bool testSortWithCriterion()
 	sortWithCriterion(watches, 3, "waterproof");
 	for (int i = 0; i < 3; i++) {
 		if ((*(watches + i))->waterproof == ((*(expectedWaterproof + i))->waterproof)) {
-			result &= true;
+			result = true;
 		} else {
-			result &= false;
+			result = false;
 		}
 	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'waterproof'; \n");
+	}
+	result = true;
 
 	sortWithCriterion(watches, 3, "cost");
 	for (int i = 0; i < 3; i++) {
 		if ((*(watches + i))->cost == (*(expectedCost + i))->cost) {
-			result &= true;
+			result = true;
 		} else {
-			result &= false;
+			result = false;
 		}
 	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'cost'; \n");
+	}
+	result = true;
 
 	sortWithCriterion(watches, 3, "manufacturer");
 	for (int i = 0; i < 3; i++) {
 		if (strcmp((*(watches + i))->manufacturer.firm, ((*(expectedManufacturer + i))->manufacturer.firm)) == 0) {
-			result &= true;
+			result = true;
 		} else {
-			result &= false;
+			result = false;
 		}
 	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'manufacturer'; \n");
+	}
+	result = true;
 
 	sortWithCriterion(watches, 3, "style");
 	for (int i = 0; i < 3; i++) {
 		if ((*(watches + i))->style == (*(expectedStyle + i))->style) {
-			result &= true;
+			result = true;
 		} else {
-			result &= false;
+			result = false;
 		}
+	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'style'; \n");
+	}
+	result = true;
+
+	if(strlen(error) != 0){
+		result = false;
 	}
 
 	for (int i = 0; i < 3; i++) {
@@ -185,19 +205,22 @@ bool testSortWithCriterion()
 	for (int i = 0; i < 3; i++) {
 		free(*(expectedStyle + i));
 	}
-
+	strcat(error,"\n");
 	return result;
 }
 
 int main()
 {
 	bool test = true;
-	test &= testSortWithCriterion();
+	char *error = (char *)malloc((unsigned long)255 * sizeof(char));
+	test &= testSortWithCriterion(error);
 	if (test) {
-		printf("All tests completed successfully\n");
+		printf("Test finally passed\n");
 	} else {
-		printf("Some of the tests failed\n");
+		printf("Some of the tests failed:\n");
+		printf("%s", error);
 	}
+	free(error);
 	return test;
 	return 0;
 }

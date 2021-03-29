@@ -108,10 +108,10 @@ void showInConsole(struct watch **out, int count)
 */
 
 /**
-function sortByCriterion: sort structures according to criterion.
+function sortWithCriterion: sort structures according to criterion.
 */
 
-void sortByCriterion(struct watch **fSort, int count, char *criterion)
+void sortWithCriterion(struct watch **fSort, int count, char *criterion)
 {
 	int needSort;
 	for (int i = 0; i < count; i++) {
