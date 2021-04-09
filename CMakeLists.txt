@@ -4,5 +4,5 @@ project(Programing C)
 set(CMAKE_C_STANDARD 11)
 
 add_executable(Programing
-        lab15/src/lib.c
-        lab15/src/main.c)
+        lab18/src/lib.c
+        lab18/src/main.c)

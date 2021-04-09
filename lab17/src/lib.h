@@ -23,6 +23,11 @@
 
 enum watchStyle { ARMOURED, CLASSIC, SPORT };
 
+struct manufacturerStruct {
+	char firm[SIZE];
+	char country[SIZE];
+};
+
 /**
  * watch - information about watch;
 */
@@ -31,10 +36,7 @@ struct watch {
 	short waterproof;
 	char model[SIZE];
 	int cost;
-	struct manufacturer {
-		char firm[SIZE];
-		char country[SIZE];
-	} manufacturer;
+	struct manufacturerStruct manufacturer;
 	enum watchStyle style;
 };
 

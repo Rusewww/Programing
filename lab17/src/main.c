@@ -21,7 +21,7 @@ Function main: generate structure and call function read, showinconsole,.
 
 int main()
 {
-	printf("%s\n", "Laboratory 15. Author: Zozulia Igor. Interaction with the user by the mechanism of input and output from file.");
+	printf("%s\n", "Laboratory 17. Author: Zozulia Igor. Module test.");
 	int count = 3;
 	struct watch **watchs = malloc((unsigned long)count * sizeof(struct watch));
 	for (int i = 0; i < count; i++) {

@@ -1,33 +1,6 @@
 #include "lib.h"
 
-bool testSortWithCriterion(char *error)
-{
-	struct watch **watches = malloc(3 * sizeof(struct watch));
-	for (int i = 0; i < 3; i++) {
-		*(watches + i) = malloc(sizeof(struct watch));
-	}
-
-	(*(watches + 0))->waterproof = 1;
-	strcpy((*(watches + 0))->model, "CS-55");
-	(*(watches + 0))->cost = 300;
-	stpcpy((*(watches + 0))->manufacturer.firm, "CASIO");
-	stpcpy((*(watches + 0))->manufacturer.country, "Japan");
-	(*(watches + 0))->style = ARMOURED;
-
-	(*(watches + 1))->waterproof = 0;
-	strcpy((*(watches + 1))->model, "ZEP-154");
-	(*(watches + 1))->cost = 900;
-	stpcpy((*(watches + 1))->manufacturer.firm, "ZEPPELIN");
-	stpcpy((*(watches + 1))->manufacturer.country, "Germany");
-	(*(watches + 1))->style = CLASSIC;
-
-	(*(watches + 2))->waterproof = 0;
-	strcpy((*(watches + 2))->model, "PG-13");
-	(*(watches + 2))->cost = 700;
-	stpcpy((*(watches + 2))->manufacturer.firm, "PIAGET");
-	stpcpy((*(watches + 2))->manufacturer.country, "Switzerland");
-	(*(watches + 2))->style = SPORT;
-
+bool testSortWaterproof(struct watch **watches, char *error){
 	struct watch **expectedWaterproof = malloc(3 * sizeof(struct watch));
 	for (int i = 0; i < 3; i++) {
 		*(expectedWaterproof + i) = malloc(sizeof(struct watch));
@@ -54,6 +27,29 @@ bool testSortWithCriterion(char *error)
 	stpcpy((*(expectedWaterproof + 2))->manufacturer.country, "Switzerland");
 	(*(expectedWaterproof + 2))->style = SPORT;
 
+	bool result = true;
+
+	sortWithCriterion(watches, 3, "waterproof");
+	for (int i = 0; i < 3; i++) {
+		if ((*(watches + i))->waterproof == ((*(expectedWaterproof + i))->waterproof)) {
+			result = true;
+		} else {
+			result = false;
+		}
+	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'waterproof'; \n");
+	}
+
+	for (int i = 0; i < 3; i++) {
+		free(*(expectedWaterproof + i));
+	}
+	free(expectedWaterproof);
+
+	return result;
+}
+
+bool testSortCost(struct watch **watches, char *error){
 	struct watch **expectedCost = malloc(3 * sizeof(struct watch));
 	for (int i = 0; i < 3; i++) {
 		*(expectedCost + i) = malloc(sizeof(struct watch));
@@ -80,6 +76,28 @@ bool testSortWithCriterion(char *error)
 	stpcpy((*(expectedCost + 2))->manufacturer.country, "Germany");
 	(*(expectedCost + 2))->style = CLASSIC;
 
+	bool result = true;
+
+	sortWithCriterion(watches, 3, "cost");
+	for (int i = 0; i < 3; i++) {
+		if ((*(watches + i))->cost == (*(expectedCost + i))->cost) {
+			result = true;
+		} else {
+			result = false;
+		}
+	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'cost'; \n");
+	}
+
+	for (int i = 0; i < 3; i++) {
+		free(*(expectedCost + i));
+	}
+	free(expectedCost);
+	return result;
+}
+
+bool testSortManufacturer(struct watch **watches, char *error){
 	struct watch **expectedManufacturer = malloc(3 * sizeof(struct watch));
 	for (int i = 0; i < 3; i++) {
 		*(expectedManufacturer + i) = malloc(sizeof(struct watch));
@@ -106,6 +124,28 @@ bool testSortWithCriterion(char *error)
 	stpcpy((*(expectedManufacturer + 2))->manufacturer.country, "Germany");
 	(*(expectedManufacturer + 2))->style = CLASSIC;
 
+	bool result = true;
+
+	sortWithCriterion(watches, 3, "manufacturer");
+	for (int i = 0; i < 3; i++) {
+		if (strcmp((*(watches + i))->manufacturer.firm, ((*(expectedManufacturer + i))->manufacturer.firm)) == 0) {
+			result = true;
+		} else {
+			result = false;
+		}
+	}
+	if(result == false){
+		strcat(error,"error occurred with criterion 'manufacturer'; \n");
+	}
+
+	for (int i = 0; i < 3; i++) {
+		free(*(expectedManufacturer + i));
+	}
+	free(expectedManufacturer);
+	return result;
+}
+
+bool testSortStyle(struct watch **watches, char *error){
 	struct watch **expectedStyle = malloc(3 * sizeof(struct watch));
 	for (int i = 0; i < 3; i++) {
 		*(expectedStyle + i) = malloc(sizeof(struct watch));
@@ -134,45 +174,6 @@ bool testSortWithCriterion(char *error)
 
 	bool result = true;
 
-	sortWithCriterion(watches, 3, "waterproof");
-	for (int i = 0; i < 3; i++) {
-		if ((*(watches + i))->waterproof == ((*(expectedWaterproof + i))->waterproof)) {
-			result = true;
-		} else {
-			result = false;
-		}
-	}
-	if(result == false){
-		strcat(error,"error occurred with criterion 'waterproof'; \n");
-	}
-	result = true;
-
-	sortWithCriterion(watches, 3, "cost");
-	for (int i = 0; i < 3; i++) {
-		if ((*(watches + i))->cost == (*(expectedCost + i))->cost) {
-			result = true;
-		} else {
-			result = false;
-		}
-	}
-	if(result == false){
-		strcat(error,"error occurred with criterion 'cost'; \n");
-	}
-	result = true;
-
-	sortWithCriterion(watches, 3, "manufacturer");
-	for (int i = 0; i < 3; i++) {
-		if (strcmp((*(watches + i))->manufacturer.firm, ((*(expectedManufacturer + i))->manufacturer.firm)) == 0) {
-			result = true;
-		} else {
-			result = false;
-		}
-	}
-	if(result == false){
-		strcat(error,"error occurred with criterion 'manufacturer'; \n");
-	}
-	result = true;
-
 	sortWithCriterion(watches, 3, "style");
 	for (int i = 0; i < 3; i++) {
 		if ((*(watches + i))->style == (*(expectedStyle + i))->style) {
@@ -184,42 +185,63 @@ bool testSortWithCriterion(char *error)
 	if(result == false){
 		strcat(error,"error occurred with criterion 'style'; \n");
 	}
-	result = true;
 
-	if(strlen(error) != 0){
-		result = false;
-	}
-
-	for (int i = 0; i < 3; i++) {
-		free(*(watches + i));
-	}
-	for (int i = 0; i < 3; i++) {
-		free(*(expectedWaterproof + i));
-	}
-	for (int i = 0; i < 3; i++) {
-		free(*(expectedCost + i));
-	}
-	for (int i = 0; i < 3; i++) {
-		free(*(expectedManufacturer + i));
-	}
 	for (int i = 0; i < 3; i++) {
 		free(*(expectedStyle + i));
 	}
-	strcat(error,"\n");
+	free(expectedStyle);
+
 	return result;
 }
 
 int main()
 {
+	struct watch **watches = malloc(3 * sizeof(struct watch));
+	for (int i = 0; i < 3; i++) {
+		*(watches + i) = malloc(sizeof(struct watch));
+	}
+
+	(*(watches + 0))->waterproof = 1;
+	strcpy((*(watches + 0))->model, "CS-55");
+	(*(watches + 0))->cost = 300;
+	stpcpy((*(watches + 0))->manufacturer.firm, "CASIO");
+	stpcpy((*(watches + 0))->manufacturer.country, "Japan");
+	(*(watches + 0))->style = ARMOURED;
+
+	(*(watches + 1))->waterproof = 0;
+	strcpy((*(watches + 1))->model, "ZEP-154");
+	(*(watches + 1))->cost = 900;
+	stpcpy((*(watches + 1))->manufacturer.firm, "ZEPPELIN");
+	stpcpy((*(watches + 1))->manufacturer.country, "Germany");
+	(*(watches + 1))->style = CLASSIC;
+
+	(*(watches + 2))->waterproof = 0;
+	strcpy((*(watches + 2))->model, "PG-13");
+	(*(watches + 2))->cost = 700;
+	stpcpy((*(watches + 2))->manufacturer.firm, "PIAGET");
+	stpcpy((*(watches + 2))->manufacturer.country, "Switzerland");
+	(*(watches + 2))->style = SPORT;
+
 	bool test = true;
 	char *error = (char *)malloc((unsigned long)255 * sizeof(char));
-	test &= testSortWithCriterion(error);
+
+	test &= testSortWaterproof(watches, error);
+	test &= testSortCost(watches, error);
+	test &= testSortManufacturer(watches, error);
+	test &= testSortStyle(watches, error);
+
 	if (test) {
 		printf("Test finally passed\n");
 	} else {
 		printf("Some of the tests failed:\n");
 		printf("%s", error);
 	}
+
+	for (int i = 0; i < 3; i++) {
+		free(*(watches + i));
+	}
+
+	free(watches);
 	free(error);
 	return test;
 	return 0;
