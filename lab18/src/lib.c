@@ -55,46 +55,73 @@ void readFromFile(char *filename, struct watch **input, int count)
 	fclose(infile);
 }
 
-struct Backpack** InsertStruct (struct Backpack **backpacks, struct Backpack *insert, int position){
-	struct Backpack ** result = malloc((COUNT + 1) * sizeof (struct Backpack));
-	for(int i = 0; i < COUNT + 1; i++){
-		*(result + i) = malloc(sizeof (struct Backpack));
+void showInConsole(struct watch **out, int count)
+{
+	for (int i = 0; i < count; i++) {
+		struct watch *temp = *(out + i);
+		if (temp->waterproof == 1) {
+			printf("Waterproof: have\n");
+		} else {
+			printf("Waterproof: no\n");
+		}
+		fprintf(stdout, "Model: %s\nCost: %dUSD\nManufacturer: %s, %s\n", (temp->model), (temp->cost), (temp->manufacturer.firm),
+			(temp->manufacturer.country));
+		if (temp->style == CLASSIC) {
+			fprintf(stdout, "Style: classic\n");
+		} else if (temp->style == SPORT) {
+			fprintf(stdout, "Style: sport\n");
+		} else {
+			fprintf(stdout, "Style: armoured\n");
+		}
+		printf("\n");
 	}
-	if(position < 0){
+}
+
+struct watch **insertStruct(struct watch **watches, int count, struct watch *insert, int position)
+{
+	struct watch **result = malloc((unsigned long)(count + 1) * sizeof(struct watch));
+	for (int i = 0; i < count + 1; i++) {
+		*(result + i) = malloc(sizeof(struct watch));
+	}
+	if (position < 0) {
 		position = 0;
 	}
-	if(position >= COUNT){
-		position = COUNT;
-		memcpy(*result, *backpacks, sizeof (struct Backpack) * (position + 1));
-		memcpy(*(result + position), insert, sizeof (struct Backpack));
-		memcpy(*(result + position + 1), *(backpacks + position), sizeof (struct Backpack) * (COUNT - position));
-	}else{
-		memcpy(*result, *backpacks, sizeof (struct Backpack) * (position));
-		memcpy(*(result + position), insert, sizeof (struct Backpack));
-		memcpy(*(result + position + 1), *(backpacks + position), sizeof (struct Backpack) * (COUNT - position + 1));
+	if (position >= count) {
+		position = count;
+		memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)(position + 1));
+		memcpy(*(result + position), insert, sizeof(struct watch));
+		memcpy(*(result + position + 1), *(watches + position), sizeof(struct watch) * (unsigned long)(count - position));
+	} else {
+		memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)(position));
+		memcpy(*(result + position), insert, sizeof(struct watch));
+		memcpy(*(result + position + 1), *(watches + position), sizeof(struct watch) * (unsigned long)(count - position + 1));
 	}
-	printf("\nРезульат вставки:\n\n");
-	PrintInConsole(result, COUNT + 1);
+
+	count++;
+
+	printf("\nResult of insertion:\n");
+	showInConsole(result, count + 1);
 
 	return result;
 }
 
-struct Backpack** DeleteStruct (struct Backpack **backpacks, int position){
-	struct Backpack ** result = malloc((COUNT - 1) * sizeof (struct Backpack));
-	for(int i = 0; i < COUNT - 1; i++){
-		*(result + i) = malloc(sizeof (struct Backpack));
+struct watch **reduceStruct(struct watch **watches, int count, int position)
+{
+	struct watch **result = malloc((unsigned long)(count - 1) * sizeof(struct watch));
+	for (int i = 0; i < count - 1; i++) {
+		*(result + i) = malloc(sizeof(struct watch));
 	}
-	if(position < 0){
+	if (position < 0) {
 		position = 0;
 	}
-	if(position >= COUNT - 1) {
-		position = COUNT;
+	if (position >= count - 1) {
+		position = count;
 	}
-	memcpy(*result, *backpacks, sizeof (struct Backpack) * (position + 1));
-	memcpy(*(result + position), *(backpacks + position + 1), sizeof (struct Backpack) * (COUNT - position));
+	memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)(position + 1));
+	memcpy(*(result + position), *(watches + position + 1), sizeof(struct watch) * (unsigned long)(count - position));
 
-	printf("\nРезульат удаления:\n\n");
-	PrintInConsole(result, COUNT - 1);
+	printf("\nResult of deletion:\n");
+	showInConsole(result, count - 1);
 
 	return result;
 }

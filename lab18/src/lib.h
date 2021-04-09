@@ -8,10 +8,6 @@
 #include <errno.h>
 
 /**
- * Кількість структур у масиві
- */
-#define COUNT 6
-/**
  *@param SIZE - maximum count of words;
 */
 
@@ -41,5 +37,11 @@ void readFromFile(char *filename, struct watch **input, int count);
 char *insert(char *text, char *pasted_text, unsigned long pos);
 
 char *reduce(char *text, unsigned int begin, unsigned int end);
+
+struct watch **insertStruct(struct watch **watches, int count, struct watch *insert, int position);
+
+struct watch **reduceStruct(struct watch **watches, int count, int position);
+
+void showInConsole(struct watch **out, int count);
 
 #endif

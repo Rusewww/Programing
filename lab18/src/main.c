@@ -5,7 +5,7 @@
  */
 int main()
 {
-	printf("%s\n", "Laboratory 15. Author: Zozulia Igor. Dynamic arrays.");
+	printf("%s\n", "Laboratory 18. Author: Zozulia Igor. Dynamic arrays.");
 	char *stringOne = malloc(sizeof(char) * SIZE);
 	char *stringTwo = malloc(sizeof(char) * SIZE);
 
@@ -39,6 +39,7 @@ int main()
 	free(textForDel);
 
 	int count = 3;
+
 	struct watch **watches = malloc((unsigned long)count * sizeof(struct watch));
 	for (int i = 0; i < count; i++) {
 		*(watches + i) = malloc(sizeof(struct watch));
@@ -46,8 +47,33 @@ int main()
 
 	readFromFile("./assets/input.txt", watches, count);
 
+	struct watch *insert = malloc(sizeof(struct watch));
 
-	for (int i = 0; i < COUNT; i++) {
+	printf("Enter structure for insertion:\n");
+	printf("Waterproof (1 - have; 0 - does`t) - ");
+	scanf("%hd", &insert->waterproof);
+	printf("Model - ");
+	scanf("%s", insert->model);
+	printf("Cost - ");
+	scanf("%d", &insert->cost);
+	printf("Firm - ");
+	scanf("%s", insert->manufacturer.firm);
+	printf("Country - ");
+	scanf("%s", insert->manufacturer.country);
+	printf("Style (0 - Armoured; 1 - Classic; 2 - Sport) - ");
+	scanf("%d", &insert->style);
+
+	printf("Enter position for insertion: \n");
+	scanf("%i", &position);
+
+	insertStruct(watches, count, insert, position);
+
+	printf("Enter position for deletion: \n");
+	scanf("%i", &position);
+
+	reduceStruct(watches, count, 2);
+
+	for (int i = 0; i < count; i++) {
 		free(*(watches + i));
 	}
 
