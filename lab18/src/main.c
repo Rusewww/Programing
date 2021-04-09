@@ -46,6 +46,7 @@ int main()
 
 	readFromFile("./assets/input.txt", watches, count);
 
+
 	for (int i = 0; i < COUNT; i++) {
 		free(*(watches + i));
 	}

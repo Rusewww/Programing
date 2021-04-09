@@ -16,25 +16,6 @@
 */
 
 #define SIZE 99
-/**
- * Перелік призначень
- */
-/*enum Purpose{
-	URBAN,
-	TACTICAL,
-	TOURIST
-};
-
-**
- * Структура «Рюкзак»
- *
-struct Backpack{
-	int laptop_department; // 1 - yes; 0 - no.
-	char color[10];
-	int volume;
-	char country[15];
-	enum Purpose enumPurpose;
-};*/
 
 enum watchStyle { ARMOURED, CLASSIC, SPORT };
 

@@ -54,3 +54,47 @@ void readFromFile(char *filename, struct watch **input, int count)
 
 	fclose(infile);
 }
+
+struct Backpack** InsertStruct (struct Backpack **backpacks, struct Backpack *insert, int position){
+	struct Backpack ** result = malloc((COUNT + 1) * sizeof (struct Backpack));
+	for(int i = 0; i < COUNT + 1; i++){
+		*(result + i) = malloc(sizeof (struct Backpack));
+	}
+	if(position < 0){
+		position = 0;
+	}
+	if(position >= COUNT){
+		position = COUNT;
+		memcpy(*result, *backpacks, sizeof (struct Backpack) * (position + 1));
+		memcpy(*(result + position), insert, sizeof (struct Backpack));
+		memcpy(*(result + position + 1), *(backpacks + position), sizeof (struct Backpack) * (COUNT - position));
+	}else{
+		memcpy(*result, *backpacks, sizeof (struct Backpack) * (position));
+		memcpy(*(result + position), insert, sizeof (struct Backpack));
+		memcpy(*(result + position + 1), *(backpacks + position), sizeof (struct Backpack) * (COUNT - position + 1));
+	}
+	printf("\nРезульат вставки:\n\n");
+	PrintInConsole(result, COUNT + 1);
+
+	return result;
+}
+
+struct Backpack** DeleteStruct (struct Backpack **backpacks, int position){
+	struct Backpack ** result = malloc((COUNT - 1) * sizeof (struct Backpack));
+	for(int i = 0; i < COUNT - 1; i++){
+		*(result + i) = malloc(sizeof (struct Backpack));
+	}
+	if(position < 0){
+		position = 0;
+	}
+	if(position >= COUNT - 1) {
+		position = COUNT;
+	}
+	memcpy(*result, *backpacks, sizeof (struct Backpack) * (position + 1));
+	memcpy(*(result + position), *(backpacks + position + 1), sizeof (struct Backpack) * (COUNT - position));
+
+	printf("\nРезульат удаления:\n\n");
+	PrintInConsole(result, COUNT - 1);
+
+	return result;
+}
