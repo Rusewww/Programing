@@ -9,18 +9,18 @@
  * @version 1.0
  */
 
-char *insert(char *text, char *textForInsertion, unsigned long pos)
+char *insert(char *text, char *textForInsertion, unsigned long position)
 {
-	if (pos < 0) {
-		pos = 0;
+	if (position < 0) {
+		position = 0;
 	}
-	if (pos > strlen(text)) {
-		pos = strlen(text);
+	if (position > strlen(text)) {
+		position = strlen(text);
 	}
-	char *result = malloc((strlen(text) + strlen(textForInsertion)) * sizeof(char));
-	memcpy(result, text, pos);
-	memcpy(result + pos, textForInsertion, strlen(textForInsertion));
-	memcpy(result + pos + strlen(textForInsertion), text + pos, strlen(text) - pos);
+	char *result = (char *)malloc((strlen(text) + strlen(textForInsertion) + 1) * sizeof(char));
+	memcpy(result, text, position);
+	memcpy(result + position, textForInsertion, strlen(textForInsertion));
+	memcpy(result + position + strlen(textForInsertion), text + position, strlen(text) - position);
 	*(result + strlen(textForInsertion) + strlen(text)) = '\0';
 	return result;
 }
@@ -30,7 +30,7 @@ char *reduce(char *text, unsigned int begin, unsigned int end)
 	if (begin > end || begin > strlen(text)) {
 		return "Error";
 	}
-	char *result = malloc((strlen(text) - (end - begin)) * sizeof(char));
+	char *result = (char *)malloc((strlen(text) - (end - begin)) * sizeof(char));
 	memcpy(result, text, begin);
 	memcpy((result + begin), (text + end + 1), (strlen(text) - end));
 	return result;
@@ -66,9 +66,9 @@ void showInConsole(struct watch **out, int count)
 		}
 		fprintf(stdout, "Model: %s\nCost: %dUSD\nManufacturer: %s, %s\n", (temp->model), (temp->cost), (temp->manufacturer.firm),
 			(temp->manufacturer.country));
-		if (temp->style == CLASSIC) {
+		if (temp->style == 1) {
 			fprintf(stdout, "Style: classic\n");
-		} else if (temp->style == SPORT) {
+		} else if (temp->style == 2) {
 			fprintf(stdout, "Style: sport\n");
 		} else {
 			fprintf(stdout, "Style: armoured\n");
@@ -79,49 +79,40 @@ void showInConsole(struct watch **out, int count)
 
 struct watch **insertStruct(struct watch **watches, int count, struct watch *insert, int position)
 {
-	struct watch **result = malloc((unsigned long)(count + 1) * sizeof(struct watch));
+	struct watch **result = (struct watch **)(char **)malloc((unsigned long)(count + 1) * sizeof(struct watch));
 	for (int i = 0; i < count + 1; i++) {
-		*(result + i) = malloc(sizeof(struct watch));
+		*(result + i) = (struct watch *)malloc(sizeof(struct watch));
 	}
 	if (position < 0) {
 		position = 0;
-	}
-	if (position >= count) {
+	} else if (position >= count){
 		position = count;
-		memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)(position + 1));
-		memcpy(*(result + position), insert, sizeof(struct watch));
-		memcpy(*(result + position + 1), *(watches + position), sizeof(struct watch) * (unsigned long)(count - position));
-	} else {
-		memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)(position));
-		memcpy(*(result + position), insert, sizeof(struct watch));
-		memcpy(*(result + position + 1), *(watches + position), sizeof(struct watch) * (unsigned long)(count - position + 1));
 	}
 
-	count++;
-
-	printf("\nResult of insertion:\n");
-	showInConsole(result, count + 1);
+	memcpy(*result, *watches, sizeof(struct watch) * position);
+	memcpy(*(result + position), insert, sizeof(struct watch));
+	memcpy(*(result + position + 1), *(watches + position), (sizeof(struct watch) * (count - position)));
 
 	return result;
 }
 
-struct watch **reduceStruct(struct watch **watches, int count, int position)
+struct watch **reduceStruct(struct watch **watches, unsigned long position, unsigned long count)
 {
-	struct watch **result = malloc((unsigned long)(count - 1) * sizeof(struct watch));
-	for (int i = 0; i < count - 1; i++) {
-		*(result + i) = malloc(sizeof(struct watch));
+	struct watch **result = (struct watch **)malloc((unsigned long)(count - 1) * sizeof(struct watch));
+	for (unsigned long i = 0; i < count -1; i++) {
+		*(result + i) = (struct watch *)malloc(sizeof(struct watch));
 	}
+
 	if (position < 0) {
 		position = 0;
 	}
-	if (position >= count - 1) {
-		position = count;
-	}
-	memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)(position + 1));
-	memcpy(*(result + position), *(watches + position + 1), sizeof(struct watch) * (unsigned long)(count - position));
 
-	printf("\nResult of deletion:\n");
-	showInConsole(result, count - 1);
+	if (position >= count) {
+		position = count - 1;
+	}
+
+	memcpy(*result, *watches, (sizeof(struct watch) * position));
+	memcpy(*(result + position), *(watches + position + 1), (sizeof(struct watch) * (count - position - 1)));
 
 	return result;
 }

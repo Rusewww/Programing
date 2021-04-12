@@ -40,7 +40,7 @@ char *reduce(char *text, unsigned int begin, unsigned int end);
 
 struct watch **insertStruct(struct watch **watches, int count, struct watch *insert, int position);
 
-struct watch **reduceStruct(struct watch **watches, int count, int position);
+struct watch **reduceStruct(struct watch **watches, unsigned long position, unsigned long count);
 
 void showInConsole(struct watch **out, int count);
 

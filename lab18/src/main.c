@@ -6,8 +6,8 @@
 int main()
 {
 	printf("%s\n", "Laboratory 18. Author: Zozulia Igor. Dynamic arrays.");
-	char *stringOne = malloc(sizeof(char) * SIZE);
-	char *stringTwo = malloc(sizeof(char) * SIZE);
+	char *stringOne = (char *)malloc(sizeof(char) * SIZE);
+	char *stringTwo = (char *)malloc(sizeof(char) * SIZE);
 
 	printf("Enter first string: \n");
 	scanf("%s", stringOne);
@@ -23,7 +23,7 @@ int main()
 	free(stringOne);
 	free(stringTwo);
 
-	char *textForDel = malloc(sizeof(char) * SIZE);
+	char *textForDel = (char *)malloc(sizeof(char) * SIZE);
 	unsigned int begin;
 	unsigned int end;
 
@@ -40,14 +40,14 @@ int main()
 
 	int count = 3;
 
-	struct watch **watches = malloc((unsigned long)count * sizeof(struct watch));
+	struct watch **watches = (struct watch **)malloc((unsigned long)count * sizeof(struct watch));
 	for (int i = 0; i < count; i++) {
-		*(watches + i) = malloc(sizeof(struct watch));
+		*(watches + i) = (struct watch *)malloc(sizeof(struct watch));
 	}
 
 	readFromFile("./assets/input.txt", watches, count);
 
-	struct watch *insert = malloc(sizeof(struct watch));
+	struct watch *insert = (struct watch *)malloc(sizeof(struct watch));
 
 	printf("Enter structure for insertion:\n");
 	printf("Waterproof (1 - have; 0 - does`t) - ");
@@ -66,16 +66,34 @@ int main()
 	printf("Enter position for insertion: \n");
 	scanf("%i", &position);
 
-	insertStruct(watches, count, insert, position);
+	struct watch **resultOfIns = insertStruct(watches, count, insert, position);
+
+	printf("\nResult of insertion:\n");
+	showInConsole(resultOfIns, count + 1);
+
+	int positionForRed;
 
 	printf("Enter position for deletion: \n");
-	scanf("%i", &position);
+	scanf("%i", &positionForRed);
 
-	reduceStruct(watches, count, 2);
+	struct watch **resultOfRed = reduceStruct(watches, (unsigned long)positionForRed, (unsigned long)count);
+
+	printf("\nResult of deletion:\n");
+	showInConsole(resultOfRed, count - 1);
+
+	for (int i = 0; i < count - 1; i++) {
+		free(*(resultOfRed + i));
+	}
+	free(resultOfRed);
 
 	for (int i = 0; i < count; i++) {
 		free(*(watches + i));
 	}
+	free(watches);
 
+	for (int i = 0; i < count - 1; i++) {
+		free(*(resultOfIns + i));
+	}
+	free(resultOfIns);
 	return 0;
 }
