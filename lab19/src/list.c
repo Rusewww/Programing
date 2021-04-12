@@ -316,7 +316,7 @@ void findWithCriterion(struct list *list, int criterion)
 		}
 		break;
 	default:
-		printf("\t|Incorrect variant!\n");
+        printf("\t|Incorrect variant!                   |\n");
 		results = -1;
 		break;
 	}
