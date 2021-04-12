@@ -60,18 +60,18 @@ void showInConsole(struct watch **out, int count)
 	for (int i = 0; i < count; i++) {
 		struct watch *temp = *(out + i);
 		if (temp->waterproof == 1) {
-			printf("Waterproof: have\n");
+			printf("\tWaterproof: have\n");
 		} else {
-			printf("Waterproof: no\n");
+			printf("\tWaterproof: no\n");
 		}
-		fprintf(stdout, "Model: %s\nCost: %dUSD\nManufacturer: %s, %s\n", (temp->model), (temp->cost), (temp->manufacturer.firm),
+		fprintf(stdout, "\tModel: %s\n\tCost: %dUSD\n\tManufacturer: %s, %s\n", (temp->model), (temp->cost), (temp->manufacturer.firm),
 			(temp->manufacturer.country));
 		if (temp->style == 1) {
-			fprintf(stdout, "Style: classic\n");
+			fprintf(stdout, "\tStyle: classic\n");
 		} else if (temp->style == 2) {
-			fprintf(stdout, "Style: sport\n");
+			fprintf(stdout, "\tStyle: sport\n");
 		} else {
-			fprintf(stdout, "Style: armoured\n");
+			fprintf(stdout, "\tStyle: armoured\n");
 		}
 		printf("\n");
 	}
@@ -89,9 +89,9 @@ struct watch **insertStruct(struct watch **watches, int count, struct watch *ins
 		position = count;
 	}
 
-	memcpy(*result, *watches, sizeof(struct watch) * position);
+	memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)position);
 	memcpy(*(result + position), insert, sizeof(struct watch));
-	memcpy(*(result + position + 1), *(watches + position), (sizeof(struct watch) * (count - position)));
+	memcpy(*(result + position + 1), *(watches + position), (sizeof(struct watch) * (unsigned long)(count - position)));
 
 	return result;
 }

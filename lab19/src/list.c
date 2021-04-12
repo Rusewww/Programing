@@ -89,22 +89,22 @@ void showList(struct list *list)
 {
 	for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 		if (watch->waterproof == 0) {
-			printf("\tWaterproof: No\n");
+			printf("\t|Waterproof: No\n");
 		} else {
-			printf("\tWaterproof: Have\n");
+			printf("\t|Waterproof: Have\n");
 		}
-		printf("\tModel:%s\n", watch->model);
-		printf("\tCost: %dUSD\n", watch->cost);
-		printf("\tFirm: %s\n", watch->manufacturer.firm);
-		printf("\tCountry: %s\n", watch->manufacturer.country);
+		printf("\t|Model:%s\n", watch->model);
+		printf("\t|Cost: %dUSD\n", watch->cost);
+		printf("\t|Firm: %s\n", watch->manufacturer.firm);
+		printf("\t|Country: %s\n", watch->manufacturer.country);
 		if (watch->style == ARMOURED) {
-			printf("\tStyle: Armoured\n");
+			printf("\t|Style: Armoured\n");
 		} else if (watch->style == CLASSIC) {
-			printf("\tStyle: Classic\n");
+			printf("\t|Style: Classic\n");
 		} else if (watch->style == SPORT) {
-			printf("\tStyle: Sport\n");
+			printf("\t|Style: Sport\n");
 		}
-		printf("\n");
+		printf("\t|-------------------------------------|\n");
 	}
 }
 
@@ -177,11 +177,11 @@ void deleteEl(struct list *list, int position)
 	free(temp);
 }
 
-void findWithCriterion(struct list *list, char criterion)
+void findWithCriterion(struct list *list, int criterion)
 {
 	int results = 0;
 	switch (criterion) {
-	case 'w':
+	case 1:
 		printf("\t|=========<Result_of_finding>=========|\n");
 		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 			if (watch->waterproof == 1) {
@@ -202,11 +202,11 @@ void findWithCriterion(struct list *list, char criterion)
 			}
 		}
 		break;
-	case 'p':
-		printf("Enter max price: ");
+	case 2:
+		printf("\t|Enter max price: ");
 		int price;
 		scanf("%d", &price);
-		printf("\nResult of finding:\n\n");
+		printf("\t|=========<Result_of_finding>=========|\n");
 		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 			if (watch->cost <= price) {
 				results++;
@@ -230,11 +230,11 @@ void findWithCriterion(struct list *list, char criterion)
 			}
 		}
 		break;
-	case 'f':
-		printf("Enter name of firm: ");
+	case 3:
+		printf("\t|Enter name of firm: ");
 		char firm[SIZE];
 		scanf("%s", firm);
-		printf("\nResult of finding:\n\n");
+		printf("\t|=========<Result_of_finding>=========|\n");
 		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 			if (strcmp(watch->manufacturer.firm, firm) == 0) {
 				results++;
@@ -259,11 +259,11 @@ void findWithCriterion(struct list *list, char criterion)
 		}
 		break;
 
-	case 'c':
-		printf("Enter the country: ");
+	case 4:
+		printf("\t|Enter the country: ");
 		char country[SIZE];
 		scanf("%s", country);
-		printf("\nResult of finding:\n\n");
+		printf("\t|=========<Result_of_finding>=========|\n");
 		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 			if (strcmp(watch->manufacturer.country, country) == 0) {
 				results++;
@@ -287,11 +287,11 @@ void findWithCriterion(struct list *list, char criterion)
 			}
 		}
 		break;
-	case 's':
-		printf("Enter the style of watch: ");
+	case 5:
+		printf("\t|Enter the style of watch: ");
 		int style;
 		scanf("%d", &style);
-		printf("\nResult of finding:\n\n");
+		printf("\t|=========<Result_of_finding>=========|\n");
 		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 			if (watch->style == (enum watchStyle)style) {
 				results++;;
@@ -316,14 +316,14 @@ void findWithCriterion(struct list *list, char criterion)
 		}
 		break;
 	default:
-		printf("\t|Incorrect variant!\n\n");
+		printf("\t|Incorrect variant!\n");
 		results = -1;
 		break;
 	}
 
 	if (results == 0) {
-		printf("\t|There are no suitable watches!       |\n\n");
+		printf("\t|There are no suitable watches!        |\n");
 	}else if (results > 0){
-		printf("\t|We are find %d variant(s)            |\n\n", results);
+		printf("\t|We are find %d variant(s)             |\n", results);
 	}
 }

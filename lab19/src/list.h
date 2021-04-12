@@ -36,6 +36,6 @@ void insertEl(struct list *list, int position, int wp, char model[SIZE], int cos
 
 void deleteEl(struct list *list, int position);
 
-void findWithCriterion(struct list *list, char criterion);
+void findWithCriterion(struct list *list, int criterion);
 
 #endif //PROGRAMING_LIST_H

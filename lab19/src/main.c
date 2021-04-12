@@ -15,10 +15,9 @@ int main()
 	printf("\t|6 - Delete link                      |\n");
 	printf("\t|7 - Exit                             |\n");
 	printf("\t|=====================================|\n");
-	printf("\t|Select item... ");
+	printf("\t|Select item: ");
 	int item;
-	scanf("%d", &item);
-	printf("\t|=====================================|\n");
+	fscanf(stdin,"%d", &item);
 
 	switch (item) {
 	case 1:
@@ -34,15 +33,15 @@ int main()
 		break;
 	case 3:
 		printf("\t|=============<Searching>=============|\n");
-		printf("\t|w - Waterproof                       |\n");
-		printf("\t|p - Price                            |\n");
-		printf("\t|f - Firm                             |\n");
-		printf("\t|c - Country                          |\n");
-		printf("\t|s - Style                            |\n");
+		printf("\t|1 - Waterproof                       |\n");
+		printf("\t|2 - Price                            |\n");
+		printf("\t|3 - Firm                             |\n");
+		printf("\t|4 - Country                          |\n");
+		printf("\t|5 - Style                            |\n");
 		printf("\t|=====================================|\n");
-		printf("\t|Select criterion... ");
-		char criterion;
-		scanf("%c", &criterion);
+		printf("\t|Select criterion: ");
+		int criterion;
+		scanf("%i", &criterion);
 		findWithCriterion(watches, criterion);
 		printf("\t|=====================================|\n");
 		break;
