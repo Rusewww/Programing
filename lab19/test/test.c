@@ -31,6 +31,21 @@ bool insertLinkTest() {
             result &= false;
         }
     }
+
+    while (list->head) {
+        struct watchList *a = list->head;
+        list->head = a->next;
+        free(a);
+    }
+    free(list);
+
+    while (right->head) {
+        struct watchList *a1 = right->head;
+        right->head = a1->next;
+        free(a1);
+    }
+    free(right);
+
     return result;
 }
 
@@ -62,6 +77,21 @@ bool deleteLinkTest(){
             result &= false;
         }
     }
+
+    while (list->head) {
+        struct watchList *b = list->head;
+        list->head = b->next;
+        free(b);
+    }
+    free(list);
+
+    while (right->head) {
+        struct watchList *b1 = right->head;
+        right->head = b1->next;
+        free(b1);
+    }
+    free(right);
+
     return result;
 }
 
@@ -96,6 +126,21 @@ bool sortTest() {
             result &= false;
         }
     }
+
+    while (list->head) {
+        struct watchList *c = list->head;
+        list->head = c->next;
+        free(c);
+    }
+    free(list);
+
+    while (right->head) {
+        struct watchList *c1 = right->head;
+        right->head = c1->next;
+        free(c1);
+    }
+    free(right);
+
     return result;
 }
 
@@ -128,6 +173,6 @@ int main() {
         printf("%s", error);
     }
 
-
+    free(error);
     return 0;
 }

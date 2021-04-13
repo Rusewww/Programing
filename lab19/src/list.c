@@ -16,8 +16,7 @@ struct watchList *newWatchLink(int wp, const char model[SIZE], int cost, const c
 {
 	struct watchList *watch = malloc(sizeof(struct watchList));
 	int i = 0;
-	watch->waterproof = wp;
-	//strcpy(watch->model, model);
+	watch->waterproof = wp;;
 	while (i < SIZE) {
 		watch->model[i] = model[i];
 		i++;
@@ -28,13 +27,11 @@ struct watchList *newWatchLink(int wp, const char model[SIZE], int cost, const c
 		watch->manufacturer.firm[i] = firm[i];
 		i++;
 	}
-	//strcpy(watch->manufacturer.firm, firm);
 	i = 0;
 	while (i < SIZE) {
 		watch->manufacturer.country[i] = country[i];
 		i++;
 	}
-	//strcpy(watch->manufacturer.country, country);
 	watch->style = (enum watchStyle)style;
 	watch->next = NULL;
 	watch->prev = NULL;

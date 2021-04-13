@@ -76,9 +76,9 @@ for (int i = 0; i < SIZE; i++) {
         case 7:
             printf("\t|================<Exit>===============|\n");
             while (watches->head) {
-                struct watchList *p = watches->head;
-                watches->head = p->next;
-                free(p);
+                struct watchList *tmp = watches->head;
+                watches->head = tmp->next;
+                free(tmp);
             }
             free(watches);
             printf("\t|Finally!                             |\n");
@@ -90,9 +90,9 @@ for (int i = 0; i < SIZE; i++) {
     }
 }
 	while (watches->head) {
-		struct watchList *p = watches->head;
-		watches->head = p->next;
-		free(p);
+		struct watchList *tmp = watches->head;
+		watches->head = tmp->next;
+		free(tmp);
 	}
 	free(watches);
 
