@@ -61,7 +61,7 @@ for (int i = 0; i < SIZE; i++) {
             printf("\t|Enter position: ");
             int position1;
             scanf("%i", &position1);
-            insertEl(watches, position1, wp,model,price,firm, country, 2);
+            insertLink(watches, position1, wp, model, price, firm, country, (int)style);
             printf("\t|=====================================|\n");
 
             break;
@@ -70,7 +70,7 @@ for (int i = 0; i < SIZE; i++) {
             printf("\t|Enter position: ");
             int position;
             scanf("%i", &position);
-            deleteEl(watches, position);
+            deleteLink(watches, position);
             printf("\t|Finally!                             |\n");
             break;
         case 7:

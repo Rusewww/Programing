@@ -32,9 +32,11 @@ void writeFileList(struct list *list);
 
 void showList(struct list *list);
 
-void insertEl(struct list *list, int position, int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE], int style);
+void
+insertLink(struct list *list, int position, int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE],
+		   int style);
 
-void deleteEl(struct list *list, int position);
+void deleteLink(struct list *list, int position);
 
 void findWithCriterion(struct list *list, int criterion);
 

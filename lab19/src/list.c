@@ -108,7 +108,7 @@ void showList(struct list *list)
 	}
 }
 
-void insertEl(struct list *list, int position, int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE], int style)
+void insertLink(struct list *list, int position, int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE], int style)
 {
 	if (position <= 0) {
 		struct watchList *watch = newWatchLink(wp, model, cost, firm, country, style);
@@ -143,7 +143,7 @@ void insertEl(struct list *list, int position, int wp, char model[SIZE], int cos
 	watch->prev->next = watch;
 }
 
-void deleteEl(struct list *list, int position)
+void deleteLink(struct list *list, int position)
 {
 	if (position < 0) {
 		return;
