@@ -28,5 +28,8 @@ struct watch {
 	enum watchStyle style;
 };
 
+void menuPrint();
+
+void searchPrint();
 
 #endif //PROGRAMING_DATA_H
