@@ -2,15 +2,14 @@
 
 int main()
 {
-	int i = 0;
 	struct list *watches = newList();
 	readFileList(watches, 4);
-for (int j = 0; j < SIZE; j++) {
+for (int i = 0; i < SIZE; i++) {
     printf("\t|=============<Main_menu>=============|\n");
     printf("\t|1 - Show list                        |\n");
     printf("\t|2 - Write list to file               |\n");
     printf("\t|3 - Find with criterion              |\n");
-    printf("\t|4 - Sort with criterion              |\n");
+    printf("\t|4 - Sort by price                    |\n");
     printf("\t|5 - Add link                         |\n");
     printf("\t|6 - Delete link                      |\n");
     printf("\t|7 - Exit                             |\n");
@@ -43,7 +42,9 @@ for (int j = 0; j < SIZE; j++) {
             findWithCriterion(watches, criterion);
             break;
         case 4:
-            i = 0;
+            printf("\t|==============<Sorting>==============|\n");
+            sortByPrice(watches, compare);
+            printf("\t|Finally!                             |\n");
             break;
         case 5:
             printf("\t|==========<Generating_link>==========|\n");
@@ -87,28 +88,20 @@ for (int j = 0; j < SIZE; j++) {
             printf("\t|Finally!                             |\n");
             break;
         case 7:
+            printf("\t|================<Exit>===============|\n");
             while (watches->head) {
                 struct watchList *p = watches->head;
                 watches->head = p->next;
                 free(p);
             }
             free(watches);
-            printf("\t|Exit.                                |\n");
+            printf("\t|Finally!                             |\n");
             printf("\t|=====================================|\n");
             return 0;
         default:
             printf("\t|Incorrect variant!                   |\n");
             break;
     }
-
-    //insertEl(watches, 6, 0,"wow",1000,"someses", "Ukraine", 2);
-    //writeFileList(watches);
-    //showList(watches);
-
-    //findWithCriterion(watches, 'p');
-
-    //deleteEl(watches, 1);
-    //showList(watches);
 }
 	while (watches->head) {
 		struct watchList *p = watches->head;

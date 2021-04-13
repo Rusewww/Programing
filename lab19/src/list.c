@@ -257,73 +257,140 @@ void findWithCriterion(struct list *list, int criterion)
 				printf("\t|-------------------------------------|\n");
 			}
 		}
-		break;
+            break;
 
-	case 4:
-		printf("\t|Enter the country: ");
-		char country[SIZE];
-		scanf("%s", country);
-		printf("\t|=========<Result_of_finding>=========|\n");
-		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
-			if (strcmp(watch->manufacturer.country, country) == 0) {
-				results++;
-				if (watch->waterproof == 0) {
-					printf("\t|Waterproof: No\n");
-				} else {
-					printf("\t|Waterproof: Have\n");
-				}
-				printf("\t|Model:%s\n", watch->model);
-				printf("\t|Cost: %dUSD\n", watch->cost);
-				printf("\t|Firm: %s\n", watch->manufacturer.firm);
-				printf("\t|Country: %s\n", watch->manufacturer.country);
-				if (watch->style == ARMOURED) {
-					printf("\t|Style: Armoured\n");
-				} else if (watch->style == CLASSIC) {
-					printf("\t|Style: Classic\n");
-				} else if (watch->style == SPORT) {
-					printf("\t|Style: Sport\n");
-				}
-				printf("\t|-------------------------------------|\n");
-			}
-		}
-		break;
-	case 5:
-		printf("\t|Enter the style of watch: ");
-		int style;
-		scanf("%d", &style);
-		printf("\t|=========<Result_of_finding>=========|\n");
-		for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
-			if (watch->style == (enum watchStyle)style) {
-				results++;;
-				if (watch->waterproof == 0) {
-					printf("\t|Waterproof: No\n");
-				} else {
-					printf("\t|Waterproof: Have\n");
-				}
-				printf("\t|Model:%s\n", watch->model);
-				printf("\t|Cost: %dUSD\n", watch->cost);
-				printf("\t|Firm: %s\n", watch->manufacturer.firm);
-				printf("\t|Country: %s\n", watch->manufacturer.country);
-				if (watch->style == ARMOURED) {
-					printf("\t|Style: Armoured\n");
-				} else if (watch->style == CLASSIC) {
-					printf("\t|Style: Classic\n");
-				} else if (watch->style == SPORT) {
-					printf("\t|Style: Sport\n");
-				}
-				printf("\t|-------------------------------------|\n");
-			}
-		}
-		break;
-	default:
-        printf("\t|Incorrect variant!                   |\n");
-		results = -1;
-		break;
-	}
+        case 4:
+            printf("\t|Enter the country: ");
+            char country[SIZE];
+            scanf("%s", country);
+            printf("\t|=========<Result_of_finding>=========|\n");
+            for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
+                if (strcmp(watch->manufacturer.country, country) == 0) {
+                    results++;
+                    if (watch->waterproof == 0) {
+                        printf("\t|Waterproof: No\n");
+                    } else {
+                        printf("\t|Waterproof: Have\n");
+                    }
+                    printf("\t|Model:%s\n", watch->model);
+                    printf("\t|Cost: %dUSD\n", watch->cost);
+                    printf("\t|Firm: %s\n", watch->manufacturer.firm);
+                    printf("\t|Country: %s\n", watch->manufacturer.country);
+                    if (watch->style == ARMOURED) {
+                        printf("\t|Style: Armoured\n");
+                    } else if (watch->style == CLASSIC) {
+                        printf("\t|Style: Classic\n");
+                    } else if (watch->style == SPORT) {
+                        printf("\t|Style: Sport\n");
+                    }
+                    printf("\t|-------------------------------------|\n");
+                }
+            }
+            break;
+        case 5:
+            printf("\t|Enter the style of watch: ");
+            int style;
+            scanf("%d", &style);
+            printf("\t|=========<Result_of_finding>=========|\n");
+            for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
+                if (watch->style == (enum watchStyle) style) {
+                    results++;;
+                    if (watch->waterproof == 0) {
+                        printf("\t|Waterproof: No\n");
+                    } else {
+                        printf("\t|Waterproof: Have\n");
+                    }
+                    printf("\t|Model:%s\n", watch->model);
+                    printf("\t|Cost: %dUSD\n", watch->cost);
+                    printf("\t|Firm: %s\n", watch->manufacturer.firm);
+                    printf("\t|Country: %s\n", watch->manufacturer.country);
+                    if (watch->style == ARMOURED) {
+                        printf("\t|Style: Armoured\n");
+                    } else if (watch->style == CLASSIC) {
+                        printf("\t|Style: Classic\n");
+                    } else if (watch->style == SPORT) {
+                        printf("\t|Style: Sport\n");
+                    }
+                    printf("\t|-------------------------------------|\n");
+                }
+            }
+            break;
+        default:
+            printf("\t|Incorrect variant!                   |\n");
+            results = -1;
+            break;
+    }
 
-	if (results == 0) {
-		printf("\t|There are no suitable watches!        |\n");
-	}else if (results > 0){
-		printf("\t|We are find %d variant(s)             |\n", results);
-	}
+    if (results == 0) {
+        printf("\t|There are no suitable watches!        |\n");
+    } else if (results > 0) {
+        printf("\t|We are find %d variant(s)             |\n", results);
+    }
+}
+
+int compare(struct watchList *first, struct watchList *second) {
+    if (first->cost == second->cost)
+        return 0;
+    else if (first->cost > second->cost)
+        return 1;
+    else
+        return -1;
+}
+
+void sortByPrice(struct list *list, int(*compare)(struct watchList *, struct watchList *)) {
+    struct watchList *set = list->tail;
+    while (set != list->head) {
+        struct watchList *temp = list->head->next;
+        struct watchList *max = list->head;
+        while (temp != set->next) {
+            if (compare(temp, max) >= 0)
+                max = temp;
+            temp = temp->next;
+        }
+        if (set == max) {
+            set = max->prev;
+            continue;
+        } else if (max == list->head && set == list->tail) {
+            list->head = set;
+            list->tail = max;
+            list->head->next = list->tail->next;
+            list->tail->prev = list->head->prev;
+            list->head->next->prev = list->head;
+            list->tail->prev->next = list->tail;
+            list->head->prev = NULL;
+            list->tail->next = NULL;
+        } else if (max == list->head) {
+            list->head = set;
+            max->prev = list->head->prev;
+            list->head->prev = NULL;
+            max->prev->next = max;
+            struct watchList *t = max->next;
+            max->next = list->head->next;
+            list->head->next = t;
+            max->next->prev = max;
+            list->head->next->prev = list->head;
+        } else if (set == list->tail) {
+            list->tail = max;
+            set->next = list->tail->next;
+            list->tail->next = NULL;
+            set->next->prev = set;
+            struct watchList *t = set->prev;
+            set->prev = list->tail->prev;
+            list->tail->prev = t;
+            set->prev->next = set;
+            list->tail->prev->next = list->tail;
+        } else {
+            struct watchList *t = max->next;
+            max->next = set->next;
+            set->next = t;
+            max->next->prev = max;
+            set->next->prev = set;
+            t = max->prev;
+            max->prev = set->prev;
+            set->prev = t;
+            max->prev->next = max;
+            set->prev->next = set;
+        }
+        set = max->prev;
+    }
 }

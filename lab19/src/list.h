@@ -38,4 +38,8 @@ void deleteEl(struct list *list, int position);
 
 void findWithCriterion(struct list *list, int criterion);
 
+int compare(struct watchList *first, struct watchList *second);
+
+void sortByPrice(struct list *list, int(*compare)(struct watchList *, struct watchList *));
+
 #endif //PROGRAMING_LIST_H
