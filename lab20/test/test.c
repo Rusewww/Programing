@@ -2,7 +2,7 @@
 #include <time.h>
 #include <syslog.h>
 
-#define al_debug(M, ...) fprintf(stdout, "%s %s %s:%d " M "\n",\
+#define al_debug(M, ...) fprintf(stdout, "%s %s %s:%d" M "\n",\
                __DATE__,__TIME__, __FILE__, __LINE__, ##__VA_ARGS__)
 
 #define DEBUG
@@ -11,12 +11,8 @@ bool insertLinkTest() {
     bool result = true;
 
 #ifdef DEBUG
-    srand(time(NULL));
-    time_t t = time(NULL);
-    struct tm *aTm = localtime(&t);
     clock_t begin = clock();
-    clock_t beginInsLink = clock();
-    al_debug("%s %s %s",__DATE__,__TIME__, __FUNCTION__);
+    al_debug(" %s ", __FUNCTION__);
 #endif
 
     struct list *list = newList();
@@ -65,9 +61,9 @@ bool insertLinkTest() {
         }
     }
 #ifdef DEBUG
-    clock_t endInsLink = clock();
-    double timeInsLink = (double) (endInsLink - beginInsLink) / CLOCKS_PER_SEC;
-    al_debug("%s %s %s Spend time: %f second(s)\n",__DATE__,__TIME__, __FUNCTION__, timeInsLink);
+    clock_t end = clock();
+    double time = (double) (end - begin) / CLOCKS_PER_SEC;
+    al_debug(" Spend time: %f second(s)\n",time);
 #endif
     while (list->head) {
         struct watchList *a = list->head;
@@ -93,12 +89,8 @@ bool deleteLinkTest() {
     bool result = true;
 
 #ifdef DEBUG
-    srand(time(NULL));
-    time_t t = time(NULL);
-    struct tm *aTm = localtime(&t);
     clock_t begin = clock();
-    clock_t beginInsLink = clock();
-    al_debug("%s %s %s",__DATE__,__TIME__, __FUNCTION__);
+    al_debug(" %s ", __FUNCTION__);
 #endif
 
     struct list *list = newList();
@@ -128,9 +120,9 @@ bool deleteLinkTest() {
     }
 
 #ifdef DEBUG
-    clock_t endInsLink = clock();
-    double timeInsLink = (double) (endInsLink - beginInsLink) / CLOCKS_PER_SEC;
-    al_debug("%s %s %s Spend time: %f second(s)\n",__DATE__,__TIME__, __FUNCTION__, timeInsLink);
+    clock_t end = clock();
+    double time = (double) (end - begin) / CLOCKS_PER_SEC;
+    al_debug(" Spend time: %f second(s)\n",time);
 #endif
 
     while (list->head) {
@@ -154,12 +146,8 @@ bool sortTest() {
     bool result = true;
 
 #ifdef DEBUG
-    srand(time(NULL));
-    time_t t = time(NULL);
-    struct tm *aTm = localtime(&t);
     clock_t begin = clock();
-    clock_t beginInsLink = clock();
-    al_debug("%s %s %s",__DATE__,__TIME__, __FUNCTION__);
+    al_debug(" %s ", __FUNCTION__);
 #endif
 
     struct list *list = newList();
@@ -192,9 +180,9 @@ bool sortTest() {
     }
 
 #ifdef DEBUG
-    clock_t endInsLink = clock();
-    double timeInsLink = (double) (endInsLink - beginInsLink) / CLOCKS_PER_SEC;
-    al_debug("%s %s %s Spend time: %f second(s)\n",__DATE__,__TIME__, __FUNCTION__, timeInsLink);
+    clock_t end = clock();
+    double time = (double) (end - begin) / CLOCKS_PER_SEC;
+    al_debug(" Spend time: %f second(s)\n",time);
 #endif
 
     while (list->head) {
@@ -217,18 +205,11 @@ bool sortTest() {
 int main() {
 #ifdef DEBUG
     printf("\t\tDEBUG_ENABLED!\t\n");
+    clock_t begin = clock();;
 #endif
     bool test = true;
 
     char *error = (char *) malloc((unsigned long) 255 * sizeof(char));
-
-#ifdef DEBUG
-    srand(time(NULL));
-    time_t t = time(NULL);
-    struct tm *aTm = localtime(&t);
-    clock_t begin = clock();
-    al_debug("%s %s %s",__DATE__, __TIME__, __FUNCTION__);
-#endif
 
     test = insertLinkTest();
 
@@ -251,13 +232,13 @@ int main() {
 
     if (test) {
 #ifdef DEBUG
-        al_debug("Test finally passed\n");
+        al_debug(" Test finally passed\n");
 #else
         printf("Test finally passed\n");
 #endif
     } else {
 #ifdef DEBUG
-        al_debug("%s %s Some of the tests failed:\n",__DATE__,__TIME__);
+        al_debug(" Some of the tests failed:\n");
 #else
         printf("Some of the tests failed:\n");
 #endif
@@ -268,7 +249,7 @@ int main() {
 #ifdef DEBUG
     clock_t end = clock();
     double timeInsLink = (double) (end - begin) / CLOCKS_PER_SEC;
-    al_debug("%s %s %s Spend time: %f second(s)\n",__DATE__,__TIME__, __FUNCTION__, timeInsLink);
+    al_debug(" Spend time: %f second(s)\n", timeInsLink);
 #endif
     return 0;
 }
