@@ -10,6 +10,7 @@ prep:
 
 generate:
 	$(CC) -c $(C_OPTS) src/list.c -o ./dist/list.o
-	ar rcs ./dist/libstatic.a ./dist/list.o
+	$(CC) -c $(C_OPTS) src/data.c -o ./dist/data.o
+	ar rcs ./dist/libstatic.a ./dist/data.o ./dist/list.o
 	rm ./dist/*.o
 
