@@ -14,10 +14,12 @@ compile: main.bin test.bin
 main.bin:
 	$(CC) $(C_OPTS) -c src/main.c
 	$(CC) -I../libdynamic/dist src/main.c -ldynamic -L../libdynamic/dist -o dist/main.bin -Wl,-rpath,../libdynamic/dist
+	rm *.o
 
 test.bin:
 	$(CC) $(C_OPTS) -c test/test.c
 	$(CC) -I../libdynamic/dist test/test.c -ldynamic -L../libdynamic/dist -o dist/test.bin -Wl,-rpath,../libdynamic/dist
+	rm *.o
 
 run: clean prep compile
 	./dist/main.bin

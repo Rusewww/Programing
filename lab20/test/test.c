@@ -5,8 +5,6 @@
 #define al_debug(M, ...) fprintf(stdout, "%s %s %s:%d" M "\n",\
                __DATE__,__TIME__, __FILE__, __LINE__, ##__VA_ARGS__)
 
-#define DEBUG
-
 bool insertLinkTest() {
     bool result = true;
 
