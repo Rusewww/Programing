@@ -83,6 +83,11 @@ int main()
 			printf("\t|Finally!                             |\n");
 			break;
 		case 7:
+			printf("\t|===========<Find_two_words>==========|\n");
+			findTwoWords(watches);
+			printf("\t|Finally!                             |\n");
+			break;
+		case 8:
 			printf("\t|================<Exit>===============|\n");
 			while (watches->head) {
 				struct watchList *tmp = watches->head;

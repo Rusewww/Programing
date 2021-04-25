@@ -402,7 +402,7 @@ bool check(char wp[2], char model[SIZE], char cost[SIZE], char firm[SIZE], char 
 	if (resultWp != 0) {
 		result &= false;
 	}
-	int resultModel = regcomp(&regex, "[A-ZА-Я][a-zа-яA-ZА-Я]*((( |-|$)?[a-zA-Zа-яА-Я])*|$)?", REG_EXTENDED);
+	int resultModel = regcomp(&regex, "[A-Z][a-zA-Z]*((( |-|$)?[1-9]{1,4})*|$)?", REG_EXTENDED);
 	resultModel = regexec(&regex, model, 0, NULL, 0);
 	if (resultModel != 0) {
 		result &= false;
@@ -412,12 +412,12 @@ bool check(char wp[2], char model[SIZE], char cost[SIZE], char firm[SIZE], char 
 	if (resultCost != 0) {
 		result &= false;
 	}
-	int resultFirm = regcomp(&regex, "[A-ZА-Я][a-zа-яA-ZА-Я]*((( |-|$)?[a-zA-Zа-яА-Я])*|$)?", REG_EXTENDED);
+	int resultFirm = regcomp(&regex, "[A-Z][a-zA-Z]*((( |-|$)?[a-zA-Z])*|$)?", REG_EXTENDED);
 	resultFirm = regexec(&regex, firm, 0, NULL, 0);
 	if (resultFirm != 0) {
 		result &= false;
 	}
-	int resultCountry = regcomp(&regex, "[A-ZА-Я][a-zа-яA-ZА-Я]*((( |-|$)?[a-zA-Zа-яА-Я])*|$)?", REG_EXTENDED);
+	int resultCountry = regcomp(&regex, "[A-Z][a-zA-Z]*((( |-|$)?[a-zA-Z])*|$)?", REG_EXTENDED);
 	resultCountry = regexec(&regex, country, 0, NULL, 0);
 	if (resultCountry != 0) {
 		result &= false;
@@ -428,4 +428,41 @@ bool check(char wp[2], char model[SIZE], char cost[SIZE], char firm[SIZE], char 
 		result &= false;
 	}
 	return result;
+}
+
+void findTwoWords(struct list *list)
+{
+	int results = 0;
+	for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
+		regex_t regex;
+		int resultOne = regcomp(&regex, "^[A-ZА-Я][a-zа-яA-ZА-Я-]* ((( |-|$)?[a-zA-Zа-яА-Я-])*|$)?$", REG_EXTENDED);
+		resultOne = regexec(&regex, watch->manufacturer.firm, 0, NULL, 0);
+		int resultTwo = regcomp(&regex, "^[A-ZА-Я][a-zа-яA-ZА-Я-]* ((( |-|$)?[a-zA-Zа-яА-Я-])*|$)?$", REG_EXTENDED);
+		resultTwo = regexec(&regex, watch->manufacturer.country, 0, NULL, 0);
+		if (resultOne != 0||resultTwo != 0) {
+			results++;
+			if (watch->waterproof == 0) {
+				printf("\t|Waterproof: No\n");
+			} else {
+				printf("\t|Waterproof: Have\n");
+			}
+			printf("\t|Model:%s\n", watch->model);
+			printf("\t|Cost: %dUSD\n", watch->cost);
+			printf("\t|Firm: %s\n", watch->manufacturer.firm);
+			printf("\t|Country: %s\n", watch->manufacturer.country);
+			if (watch->style == ARMOURED) {
+				printf("\t|Style: Armoured\n");
+			} else if (watch->style == CLASSIC) {
+				printf("\t|Style: Classic\n");
+			} else if (watch->style == SPORT) {
+				printf("\t|Style: Sport\n");
+			}
+			printf("\t|-------------------------------------|\n");
+		}
+	}
+	if (results == 0) {
+		printf("\t|There are no suitable watches!       |\n");
+	} else if (results > 0) {
+		printf("\t|We are find %d variant(s)             |\n", results);
+	}
 }

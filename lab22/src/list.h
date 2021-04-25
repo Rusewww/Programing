@@ -46,4 +46,6 @@ void sortByPrice(struct list *list, int(*compare)(struct watchList *, struct wat
 
 bool check(char wp[2], char model[SIZE], char cost[SIZE], char firm[SIZE], char country[SIZE], char style[2]);
 
+void findTwoWords(struct list *list);
+
 #endif //PROGRAMING_LIST_H
