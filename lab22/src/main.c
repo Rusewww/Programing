@@ -57,12 +57,17 @@ int main()
 			printf("\t|Style (0 - ARMOURED, 1 - CLASSIC, 2 - SPORT): ");
 			enum watchStyle style;
 			scanf("%u", &style);
-			printf("\t|=====================================|\n");
-			printf("\t|Enter position: ");
-			int position1;
-			scanf("%i", &position1);
-			insertLink(watches, position1, wp, model, price, firm, country, (int)style);
-			printf("\t|=====================================|\n");
+			bool checking = check(wp, model, price, firm, country, (int)style);
+			if (checking) {
+				printf("\t|=====================================|\n");
+				printf("\t|Enter position: ");
+				int position1;
+				scanf("%i", &position1);
+				insertLink(watches, position1, wp, model, price, firm, country, (int)style);
+			}else{
+				printf("\t|=====================================|\n");
+				printf("\t|Error:criterion entered incorrectly  |\n");
+			}
 
 			break;
 		case 6:

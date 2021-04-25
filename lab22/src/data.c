@@ -25,3 +25,13 @@ void searchPrint(){
     printf("\t|5 - Style                            |\n");
     printf("\t|=====================================|\n");
 }
+
+char *my_itoa(int num, char *str)
+{
+	if(str == NULL)
+	{
+		return NULL;
+	}
+	sprintf(str, "%d", num);
+	return str;
+}

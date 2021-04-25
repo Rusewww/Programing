@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <regex.h>
 
 #define SIZE 99
 
@@ -31,5 +32,7 @@ struct watch {
 void menuPrint();
 
 void searchPrint();
+
+char *my_itoa(int num, char *str);
 
 #endif //PROGRAMING_DATA_H

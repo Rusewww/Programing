@@ -41,7 +41,7 @@ struct watchList *newWatchLink(int wp, const char model[SIZE], int cost, const c
 
 void readFileList(struct list *list, int count)
 {
-	FILE *inputFile = fopen("D:\\Programing\\lab22\\assets\\input.txt", "r");
+	FILE *inputFile = fopen("./assets/input.txt", "r");
 	if (inputFile == NULL) {
 		printf("\t|=====================================|\n");
 		printf("\t|Error opening input file.            |\n");
@@ -373,22 +373,65 @@ void sortByPrice(struct list *list, int(*compare)(struct watchList *, struct wat
             list->tail->next = NULL;
             set->next->prev = set;
             struct watchList *t = set->prev;
-            set->prev = list->tail->prev;
-            list->tail->prev = t;
-            set->prev->next = set;
-            list->tail->prev->next = list->tail;
-        } else {
-            struct watchList *t = max->next;
-            max->next = set->next;
-            set->next = t;
-            max->next->prev = max;
-            set->next->prev = set;
-            t = max->prev;
-            max->prev = set->prev;
-            set->prev = t;
-            max->prev->next = max;
-            set->prev->next = set;
-        }
-        set = max->prev;
+	    set->prev = list->tail->prev;
+	    list->tail->prev = t;
+	    set->prev->next = set;
+	    list->tail->prev->next = list->tail;
+	} else {
+		struct watchList *t = max->next;
+		max->next = set->next;
+		set->next = t;
+		max->next->prev = max;
+		set->next->prev = set;
+		t = max->prev;
+		max->prev = set->prev;
+		set->prev = t;
+		max->prev->next = max;
+		set->prev->next = set;
+	}
+	set = max->prev;
     }
+}
+
+bool check(int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE], int style)
+{
+	bool result = true;
+	regex_t regex;
+	char strWp[1];
+	my_itoa(wp, strWp);
+	int resultWp = regcomp(&regex, "[0-1]", 0);
+	resultWp = regexec(&regex, strWp, 0, NULL, 0);
+	if (resultWp != 0) {
+		result &= false;
+	}
+	int resultModel = regcomp(&regex, "[a-zA-Z]", REG_EXTENDED);
+	resultModel = regexec(&regex, model, 0, NULL, 0);
+	if (resultModel != 0) {
+		result &= false;
+	}
+	char strCost[4];
+	my_itoa(cost, strCost);
+	int resultCost = regcomp(&regex, "[0-9]{1,4}", REG_EXTENDED);
+	resultCost = regexec(&regex, strCost, 0, NULL, 0);
+	if (resultCost != 0) {
+		result &= false;
+	}
+	int resultFirm = regcomp(&regex, "[a-zA-Z]", REG_EXTENDED);
+	resultFirm = regexec(&regex, firm, 0, NULL, 0);
+	if (resultFirm != 0) {
+		result &= false;
+	}
+	int resultCountry = regcomp(&regex, "[a-zA-Z]", REG_EXTENDED);
+	resultCountry = regexec(&regex, country, 0, NULL, 0);
+	if (resultCountry != 0) {
+		result &= false;
+	}
+	char strStyle[1];
+	my_itoa(style, strStyle);
+	int resultStyle = regcomp(&regex, "[0-2]", 0);
+	resultStyle = regexec(&regex, strStyle, 0, NULL, 0);
+	if (resultStyle != 0) {
+		result &= false;
+	}
+	return result;
 }
