@@ -191,63 +191,96 @@ bool sortTest() {
     free(list);
 
     while (right->head) {
-        struct watchList *c1 = right->head;
-        right->head = c1->next;
-        free(c1);
+	    struct watchList *c1 = right->head;
+	    right->head = c1->next;
+	    free(c1);
     }
     free(right);
 
     return result;
 }
 
-int main() {
+bool checkTest()
+{
 #ifdef DEBUG
-    printf("\t\tDEBUG_ENABLED!\t\n");
-    clock_t begin = clock();;
+	clock_t begin = clock();
+	al_debug(" %s ", __FUNCTION__);
 #endif
-    bool test = true;
-
-    char *error = (char *) malloc((unsigned long) 255 * sizeof(char));
-
-    test = insertLinkTest();
-
-
-    if (test == false) {
-        strcat(error, "error occurred in function insertLink; \n");
-    }
-    test = true;
-    test = deleteLinkTest();
-    if (test == false) {
-        strcat(error, "error occurred in function deleteLink; \n");
-    }
-    test = true;
-
-    test = sortTest();
-    if (test == false) {
-        strcat(error, "error occurred in function sort; \n");
-    }
-
-
-    if (test) {
+	bool result = true;
+	int findOne = check("1", "Whoa", "200", "Whoa", "Whoa", "0");
+	if (findOne == 0) {
+		result &= false;
+	}
+	int findTwo = check("5", "Whoa", "200", "Whoa", "Whoa", "0");
+	if (findTwo != 0) {
+		result &= false;
+	}
+	int findTree = check("1", "whoa", "200", "Whoa", "Whoa", "0");
+	if (findTree != 0) {
+		result &= false;
+	}
+	int findFour = check("1", "Whoa", "wa", "Whoa", "Whoa", "0");
+	if (findFour != 0) {
+		result &= false;
+	}
 #ifdef DEBUG
-        al_debug(" Test finally passed\n");
+	clock_t end = clock();
+	double time = (double)(end - begin) / CLOCKS_PER_SEC;
+	al_debug(" Spend time: %f second(s)\n", time);
+#endif
+	return result;
+}
+
+int main()
+{
+#ifdef DEBUG
+	printf("\t\tDEBUG_ENABLED!\t\n");
+	clock_t begin = clock();
+	;
+#endif
+	bool test = true;
+
+	char *error = (char *)malloc((unsigned long)255 * sizeof(char));
+
+	test = insertLinkTest();
+
+	if (test == false) {
+		strcat(error, "error occurred in function insertLink; \n");
+	}
+	test = deleteLinkTest();
+	if (test == false) {
+		strcat(error, "error occurred in function deleteLink; \n");
+	}
+	test = sortTest();
+	if (test == false) {
+		strcat(error, "error occurred in function sort; \n");
+	}
+
+	test = checkTest();
+	if (test == false) {
+		strcat(error, "error occurred in function check; \n");
+	}
+
+	if (test) {
+#ifdef DEBUG
+		al_debug(" Test finally passed\n");
 #else
-        printf("Test finally passed\n");
+		printf("Test finally passed\n");
 #endif
-    } else {
+	} else {
 #ifdef DEBUG
-        al_debug(" Some of the tests failed:\n");
+		al_debug(" Some of the tests failed:\n");
 #else
-        printf("Some of the tests failed:\n");
+		printf("Some of the tests failed:\n");
 #endif
-        printf("%s", error);
-    }
-    free(error);
+		printf("%s", error);
+	}
+	free(error);
 
 #ifdef DEBUG
-    clock_t end = clock();
-    double timeInsLink = (double) (end - begin) / CLOCKS_PER_SEC;
-    al_debug(" Spend time: %f second(s)\n", timeInsLink);
+	clock_t end = clock();
+	double timeInsLink = (double)(end - begin) / CLOCKS_PER_SEC;
+	al_debug(" Spend time: %f second(s)\n", timeInsLink);
 #endif
-    return 0;
+	return 0;
 }

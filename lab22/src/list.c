@@ -435,11 +435,11 @@ void findTwoWords(struct list *list)
 	int results = 0;
 	for (struct watchList *watch = list->head; watch != NULL; watch = watch->next) {
 		regex_t regex;
-		int resultOne = regcomp(&regex, "^[A-ZА-Я][a-zа-яA-ZА-Я-]* ((( |-|$)?[a-zA-Zа-яА-Я-])*|$)?$", REG_EXTENDED);
+		int resultOne = regcomp(&regex, "^[A-Z][a-zA-Z]* ((( |-|$)?[a-zA-Z])*|$)?$", REG_EXTENDED);
 		resultOne = regexec(&regex, watch->manufacturer.firm, 0, NULL, 0);
-		int resultTwo = regcomp(&regex, "^[A-ZА-Я][a-zа-яA-ZА-Я-]* ((( |-|$)?[a-zA-Zа-яА-Я-])*|$)?$", REG_EXTENDED);
+		int resultTwo = regcomp(&regex, "^[A-Z][a-zA-Z]* ((( |-|$)?[a-zA-Z])*|$)?$", REG_EXTENDED);
 		resultTwo = regexec(&regex, watch->manufacturer.country, 0, NULL, 0);
-		if (resultOne != 0||resultTwo != 0) {
+		if (resultOne == 0||resultTwo == 0) {
 			results++;
 			if (watch->waterproof == 0) {
 				printf("\t|Waterproof: No\n");

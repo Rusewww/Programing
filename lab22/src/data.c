@@ -12,7 +12,8 @@ void menuPrint(){
     printf("\t|4 - Sort by price                    |\n");
     printf("\t|5 - Add link                         |\n");
     printf("\t|6 - Delete link                      |\n");
-    printf("\t|7 - Exit                             |\n");
+    printf("\t|7 - Show two words criterion         |\n");
+    printf("\t|8 - Exit                             |\n");
     printf("\t|=====================================|\n");
 }
 
@@ -24,14 +25,4 @@ void searchPrint(){
     printf("\t|4 - Country                          |\n");
     printf("\t|5 - Style                            |\n");
     printf("\t|=====================================|\n");
-}
-
-char *my_itoa(int num, char *str)
-{
-	if(str == NULL)
-	{
-		return NULL;
-	}
-	sprintf(str, "%d", num);
-	return str;
 }
