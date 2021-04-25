@@ -393,43 +393,37 @@ void sortByPrice(struct list *list, int(*compare)(struct watchList *, struct wat
     }
 }
 
-bool check(int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE], int style)
+bool check(char wp[2], char model[SIZE], char cost[SIZE], char firm[SIZE], char country[SIZE], char style[2])
 {
 	bool result = true;
 	regex_t regex;
-	char strWp[1];
-	my_itoa(wp, strWp);
-	int resultWp = regcomp(&regex, "[0-1]", 0);
-	resultWp = regexec(&regex, strWp, 0, NULL, 0);
+	int resultWp = regcomp(&regex, "^[0-1]$", 0);
+	resultWp = regexec(&regex, wp, 0, NULL, 0);
 	if (resultWp != 0) {
 		result &= false;
 	}
-	int resultModel = regcomp(&regex, "[a-zA-Z]", REG_EXTENDED);
+	int resultModel = regcomp(&regex, "[A-ZА-Я][a-zа-яA-ZА-Я]*((( |-|$)?[a-zA-Zа-яА-Я])*|$)?", REG_EXTENDED);
 	resultModel = regexec(&regex, model, 0, NULL, 0);
 	if (resultModel != 0) {
 		result &= false;
 	}
-	char strCost[4];
-	my_itoa(cost, strCost);
-	int resultCost = regcomp(&regex, "[0-9]{1,4}", REG_EXTENDED);
-	resultCost = regexec(&regex, strCost, 0, NULL, 0);
+	int resultCost = regcomp(&regex, "^[0-9]{1,4}$", REG_EXTENDED);
+	resultCost = regexec(&regex, cost, 0, NULL, 0);
 	if (resultCost != 0) {
 		result &= false;
 	}
-	int resultFirm = regcomp(&regex, "[a-zA-Z]", REG_EXTENDED);
+	int resultFirm = regcomp(&regex, "[A-ZА-Я][a-zа-яA-ZА-Я]*((( |-|$)?[a-zA-Zа-яА-Я])*|$)?", REG_EXTENDED);
 	resultFirm = regexec(&regex, firm, 0, NULL, 0);
 	if (resultFirm != 0) {
 		result &= false;
 	}
-	int resultCountry = regcomp(&regex, "[a-zA-Z]", REG_EXTENDED);
+	int resultCountry = regcomp(&regex, "[A-ZА-Я][a-zа-яA-ZА-Я]*((( |-|$)?[a-zA-Zа-яА-Я])*|$)?", REG_EXTENDED);
 	resultCountry = regexec(&regex, country, 0, NULL, 0);
 	if (resultCountry != 0) {
 		result &= false;
 	}
-	char strStyle[1];
-	my_itoa(style, strStyle);
-	int resultStyle = regcomp(&regex, "[0-2]", 0);
-	resultStyle = regexec(&regex, strStyle, 0, NULL, 0);
+	int resultStyle = regcomp(&regex, "^[0-2]$", 0);
+	resultStyle = regexec(&regex, style, 0, NULL, 0);
 	if (resultStyle != 0) {
 		result &= false;
 	}

@@ -44,6 +44,6 @@ int compare(struct watchList *first, struct watchList *second);
 
 void sortByPrice(struct list *list, int(*compare)(struct watchList *, struct watchList *));
 
-bool check(int wp, char model[SIZE], int cost, char firm[SIZE], char country[SIZE], int style);
+bool check(char wp[2], char model[SIZE], char cost[SIZE], char firm[SIZE], char country[SIZE], char style[2]);
 
 #endif //PROGRAMING_LIST_H

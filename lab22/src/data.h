@@ -33,6 +33,6 @@ void menuPrint();
 
 void searchPrint();
 
-char *my_itoa(int num, char *str);
+char *gets(char *str);
 
 #endif //PROGRAMING_DATA_H

@@ -7,8 +7,9 @@ int main()
 	for (int i = 0; i < SIZE; i++) {
 		menuPrint();
 		printf("\t|Select item: ");
-		int item;
-		fscanf(stdin, "%d", &item);
+		char item1[2];
+		gets(item1);
+		int item = atoi(item1);
 
 		switch (item) {
 		case 1:
@@ -35,40 +36,43 @@ int main()
 		case 5:
 			printf("\t|==========<Generating_link>==========|\n");
 			printf("\t|Waterproof: ");
-			int wp;
-			scanf("%i", &wp);
+			char wp[2];
+			gets(wp);
 
 			printf("\t|Model: ");
 			char model[SIZE];
-			scanf("%s", model);
+			gets(model);
 
 			printf("\t|Price: ");
-			int price;
-			scanf("%i", &price);
+			char price[SIZE];
+			gets(price);
 
 			printf("\t|Firm: ");
 			char firm[SIZE];
-			scanf("%s", firm);
+			gets(firm);
 
 			printf("\t|Country: ");
 			char country[SIZE];
-			scanf("%s", country);
+			gets(country);
 
 			printf("\t|Style (0 - ARMOURED, 1 - CLASSIC, 2 - SPORT): ");
-			enum watchStyle style;
-			scanf("%u", &style);
-			bool checking = check(wp, model, price, firm, country, (int)style);
+			char style[2];
+			gets(style);
+
+			bool checking = check(wp, model, price, firm, country, style);
 			if (checking) {
 				printf("\t|=====================================|\n");
 				printf("\t|Enter position: ");
 				int position1;
 				scanf("%i", &position1);
-				insertLink(watches, position1, wp, model, price, firm, country, (int)style);
+				int IWp = atoi(wp);
+				int ICost = atoi(price);
+				int IStyle = atoi(style);
+				insertLink(watches, position1, IWp, model, ICost, firm, country, IStyle);
 			}else{
 				printf("\t|=====================================|\n");
 				printf("\t|Error:criterion entered incorrectly  |\n");
 			}
-
 			break;
 		case 6:
 			printf("\t|==============<Deleting>=============|\n");
