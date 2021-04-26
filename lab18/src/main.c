@@ -1,8 +1,18 @@
 #include "lib.h"
 
 /**
- * @return успішний код повернення з програми (0)
+ * @file main.c
+ * @brief Dynamic arrays.
+ * @author Zozulia Igor.
+ * @date 28-march-2020
+ * @version 1.0
  */
+
+/**
+ * function main - main program function.
+ * @return 0 - successful return code
+ */
+
 int main()
 {
 	printf("%s\n", "Laboratory 18. Author: Zozulia Igor. Dynamic arrays.");
