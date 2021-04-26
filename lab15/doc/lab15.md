@@ -15,27 +15,27 @@
 * *Опис логічної структури* :
    * Функція `main`. Заповнює масив структур данними, які знаходяться у файлі, викликом функції `readFromFile`, сортує їх по критерію за  допомогою функції `sortWithCriterion`, виводить данні у консоль функцією `showInConsole`, генерує випадкову структуру - `randomWatch`, записує результат виконанння у файл - `writeToFile`. Схема алгоритму функції:
 
-     ![main](assets/.png)
+     ![main](assets/main.png)
 
    * Функція `readFromFile`. Читає данні з файлу "input.txt" і записує їх до масиву структур. Схема алгоритму функції:
 
-     ![readFromFile](assets/.png)
+     ![readFromFile](assets/readFromFile.png)
      
    * Функція `sortWithCriterion`. Сортує масив за заданим критерієм (вартість, вологостійкість, стиль та виробник). Схема алгоритму функції:
 
-     ![sortWithCriterion](assets/.png)
+     ![sortWithCriterion](assets/sortWithCriterion.png)
 
    * Функція `showInConsole`. Виводить зміст масиву структур у консоль. Схема алгоритму функції:
 
-     ![showInConsole](assets/.png)
+     ![showInConsole](assets/showInConsole.png)
 
    * Функція `randomWatch`. Генерує випадкову структуру классу годинник. Схема алгоритму функції:
 
-     ![randomWatch](assets/.png)
+     ![randomWatch](assets/randomWatch.png)
 
    * Функція `writeToFile`. Записує зміст масиву структур у файл. Схема алгоритму функції:
 
-     ![writeToFile](assets/.png)
+     ![writeToFile](assets/writeToFile.png)
 * *Структура програми*:
 ```
 .
@@ -89,11 +89,11 @@
 ## Варіанти використання:
 Для показання результатів роботи програми можна використовувати IDE CLion або консоль системи Linux. Запуск програми та сортування масиву за ціною:
 
-![](assets/sortCost.png)
+![sortCost](assets/sortCost.png)
 
 Виведення годинників ціна яких менша за 400:
 
-![](assets/under400.png)
+![under400](assets/under400.png)
 
 ## Висновки:
 В результаті виконання роботи я начився працювати зі структурованими типами даних.

@@ -9,23 +9,23 @@
 * *Опис логічної структури* :
     * Функція `main`. Викликає функції тестування. Схема алгоритму функції:
 
-      ![main](assets/.png)
+      ![main](assets/main.png)
 
     * Функція `testSortWaterproof`. Викликає функцію `sortWithCriterion` з критерієм "waterproof". Схема алгоритму функції:
 
-      ![testSortWaterproof](assets/.png)
+      ![testSortWaterproof](assets/testSortWaterproof.png)
 
     * Функція `testSortCost`. Викликає функцію `sortWithCriterion` з критерієм "cost". Схема алгоритму функції:
 
-      ![testSortCost](assets/.png)
+      ![testSortCost](assets/testSortCost.png)
 
     * Функція `testSortManufacturer`. Викликає функцію `sortWithCriterion` з критерієм "manufacturer". Схема алгоритму функції:
 
-      ![testSortManufacturer](assets/.png)
+      ![testSortManufacturer](assets/testSortManufacturer.png)
 
     * Функція `testSortStyle`. Викликає функцію `sortWithCriterion` з критерієм "style". Схема алгоритму функції:
 
-      ![testSortStyle](assets/.png)
+      ![testSortStyle](assets/testSortStyle.png)
     
 * *Структура програми*:
 ```
@@ -69,7 +69,7 @@
 ## Варіанти використання:
 Для показання результатів роботи програми можна використовувати IDE CLion або консоль системи Linux. Результат виконання тестів:
 
-![](assets/test.png)
+![test](assets/test.png)
 
 ## Висновки:
 В результаті виконання роботи я начився створювати модульні тести.

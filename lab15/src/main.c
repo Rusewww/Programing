@@ -16,7 +16,7 @@
  */
 
 /**
-Function main: generate structure and call function read, showinconsole,.
+Function main: generate structure and call function read, showInConsole,.
 */
 
 int main()
