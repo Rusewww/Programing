@@ -36,10 +36,7 @@
 ├── assets
 │   └── input.txt
 ├── doc
-│   ├── assets
-│   │   ├── func.png
-│   │   └── lab17.drawio
-│   └── lab17.md
+│   └── lab18.md
 ├── Doxyfile
 ├── Makefile
 ├── README.md
@@ -49,30 +46,30 @@
 │   └── main.c
 └── test
     └── test.c
+
     
 ```
 * *Важливі елементи програми*:
-    * Виклик тестів:
+    * Додавання структури до масиву:
 
    ```
-    test &= testSortWaterproof(watches, error);
-	test &= testSortCost(watches, error);
-	test &= testSortManufacturer(watches, error);
-	test &= testSortStyle(watches, error);
+    memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)position);
+	memcpy(*(result + position), insert, sizeof(struct watch));
+	memcpy(*(result + position + 1), *(watches + position), (sizeof(struct watch) * (unsigned long)(count - position)));
    ```
-    * Виведення результату виконання тестів:
+    * Видалення структури з масиву:
    ```
-   if (test) {
-		printf("Test finally passed\n");
-	} else {
-		printf("Some of the tests failed:\n");
-		printf("%s", error);
-	}
+    memcpy(*result, *watches, (sizeof(struct watch) * position));
+	memcpy(*(result + position), *(watches + position + 1), (sizeof(struct watch) * (count - position - 1)));
    ```
 ## Варіанти використання:
-Для показання результатів роботи програми можна використовувати IDE CLion або консоль системи Linux. Результат виконання тестів:
+Для показання результатів роботи програми можна використовувати IDE CLion або консоль системи Linux. Вставка однієї строки в іншу:
 
-![test](assets/test.png)
+![test](assets/insertString.png)
+
+Видалення елементів строки в певному діапазоні:
+
+![test](assets/deleteString.png)
 
 ## Висновки:
-В результаті виконання роботи я начився створювати модульні тести.
+В результаті виконання роботи я начився працювати з функцією `memcpy`.

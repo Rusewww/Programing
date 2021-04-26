@@ -55,7 +55,7 @@ int main()
 		*(watches + i) = (struct watch *)malloc(sizeof(struct watch));
 	}
 
-	readFromFile("./assets/input.txt", watches, count);
+	readFromFile("D:\\Programing\\lab18\\assets\\input.txt", watches, count);
 
 	struct watch *insert = (struct watch *)malloc(sizeof(struct watch));
 
