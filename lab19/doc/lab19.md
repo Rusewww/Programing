@@ -17,13 +17,9 @@
 * *Функціональне призначення* : Взаємодія з двонаправленим списком прикладної галузі.
 
 * *Опис логічної структури* :
-    * Функція `main`. Виводить діалогове вікно з варіантами, які викликають функції `newWatchLink`, `writeFileList`, `showList`, `insertLink`, `deleteLink`, `findWithCriterion`, `sortByPrice`. Схема алгоритму функції:
+    * Функція `main`. Виводить діалогове вікно з варіантами, які викликають функції  `writeFileList`, `showList`, `insertLink`, `deleteLink`, `findWithCriterion`, `sortByPrice`. Схема алгоритму функції:
 
       ![main](assets/main.png)
-
-    * Функція `newWatchLink`. Генерує новий список. Схема алгоритму функції:
-
-      ![newWatchLink](assets/newWatchLink.png)
 
     * Функція `writeFileList`. Записує список до файлу. Схема алгоритму функції:
 
@@ -148,7 +144,7 @@
 
 Виведення списку у консоль:
 
-![showList](assets/showList.png)
+![showList](assets/show.png)
 
 ## Висновки:
 В результаті виконання роботи я начився створювати та працювати зі списками.
