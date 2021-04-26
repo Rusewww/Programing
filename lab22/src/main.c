@@ -112,7 +112,8 @@ int main()
 			printf("\t|=====================================|\n");
 			return 0;
 		default:
-			printf("\t|Incorrect variant!                   |\n");
+			//printf("\t|Incorrect variant!                   |\n");
+			printf("|\n");
 			break;
 		}
 	}

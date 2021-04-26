@@ -25,13 +25,8 @@
 .
 ├── assets
 │   └── input.txt
-├── dist
-│   └── testD.bin
 ├── doc
-│   ├── assets
-│   │   ├── debugOFF.png
-│   │   └── debugON.png
-│   └── lab20.md
+│   └── lab22.md
 ├── Makefile
 ├── src
 │   ├── data.c
@@ -41,6 +36,7 @@
 │   └── main.c
 └── test
     └── test.c
+
     
 ```
 * *Важливі елементи програми*:
