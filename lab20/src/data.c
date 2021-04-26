@@ -1,7 +1,11 @@
-//
-// Created by Rusewww on 4/10/21.
-//
-
+/**
+ * @file lib.c
+ * @brief file of function declared in data.h
+ *
+ * @author Zozulia Igor.
+ * @date 4-april-2021
+ * @version 1.0
+ */
 #include "data.h"
 
 void menuPrint(){
