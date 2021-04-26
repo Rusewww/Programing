@@ -82,7 +82,7 @@ int main()
 				int ICost = atoi(price);
 				int IStyle = atoi(style);
 				insertLink(watches, position1, IWp, model, ICost, firm, country, IStyle);
-			}else{
+			} else {
 				printf("\t|=====================================|\n");
 				printf("\t|Error:criterion entered incorrectly  |\n");
 			}
