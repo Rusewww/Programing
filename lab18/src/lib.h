@@ -22,7 +22,15 @@
 
 #define SIZE 99
 
+/**
+ * watchStyle - style of watch
+ */
+
 enum watchStyle { ARMOURED, CLASSIC, SPORT };
+
+/**
+ * @struct manufacturerStruct - struct of manufacturer
+ */
 
 struct manufacturerStruct {
 	char firm[SIZE];

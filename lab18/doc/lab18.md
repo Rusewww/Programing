@@ -53,13 +53,13 @@
     * Додавання структури до масиву:
 
    ```
-    memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)position);
+   memcpy(*result, *watches, sizeof(struct watch) * (unsigned long)position);
 	memcpy(*(result + position), insert, sizeof(struct watch));
 	memcpy(*(result + position + 1), *(watches + position), (sizeof(struct watch) * (unsigned long)(count - position)));
    ```
     * Видалення структури з масиву:
    ```
-    memcpy(*result, *watches, (sizeof(struct watch) * position));
+   memcpy(*result, *watches, (sizeof(struct watch) * position));
 	memcpy(*(result + position), *(watches + position + 1), (sizeof(struct watch) * (count - position - 1)));
    ```
 ## Варіанти використання:

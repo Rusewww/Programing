@@ -3,4 +3,4 @@ project(Programing C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Programing lab18/src/main.c lab18/src/lib.c)
+add_executable(Programing lab19/src/main.c lab19/src/list.c lab19/src/data.c)

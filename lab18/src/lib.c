@@ -2,7 +2,7 @@
 
 /**
  * @file lib.c
- * @brief Файл з описом функцій оголошених в lib.h
+ * @brief file of function declared in lib.h
  *
  * @author Zozulia Igor.
  * @date 28-march-2021
