@@ -11,18 +11,19 @@
     * Функція `main`. Виконує тестування функцій файлу list.h. Схема алгоритму функції:
 
       ![main](assets/main.png)
-    
-    
+  
 * *Структура програми*:
 ```
 .
 ├── assets
 │   └── input.txt
+├── dist
+│   └── testD.bin
 ├── doc
 │   ├── assets
-│   │   ├── runProg.png
-│   │   └── showList.png
-│   └── lab19.md
+│   │   ├── debugOFF.png
+│   │   └── debugON.png
+│   └── lab20.md
 ├── Makefile
 ├── src
 │   ├── data.c
@@ -32,8 +33,6 @@
 │   └── main.c
 └── test
     └── test.c
-
-
     
 ```
 * *Важливі елементи програми*:
