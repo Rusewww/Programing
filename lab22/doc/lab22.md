@@ -26,6 +26,10 @@
 ├── assets
 │   └── input.txt
 ├── doc
+│   ├── assets
+│   │   ├── correct.png
+│   │   ├── incorrect.png
+│   │   └── show.png
 │   └── lab22.md
 ├── Makefile
 ├── src
@@ -37,7 +41,6 @@
 └── test
     └── test.c
 
-    
 ```
 * *Важливі елементи програми*:
     * Перевірка відповідності вхідних данних критеріям:
