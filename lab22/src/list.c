@@ -1,6 +1,11 @@
-//
-// Created by Rusewww on 4/10/21.
-//
+/**
+ * @file lib.c
+ * @brief file of function declared in list.h
+ *
+ * @author Zozulia Igor.
+ * @date 28-march-2021
+ * @version 1.0
+ */
 
 #include "list.h"
 

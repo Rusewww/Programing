@@ -1,5 +1,18 @@
 #include "list.h"
 
+/**
+ * @file main.c
+ * @brief Regular expressions.
+ * @author Zozulia Igor.
+ * @date 28-march-2020
+ * @version 1.0
+ */
+
+/**
+ * function main - main program function.
+ * @return 0 - successful return code
+ */
+
 int main()
 {
 	struct list *watches = newList();
