@@ -21,32 +21,32 @@
 
       ![main](assets/main.png)
 
-    * Функція `newWatchLink`. . Схема алгоритму функції:
+    * Функція `newWatchLink`. Генерує новий список. Схема алгоритму функції:
 
-      ![insert](assets/newWatchLink.png)
+      ![newWatchLink](assets/newWatchLink.png)
 
-    * Функція `writeFileList`. . Схема алгоритму функції:
+    * Функція `writeFileList`. Записує список до файлу. Схема алгоритму функції:
 
-      ![reduce](assets/writeFileList.png)
+      ![writeFileList](assets/writeFileList.png)
 
-    * Функція `showList`. . Схема алгоритму функції:
+    * Функція `showList`. Виводить список в консоль. Схема алгоритму функції:
 
-      ![insertStruct](assets/showList.png)
+      ![showList](assets/showList.png)
 
-    * Функція `insertLink`. . Схема алгоритму функції:
+    * Функція `insertLink`. Додає ланку до списку. Схема алгоритму функції:
 
-      ![reduceStruct](assets/insertLink.png)
+      ![insertLink](assets/insertLink.png)
 
-    * Функція `deleteLink`. . Схема алгоритму функції:
+    * Функція `deleteLink`. Видаляє ланку зі списку. Схема алгоритму функції:
 
-      ![reduceStruct](assets/deleteLink.png)
+      ![deleteLink](assets/deleteLink.png)
 
-    * Функція `findWithCriterion`. . Схема алгоритму функції:
+    * Функція `findWithCriterion`. Виводить ланки відповідно до критерію. Схема алгоритму функції:
 
-      ![reduceStruct](assets/findWithCriterion.png)
-    * Функція `sortByPrice`. . Схема алгоритму функції:
+      ![findWithCriterion](assets/findWithCriterion.png)
+    * Функція `sortByPrice`. Сортує список за ціною. Схема алгоритму функції:
 
-      ![reduceStruct](assets/sortByPrice.png)
+      ![sortByPrice](assets/sortByPrice.png)
     
 * *Структура програми*:
 ```
@@ -54,16 +54,20 @@
 ├── assets
 │   └── input.txt
 ├── doc
-│   └── lab18.md
-├── Doxyfile
+│   ├── assets
+│   │   ├── runProg.png
+│   │   └── showList.png
+│   └── lab19.md
 ├── Makefile
-├── README.md
 ├── src
-│   ├── lib.c
-│   ├── lib.h
+│   ├── data.c
+│   ├── data.h
+│   ├── list.c
+│   ├── list.h
 │   └── main.c
 └── test
     └── test.c
+
 
     
 ```
