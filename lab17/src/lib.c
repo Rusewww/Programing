@@ -200,7 +200,7 @@ void randomWatch(char *output)
 
 	char *numbers = strdup("0123456789");
 
-	int numb = (int)(random() % 4);
+	int numb = (int)(rand() % 4);
 
 	char *model = (char *)calloc(SIZE, sizeof(char));
 	strcat(model, "Model: ");

@@ -1,4 +1,4 @@
-#include "lib.h"
+#include "../src/lib.h"
 
 bool testSortWaterproof(struct watch **watches, char *error){
 	struct watch **expectedWaterproof = malloc(3 * sizeof(struct watch));

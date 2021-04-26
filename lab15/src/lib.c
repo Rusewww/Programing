@@ -59,13 +59,6 @@ void writeToFile(char *filename, struct watch **output, int count)
 		struct watch *temp = *(output + i);
 		fprintf(outfile, "%hd %s %d %s %s %u\n", (temp->waterproof), (temp->model), (temp->cost), (temp->manufacturer.firm),
 			(temp->manufacturer.country), (temp->style));
-		/*if (temp->style == CLASSIC){
-			fprintf(outfile, " Classic");
-		}else if(temp->style == SPORT){
-			fprintf(outfile, " Sport");
-		}else{
-			fprintf(outfile, " Fashion");
-		}*/
 	}
 	fclose(outfile);
 }
@@ -200,7 +193,7 @@ void randomWatch(char *output)
 
 	char *numbers = strdup("0123456789");
 
-	int numb = (int)(random() % 4);
+	int numb = (int)(rand() % 4);
 
 	char *model = (char *)calloc(SIZE, sizeof(char));
 	strcat(model, "Model: ");

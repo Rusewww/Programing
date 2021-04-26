@@ -28,7 +28,7 @@ int main()
 		*(watchs + i) = malloc(sizeof(struct watch));
 	}
 
-	readFromFile("./assets/input.txt", watchs, count);
+	readFromFile("D:\\Programing\\lab15\\assets\\input.txt", watchs, count);
 
 	char *criterion = (char *)calloc(255, sizeof(char));
 	printf("Enter criterion for sort: \n");
