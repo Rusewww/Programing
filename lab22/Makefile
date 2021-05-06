@@ -1,7 +1,6 @@
 targets = main.bin test.bin
 CC = clang
 C_OPTS = -std=gnu11 -g -Wall -Wextra -Wformat-security -Wfloat-equal -Wshadow -Wconversion -Wlogical-not-parentheses -Wnull-dereference -I./src src/list.c src/data.c
-CFLAG = -DDEBUG
 
 all: clean prep compile
 
@@ -12,11 +11,6 @@ prep:
 format:
 	doxygen
 compile: main.bin test.bin
-
-debug: testD.bin
-
-testD.bin: test/test.c
-	$(CC) $(C_OPTS) $< -o ./dist/$@ $(CFLAG)
 
 main.bin: src/main.c
 	$(CC) $(C_OPTS) $< -o ./dist/$@

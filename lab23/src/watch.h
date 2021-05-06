@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
+#include <utility>
 using std::cin;
 using std::cout;
 using std::endl;
@@ -18,12 +19,24 @@ class manufacturerStruct {
 
     public:
 	manufacturerStruct();
-	manufacturerStruct(string firm, string country);
-	manufacturerStruct(const manufacturerStruct &copy);
+	manufacturerStruct(string firmClone, string countryClone);
+	manufacturerStruct(const manufacturerStruct &clone);
 	virtual ~manufacturerStruct();
 };
 
 class watch {
+    private:
+	bool waterproof;
+	string model;
+	int cost;
+	manufacturerStruct manufacturer;
+	watchStyle style;
+
+    public:
+	watch();
+	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct& manufacturerClone, watchStyle styleClone);
+	watch(const watch &clone);
+	virtual ~watch();
 };
 
 #endif //PROGRAMING_WATCH_H
