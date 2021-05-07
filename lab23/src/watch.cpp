@@ -8,8 +8,8 @@ manufacturerStruct::manufacturerStruct()
 
 manufacturerStruct::manufacturerStruct(string firmClone, string countryClone)
 {
-	firm = std::move(firmClone);
-	country = std::move(countryClone);
+	firm = move(firmClone);
+	country = move(countryClone);
 }
 
 manufacturerStruct::manufacturerStruct(const manufacturerStruct &clone)
@@ -57,7 +57,7 @@ watch::watch()
 watch::watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone)
 {
 	waterproof = waterproofClone;
-	model = std::move(modelClone);
+	model = move(modelClone);
 	cost = costClone;
 	watch::manufacturer = manufacturerStruct(manufacturerClone);
 	style = styleClone;
