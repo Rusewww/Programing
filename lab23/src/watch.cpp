@@ -44,7 +44,7 @@ void manufacturerStruct::setCountry(const string &countryClone)
 
 void manufacturerStruct::showManufacturer()
 {
-	cout << firm << "; " << country << endl;
+	cout << "Manufacturer: " << firm << "; " << country << endl;
 }
 
 watch::watch()
@@ -127,10 +127,22 @@ void watch::setStyle(const watchStyle &styleClone)
 	this->style = styleClone;
 }
 
-void watch::show(){
-	cout << waterproof;
-	cout << model;
-	cout << cost;
-	cout << style;
+void watch::show()
+{
+	if (waterproof == 0) {
+		cout << "Waterproof: No" << endl;
+	} else {
+		cout << "Waterproof: Have" << endl;
+	}
+	cout << "Model: " << model << endl;
 	manufacturer.showManufacturer();
+	cout << "Cost: " << cost << "USD" << endl;
+	if (style == 0) {
+		cout << "Style: Armoured" << endl;
+	} else if (style == 1) {
+		cout << "Style: Classic" << endl;
+	} else {
+		cout << "Style: Sport" << endl;
+	}
+	cout << endl;
 }

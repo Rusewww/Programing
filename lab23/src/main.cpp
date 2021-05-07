@@ -20,5 +20,6 @@ int main()
 	cout << "_______________________________________________" << endl;
 	watchList->removeLink(1);
 	watchList->showAll();
+	delete watchList;
 	return 0;
 }
