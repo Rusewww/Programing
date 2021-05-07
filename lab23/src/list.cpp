@@ -46,8 +46,8 @@ watch &list::getLink(int index) const
 void list::showAll() const
 {
 	for (int i = 0; i < this->count; i++) {
-		watch temp = getLink(i);
-		temp.show();
+		watch tmp = getLink(i);
+		tmp.show();
 	}
 }
 
