@@ -21,17 +21,19 @@ int main()
 	watchList->addLink(*watchOne);
 	watchList->addLink(watchTree);
 
+	cout << "|===============<Origin_list>===============|" << endl;
 	watchList->showAll();
-	cout << "_______________________________________________" << endl;
+	cout << "|-------------------------------------------|" << endl;
+	cout << "|========<Watch_with_price_under_400>=======|" << endl;
 	watchList->findByPrice(1500);
-	cout << "_______________________________________________" << endl;
-	watch tmp = watchList->getLink(2);
+	cout << "|-------------------------------------------|" << endl;
+	cout << "|=========<Watch_on_first_position>=========|" << endl;
+	watch tmp = watchList->getLink(1);
 	tmp.show();
-	cout << "_______________________________________________" << endl;
+	cout << "|-------------------------------------------|" << endl;
+	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	watchList->removeLink(1);
 	watchList->showAll();
-	delete manufacturer;
-	delete watchOne;
-	delete watchList;
+	cout << "|-------------------------------------------|" << endl;
 	return 0;
 }
