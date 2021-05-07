@@ -24,7 +24,7 @@ int main()
 	cout << "|===============<Origin_list>===============|" << endl;
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
-	cout << "|========<Watch_with_price_under_400>=======|" << endl;
+	cout << "|=======<Watch_with_price_under_1500>=======|" << endl;
 	watchList->findByPrice(1500);
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=========<Watch_on_first_position>=========|" << endl;
