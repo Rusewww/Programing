@@ -20,14 +20,17 @@ void list::addLink(watch &watchLink)
 void list::removeLink(int index)
 {
 	auto **tmp = new watch *[this->count - 1];
+	int fix = 0;
 
 	if (index >= this->count) {
 		index = this->count - 1;
 	}
-
-	memcpy(tmp, watches, sizeof (watch) * ((unsigned long)index));
-	memcpy(tmp + index, watches + index + 1, sizeof (watch) * (unsigned long)(count - index));
-
+	for (int i = 0; i < this->count; ++i) {
+		if (i == index) {
+			fix++;
+		}
+		tmp[i] = this->watches[i + fix];
+	}
 	delete[] this->watches;
 	this->watches = tmp;
 	this->count -= 1;
