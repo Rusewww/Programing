@@ -2,12 +2,22 @@
 
 int main()
 {
-	watch watchOne(true, "RIM", 2200, manufacturerStruct("Mazzucato", "Italy"), ARMOURED);
+	auto *manufacturer = new manufacturerStruct;
+	manufacturer->setFirm("Mazzucato");
+	manufacturer->setCountry("Italy");
+
+	auto *watchOne = new watch;
+	watchOne->setWaterproof(true);
+	watchOne->setModel("RIM");
+	watchOne->setCost(2200);
+	watchOne->setManufacturer(manufacturer);
+	watchOne->setStyle(ARMOURED);
+
 	watch watchTwo(false, "ZO9507", 1995, manufacturerStruct("Zodiac", "Germany"), CLASSIC);
 	watch watchTree(true, "MTG-B1000", 1000, manufacturerStruct("G-Shock", "Japan"), SPORT);
 	list *watchList = new list;
 	watchList->setCount(0);
-	watchList->addLink(watchOne);
+	watchList->addLink(*watchOne);
 	watchList->addLink(watchTwo);
 	watchList->addLink(watchTree);
 
@@ -21,5 +31,6 @@ int main()
 	watchList->removeLink(1);
 	watchList->showAll();
 	delete watchList;
+	delete manufacturer;
 	return 0;
 }
