@@ -72,9 +72,3 @@ watch &list::findByPrice(const int price) const
 }
 
 list::~list() = default;
-/*{
-	for (int i = 0; i < this->count; i++) {
-		delete this->watches[i];
-	}
-	delete[] watches;
-}*/
