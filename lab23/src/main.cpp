@@ -32,6 +32,5 @@ int main()
 	watchList->showAll();
 	delete manufacturer;
 	delete watchOne;
-	delete watchList;
 	return 0;
 }
