@@ -35,5 +35,7 @@ int main()
 	watchList->removeLink(1);
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
+	delete manufacturer;
+	delete watchList;
 	return 0;
 }
