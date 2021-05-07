@@ -36,5 +36,7 @@ int main()
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
+	delete manufacturer;
+	delete watchOne;
 	return 0;
 }
