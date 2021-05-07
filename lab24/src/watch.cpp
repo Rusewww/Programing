@@ -1,5 +1,7 @@
 #include "watch.h"
 
+#include <utility>
+
 manufacturerStruct::manufacturerStruct()
 {
 	firm = "empty";
