@@ -22,7 +22,7 @@ void list::addLink(watch &watchLink)
 	/*auto **tmp = new watch*[this->count + 1];
 
 	memcpy(tmp, watches, sizeof(watch) * count);
-	/*auto *tmp = new watch *[this->count + 2];
+	auto *tmp = new watch *[this->count + 2];
 	for (int i = 0; i < this->count; i++) {
 		tmp[i] = this->watches[i];
 	}
