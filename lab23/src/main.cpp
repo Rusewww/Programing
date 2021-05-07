@@ -28,8 +28,8 @@ int main()
 	watchList->findByPrice(1500);
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=========<Watch_on_first_position>=========|" << endl;
-	watch *tmp = &(watchList->getLink(1));
-	tmp->show();
+	watch tmp = watchList->getLink(1);
+	tmp.show();
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	watchList->removeLink(1);
@@ -38,6 +38,5 @@ int main()
 	delete watchList;
 	delete manufacturer;
 	delete watchOne;
-	delete tmp;
 	return 0;
 }
