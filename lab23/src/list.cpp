@@ -63,6 +63,7 @@ watch &list::findByPrice(const int price) const
 	}
 	if (countOfWatchUnder == 0) {
 		cout << "here are no suitable watches!";
+		return getLink(0);
 	} else {
 		return getLink(index);
 	}
