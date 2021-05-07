@@ -5,9 +5,9 @@ void list::setCount(const int countCopy)
 	this->count = countCopy;
 }
 
-void list::addLink(watch &watchLink)
+void list::addLink(watch watchLink)
 {
-	auto **tmp = new watch *[this->count + 1];
+	auto *tmp = new watch *[this->count + 2];
 	for (int i = 0; i < this->count; i++) {
 		tmp[i] = this->watches[i];
 	}
@@ -19,9 +19,8 @@ void list::addLink(watch &watchLink)
 
 void list::removeLink(int index)
 {
-	auto **tmp = new watch *[this->count - 1];
+	auto *tmp = new watch *[this->count];
 	int fix = 0;
-
 	if (index >= this->count) {
 		index = this->count - 1;
 	}
@@ -33,7 +32,7 @@ void list::removeLink(int index)
 	}
 	delete[] this->watches;
 	this->watches = tmp;
-	this->count -= 1;
+	this->count--;
 }
 
 watch &list::getLink(int index) const
@@ -47,8 +46,8 @@ watch &list::getLink(int index) const
 void list::showAll() const
 {
 	for (int i = 0; i < this->count; i++) {
-		watch temp = getLink(i);
-		temp.show();
+		watch tmp = getLink(i);
+		tmp.show();
 	}
 }
 
@@ -74,8 +73,5 @@ watch &list::findByPrice(const int price) const
 
 list::~list()
 {
-	for (int i = 0; i < this->count; i++) {
-		delete this->watches[i];
-	}
 	delete[] watches;
 }
