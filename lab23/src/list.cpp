@@ -76,5 +76,5 @@ list::~list()
 	for (int i = 0; i < this->count; ++i) {
 		delete this->watches[i];
 	}
-	delete[] watches;
+	//delete[] watches;
 }
