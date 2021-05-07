@@ -5,7 +5,7 @@ void list::setCount(const int countCopy)
 	this->count = countCopy;
 }
 
-void list::addLink(watch &watchLink)
+void list::addLink(watch watchLink)
 {
 	auto *tmp = new watch *[this->count + 2];
 	for (int i = 0; i < this->count; i++) {

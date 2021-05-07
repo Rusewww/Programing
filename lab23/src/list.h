@@ -11,7 +11,7 @@ class list {
     public:
 	virtual ~list();
 	void setCount(int countCopy);
-	void addLink(watch &watchLink);
+	void addLink(watch watchLink);
 	void removeLink(int index);
 	watch &getLink(int index) const;
 	void showAll() const;
