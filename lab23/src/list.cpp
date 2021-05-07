@@ -19,7 +19,8 @@ void list::addLink(watch &watchLink)
 
 void list::removeLink(int index)
 {
-	auto **tmp = new watch *[this->count - 1];
+	unsigned long newCount = this->count - 1;
+	auto **tmp = new watch * [newCount];
 	int fix = 0;
 
 	if (index >= this->count) {
@@ -33,7 +34,7 @@ void list::removeLink(int index)
 	}
 	delete[] this->watches;
 	this->watches = tmp;
-	this->count -= 1;
+	this->count--;
 }
 
 watch &list::getLink(int index) const
