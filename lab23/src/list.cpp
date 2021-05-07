@@ -25,8 +25,8 @@ void list::removeLink(int index)
 		index = this->count - 1;
 	}
 
-	memcpy(tmp, watches, sizeof(watch) * (index));
-	memcpy(tmp + index, watches + index + 1, sizeof(watch) * (count - index));
+	memcpy(tmp, watches, sizeof(watch) * ((unsigned long)index));
+	memcpy(tmp + index, watches + index + 1, sizeof(watch) * (unsigned long)(count - index));
 
 	delete[] this->watches;
 	this->watches = tmp;
@@ -41,36 +41,37 @@ watch &list::getLink(int index) const
 	return *watches[index];
 }
 
-void list::showAll() const {
+void list::showAll() const
+{
 	for (int i = 0; i < this->count; ++i) {
 		watch temp = getLink(i);
 		temp.show();
 	}
 }
 
-watch& list::findByPrice(const int price) const{
+watch &list::findByPrice(const int price) const
+{
 	int index = 0;
 	int countOfWatchUnder = 0;
 	for (int i = 0; i < this->count; ++i) {
 		watch temp = getLink(i);
-		if(price >= temp.getCost()){
+		if (price >= temp.getCost()) {
 			temp.show();
 			index = i;
 			countOfWatchUnder++;
 		}
 	}
-	if(countOfWatchUnder == 0){
+	if (countOfWatchUnder == 0) {
 		cout << "here are no suitable watches!";
 	} else {
 		return getLink(index);
 	}
-
 }
 
-list::~list(){
+list::~list()
+{
 	for (int i = 0; i < this->count; ++i) {
 		delete this->watches[i];
 	}
 	delete[] watches;
-
 }
