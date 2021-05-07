@@ -17,7 +17,7 @@ int main()
 	watch watchTree(true, "MTG-B1000", 1000, manufacturerStruct("G-Shock", "Japan"), SPORT);
 	list *watchList = new list;
 	watchList->setCount(0);
-	watchList->addLink(*watchOne);
+	//watchList->addLink(*watchOne);
 	watchList->addLink(watchTwo);
 	watchList->addLink(watchTree);
 
