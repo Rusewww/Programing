@@ -19,7 +19,7 @@ void list::addLink(watch &watchLink)
 
 void list::removeLink(int index)
 {
-	auto *tmp = new watch *[this->count - 1];
+	auto *tmp = new watch *[this->count];
 	int fix = 0;
 	if (index >= this->count) {
 		index = this->count - 1;
