@@ -18,8 +18,8 @@ int main()
 	list *watchList = new list;
 	watchList->setCount(0);
 	watchList->addLink(*watchOne);
-	watchList->addLink(watchTwo);
-	watchList->addLink(watchTree);
+	//watchList->addLink(watchTwo);
+	//watchList->addLink(watchTree);
 
 	cout << "|===============<Origin_list>===============|" << endl;
 	watchList->showAll();
@@ -32,7 +32,7 @@ int main()
 	tmp.show();
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
-	//watchList->removeLink(1);
+	watchList->removeLink(1);
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
