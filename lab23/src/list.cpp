@@ -25,8 +25,8 @@ void list::removeLink(int index)
 		index = this->count - 1;
 	}
 
-	memcpy(tmp, watches, sizeof(watch) * ((unsigned long)index));
-	memcpy(tmp + index, watches + index + 1, sizeof(watch) * (unsigned long)(count - index));
+	memcpy(tmp, watches, sizeof (watch) * ((unsigned long)index));
+	memcpy(tmp + index, watches + index + 1, sizeof (watch) * (unsigned long)(count - index));
 
 	delete[] this->watches;
 	this->watches = tmp;
