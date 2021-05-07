@@ -32,7 +32,7 @@ int main()
 	tmp.show();
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
-	watchList->removeLink(1);
+	watchList->removeLink(0);
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
