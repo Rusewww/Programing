@@ -127,7 +127,7 @@ void watch::setStyle(const watchStyle &styleClone)
 	this->style = styleClone;
 }
 
-void watch::showAll(){
+void watch::show(){
 	cout << waterproof;
 	cout << model;
 	cout << cost;

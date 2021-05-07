@@ -52,7 +52,7 @@ class watch {
 	void setCost(const int &costClone);
 	void setManufacturer(manufacturerStruct *manufacturerClone);
 	void setStyle(const watchStyle &styleClone);
-	void showAll();
+	void show();
 };
 
 #endif //PROGRAMING_WATCH_H
