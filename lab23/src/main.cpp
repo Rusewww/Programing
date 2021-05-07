@@ -2,7 +2,7 @@
 
 int main()
 {
-	auto *manufacturer = new manufacturerStruct;
+	/*auto *manufacturer = new manufacturerStruct;
 	manufacturer->setFirm("Mazzucato");
 	manufacturer->setCountry("Italy");
 
@@ -11,13 +11,13 @@ int main()
 	watchOne->setModel("RIM");
 	watchOne->setCost(2200);
 	watchOne->setManufacturer(manufacturer);
-	watchOne->setStyle(ARMOURED);
+	watchOne->setStyle(ARMOURED);*/
 
 	watch watchTwo(false, "ZO9507", 1995, manufacturerStruct("Zodiac", "Germany"), CLASSIC);
 	watch watchTree(true, "MTG-B1000", 1000, manufacturerStruct("G-Shock", "Japan"), SPORT);
 	list *watchList = new list;
 	watchList->setCount(0);
-	watchList->addLink(*watchOne);
+	//watchList->addLink(*watchOne);
 	watchList->addLink(watchTwo);
 	watchList->addLink(watchTree);
 
@@ -36,7 +36,7 @@ int main()
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
-	delete manufacturer;
-	delete watchOne;
+	//delete manufacturer;
+	//delete watchOne;
 	return 0;
 }
