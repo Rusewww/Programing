@@ -1,6 +1,7 @@
 #ifndef PROGRAMING_WATCH_H
 #define PROGRAMING_WATCH_H
 
+#include <string>
 #include <cstring>
 #include <iostream>
 #include <utility>
