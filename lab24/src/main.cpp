@@ -20,8 +20,8 @@ int main()
 	watchList->setCount(0);
 
 	watchList->addLink(*watchTree);
-	watchList->addLink(watchOne);
 	watchList->addLink(watchTwo);
+	//watchList->addLink(watchOne);
 
 	cout << "|===============<Origin_list>===============|" << endl;
 	watchList->showAll();
@@ -39,6 +39,7 @@ int main()
 	//auto *test = new watch;
 	//*test = watch::toClass(one);
 	//test->show();
+	//watchList->addLink(*test);
 	string path = "../assets/input.txt";
 	watchList->readFromFile(path);
 	watchList->showAll();
