@@ -43,5 +43,6 @@ int main()
 	delete watchList;
 	delete manufacturer;
 	delete watchTree;
+	delete test;
 	return 0;
 }
