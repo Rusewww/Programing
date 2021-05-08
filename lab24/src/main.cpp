@@ -37,7 +37,7 @@ int main()
 	string one = watchOne.toString();
 	//watchList->removeLink(0);
 	auto *test = new watch;
-	test = &watch::toClass(one);
+	*test = watch::toClass(one);
 	test->show();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
