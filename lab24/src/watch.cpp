@@ -148,8 +148,8 @@ void watch::show()
 string watch::toString() const
 {
 	stringstream out;
-	out << getWaterproof() << " " << getModel() << " " << getCost() << " " << getManufacturer().getFirm() << " " << getManufacturer().getCountry()
-	    << getStyle() << " " << endl;
+	out << getWaterproof() << " " << getModel() << " " << getCost() << " " << getManufacturer().getFirm() << " "
+	    << getManufacturer().getCountry() << getStyle() << " "<< endl;
 	return out.str();
 }
 

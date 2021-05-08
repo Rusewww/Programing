@@ -36,13 +36,16 @@ int main()
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	string one = watchOne.toString();
 	//watchList->removeLink(0);
-	auto *test = new watch;
-	*test = watch::toClass(one);
-	test->show();
+	//auto *test = new watch;
+	//*test = watch::toClass(one);
+	//test->show();
+	string path = R"(D:\Programing\lab24\assets\input.txt)";
+	watchList->readFromFile(path);
+	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
 	delete manufacturer;
 	delete watchTree;
-	delete test;
+	//delete test;
 	return 0;
 }
