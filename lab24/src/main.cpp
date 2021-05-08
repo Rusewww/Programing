@@ -36,11 +36,13 @@ int main()
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	string one = watchOne.toString();
 	//watchList->removeLink(0);
-	watch test = watch::toClass(one);
-	test.show();
+	auto *test = new watch;
+	*test = watch::toClass(one);
+	test->show();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
 	delete manufacturer;
 	delete watchTree;
+	delete test;
 	return 0;
 }

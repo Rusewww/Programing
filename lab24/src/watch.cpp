@@ -161,7 +161,7 @@ watch watch::toClass(const string &sWatch)
 	stringstream buffer;
 	int counter = 0;
 	unsigned long position = 0;
-	auto *tmp = new watch;
+	watch tmp;
 	for (unsigned long i = 0; i < length; i++) {
 		if (sWatch[i] == ' ') {
 			if (counter == 0) {
@@ -170,7 +170,7 @@ watch watch::toClass(const string &sWatch)
 				int waterproof;
 				buffer << str;
 				buffer >> waterproof;
-				tmp->setWaterproof(waterproof);
+				tmp.setWaterproof(waterproof);
 				clone.erase(0, position + 1);
 				buffer.clear();
 				position = i;
@@ -178,7 +178,7 @@ watch watch::toClass(const string &sWatch)
 			} else if (counter == 1) {
 				position = clone.find(' ');
 				str = clone.substr(0, position);
-				tmp->setModel(str);
+				tmp.setModel(str);
 				clone.erase(0, position + 1);
 				counter++;
 			} else if (counter == 2) {
@@ -187,7 +187,7 @@ watch watch::toClass(const string &sWatch)
 				int cost;
 				buffer << str;
 				buffer >> cost;
-				tmp->setCost(cost);
+				tmp.setCost(cost);
 				clone.erase(0, position + 1);
 				buffer.clear();
 				counter++;
@@ -199,7 +199,7 @@ watch watch::toClass(const string &sWatch)
 						clone.erase(0, position + 1);
 						string country = clone.substr(0, position + 1);
 						auto *manufacturer = new manufacturerStruct(firm, country);
-						tmp->setManufacturer(manufacturer);
+						tmp.setManufacturer(manufacturer);
 						delete manufacturer;
 						break;
 					}
@@ -215,13 +215,13 @@ watch watch::toClass(const string &sWatch)
 				buffer >> style;
 				switch (style) {
 				case 0:
-					tmp->setStyle(ARMOURED);
+					tmp.setStyle(ARMOURED);
 					break;
 				case 1:
-					tmp->setStyle(CLASSIC);
+					tmp.setStyle(CLASSIC);
 					break;
 				case 2:
-					tmp->setStyle(SPORT);
+					tmp.setStyle(SPORT);
 				default:
 					break;
 				}
@@ -229,5 +229,5 @@ watch watch::toClass(const string &sWatch)
 			}
 		}
 	}
-	return *tmp;
+	return tmp;
 }
