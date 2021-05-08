@@ -39,7 +39,7 @@ int main()
 	//auto *test = new watch;
 	//*test = watch::toClass(one);
 	//test->show();
-	string path = "D:/Programing/lab24/assets/input.txt";
+	string path = "../assets/input.txt";
 	watchList->readFromFile(path);
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
