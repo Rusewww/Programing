@@ -36,8 +36,8 @@ int main()
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	string one = watchOne.toString();
 	//watchList->removeLink(0);
-	//auto *test = new watch;
-	watch *test = &test->toClass(one);
+	auto *test = new watch;
+	test = &watch::toClass(one);
 	test->show();
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
