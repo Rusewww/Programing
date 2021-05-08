@@ -5,8 +5,8 @@
 
 class list {
     private:
-	watch **watches;
-	int count;
+	watch **watches{};
+	int count{};
 
     public:
 	virtual ~list();
@@ -18,4 +18,4 @@ class list {
 	watch &findByPrice(int price) const;
 };
 
-#endif //PROGRAMING_LIST_H
+#endif
