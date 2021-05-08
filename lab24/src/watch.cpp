@@ -230,4 +230,5 @@ watch watch::toClass(const string &sWatch)
 		}
 	}
 	return *tmp;
+	delete tmp;
 }
