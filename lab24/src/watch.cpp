@@ -156,11 +156,11 @@ string watch::toString() const
 watch &watch::toClass(const string &sWatch)
 {
 	string clone = sWatch;
-	unsigned int length = sWatch.length();
+	unsigned long length = sWatch.length();
 	string str;
 	stringstream buffer;
 	int counter = 0;
-	unsigned int position = 0;
+	unsigned long position = 0;
 	auto *tmp = new watch;
 	for (int i = 0; i < length; i++) {
 		if (sWatch[i] == ' ') {
