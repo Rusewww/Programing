@@ -162,7 +162,7 @@ watch &watch::toClass(const string &sWatch)
 	int counter = 0;
 	unsigned long position = 0;
 	auto *tmp = new watch;
-	for (int i = 0; i < length; i++) {
+	for (unsigned long i = 0; i < length; i++) {
 		if (sWatch[i] == ' ') {
 			if (counter == 0) {
 				position = clone.find(' ');
@@ -192,7 +192,7 @@ watch &watch::toClass(const string &sWatch)
 				buffer.clear();
 				counter++;
 			} else if (counter == 3) {
-				for (int j = 0; j < clone.length(); ++j) {
+				for (unsigned long j = 0; j < clone.length(); ++j) {
 					if (clone[j] == ' ') {
 						position = clone.find(' ');
 						string firm = clone.substr(0, position);
