@@ -168,10 +168,11 @@ void list::readFromFile(const string &sList) {
 		if (!fileInf.is_open()) {
 			cout << "Program can`t open the file!" << endl;
 		} else {
-			watch tmp;
+			auto *tmp = new watch;
 			getline(fileInf, classL);
-			tmp = watch::toClass(classL);
-			this->watches[i] = &tmp;
+			*tmp = watch::toClass(classL);
+			this->watches[i] = tmp;
+			delete tmp;
 			//this->watches[i] = ;
 			//this->watches[i]->setCost(tmp.getCost());
 		}
