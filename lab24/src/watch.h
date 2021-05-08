@@ -60,7 +60,7 @@ class watch {
 	void setStyle(const watchStyle &styleClone);
 	void show();
 	string toString() const;
-	static watch &toClass(const string &sWatch);
+	static watch toClass(const string &sWatch);
 };
 
 #endif //PROGRAMING_WATCH_H

@@ -153,7 +153,7 @@ string watch::toString() const
 	return out.str();
 }
 
-watch &watch::toClass(const string &sWatch)
+watch watch::toClass(const string &sWatch)
 {
 	string clone = sWatch;
 	unsigned long length = sWatch.length();
