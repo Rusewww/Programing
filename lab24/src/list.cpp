@@ -76,77 +76,75 @@ list::~list()
 	delete[] watches;
 }
 
-watch &list::ToClass(const string &obj) const
+watch &list::ToClass(const string &sWatch)
 {
-	string buffer = obj;
+	string clone = sWatch;
+	unsigned long length = sWatch.length();
 	string str;
-	stringstream buf;
-	int flag = 0;
-	int pos = 0;
-	auto *temp = new watch;
-	int len = obj.length();
-	for (int i = 0; i < len; ++i) {
-		if (obj[i] == ' ') {
-			if (flag == 0) {
-				pos = buffer.find(' ');
-				str = buffer.substr(0, pos);
-				int LD;
-				buf << str;
-				buf >> LD;
-				temp->setWaterproof(LD);
-				buffer.erase(0, pos + 1);
-				buf.clear();
-				flag++;
-				pos = i;
-			} else if (flag == 1) {
-				pos = buffer.find(' ');
-				str = buffer.substr(0, pos);
-				temp->setModel(str);
-				buffer.erase(0, pos + 1);
-				flag++;
-			} else if (flag == 2) {
-				pos = buffer.find(' ');
-				str = buffer.substr(0, pos);
-				int vol;
-				buf << str;
-				buf >> vol;
-				temp->setCost(vol);
-				buffer.erase(0, pos + 1);
-				buf.clear();
-				flag++;
-			} else if (flag == 3) {
-				for (int j = 0; j < buffer.length(); ++j) {
-					if (buffer[j] == ' ') {
-						pos = buffer.find(' ');
-						string name = buffer.substr(0, pos);
-						buffer.erase(0, pos + 1);
-						pos = buffer.find(' ');
-						string country = buffer.substr(0, pos);
-						auto *firm = new manufacturerStruct(name, country);
-						temp->setManufacturer(firm);
+	stringstream buffer;
+	int counter = 0;
+	unsigned long position = 0;
+	auto *tmp = new watch;
+	for (unsigned long i = 0; i < length; i++) {
+		if (sWatch[i] == ' ') {
+			if (counter == 0) {
+				position = clone.find(' ');
+				str = clone.substr(0, position);
+				int waterproof;
+				buffer << str;
+				buffer >> waterproof;
+				tmp->setWaterproof(waterproof);
+				clone.erase(0, position + 1);
+				buffer.clear();
+				position = i;
+				counter++;
+			} else if (counter == 1) {
+				position = clone.find(' ');
+				str = clone.substr(0, position);
+				tmp->setModel(str);
+				clone.erase(0, position + 1);
+				counter++;
+			} else if (counter == 2) {
+				position = clone.find(' ');
+				str = clone.substr(0, position);
+				int cost;
+				buffer << str;
+				buffer >> cost;
+				tmp->setCost(cost);
+				clone.erase(0, position + 1);
+				buffer.clear();
+				counter++;
+			} else if (counter == 3) {
+				for (unsigned long j = 0; j < clone.length(); ++j) {
+					if (clone[j] == ' ') {
+						position = clone.find(' ');
+						string firm = clone.substr(0, position);
+						clone.erase(0, position + 1);
+						string country = clone.substr(0, position + 1);
+						auto *manufacturer = new manufacturerStruct(firm, country);
+						tmp->setManufacturer(manufacturer);
+						delete manufacturer;
 						break;
 					}
-					buf.clear();
-					buffer.erase(0, pos + 1);
-					flag++;
 				}
-			} else if (flag == 4) {
-				//str = buffer.substr(0);
-
-				pos = buffer.find(' ');
-				str = buffer.substr(0, pos);
-				int aim;
-				buf << str;
-				buf >> aim;
-				switch (aim) {
+				buffer.clear();
+				clone.erase(0, position + 1);
+				counter++;
+			} else if (counter == 4) {
+				position = clone.find(' ');
+				str = clone.substr(0, position);
+				int style;
+				buffer << str;
+				buffer >> style;
+				switch (style) {
 				case 0:
-					temp->setStyle(ARMOURED);
+					tmp->setStyle(ARMOURED);
 					break;
 				case 1:
-					temp->setStyle(CLASSIC);
+					tmp->setStyle(CLASSIC);
 					break;
 				case 2:
-					temp->setStyle(SPORT);
+					tmp->setStyle(SPORT);
 				default:
 					break;
 				}
@@ -154,8 +152,7 @@ watch &list::ToClass(const string &obj) const
 			}
 		}
 	}
-
-	return *temp;
+	return *tmp;
 }
 
 void list::readFromFile(const string &sList)
