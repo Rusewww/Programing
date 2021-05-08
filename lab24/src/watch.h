@@ -5,11 +5,16 @@
 #include <cstring>
 #include <iostream>
 #include <utility>
+#include <sstream>
+#include <fstream>
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::ifstream;
+using std::ofstream;
 using std::string;
+using std::stringstream;
 
 enum watchStyle { ARMOURED, CLASSIC, SPORT };
 
@@ -40,7 +45,7 @@ class watch {
 
     public:
 	watch();
-	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct& manufacturerClone, watchStyle styleClone);
+	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone);
 	watch(const watch &clone);
 	virtual ~watch();
 	bool getWaterproof() const;
@@ -54,6 +59,8 @@ class watch {
 	void setManufacturer(manufacturerStruct *manufacturerClone);
 	void setStyle(const watchStyle &styleClone);
 	void show();
+	string toString() const;
+	static watch &toClass(const string &sWatch);
 };
 
 #endif //PROGRAMING_WATCH_H
