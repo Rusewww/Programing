@@ -5,8 +5,8 @@
 
 class list {
     private:
-	watch **watches;
-	int count;
+	watch **watches{};
+	int count{};
 
     public:
 	virtual ~list();
