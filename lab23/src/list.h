@@ -18,4 +18,4 @@ class list {
 	watch &findByPrice(int price) const;
 };
 
-#endif //PROGRAMING_LIST_H
+#endif
