@@ -2,24 +2,26 @@
 
 int main()
 {
+	watch watchOne(false, "ZO9507", 1995, manufacturerStruct("Zodiac", "Germany"), CLASSIC);
+	watch watchTwo(true, "MTG-B1000", 1000, manufacturerStruct("G-Shock", "Japan"), SPORT);
+
 	auto *manufacturer = new manufacturerStruct;
 	manufacturer->setFirm("Mazzucato");
 	manufacturer->setCountry("Italy");
 
-	auto *watchOne = new watch;
-	watchOne->setWaterproof(true);
-	watchOne->setModel("RIM");
-	watchOne->setCost(2200);
-	watchOne->setManufacturer(manufacturer);
-	watchOne->setStyle(ARMOURED);
+	auto *watchTree = new watch;
+	watchTree->setWaterproof(true);
+	watchTree->setModel("RIM");
+	watchTree->setCost(2200);
+	watchTree->setManufacturer(manufacturer);
+	watchTree->setStyle(ARMOURED);
 
-	watch watchTwo(false, "ZO9507", 1995, manufacturerStruct("Zodiac", "Germany"), CLASSIC);
-	watch watchTree(true, "MTG-B1000", 1000, manufacturerStruct("G-Shock", "Japan"), SPORT);
 	list *watchList = new list;
 	watchList->setCount(0);
-	watchList->addLink(*watchOne);
+
+	watchList->addLink(*watchTree);
+	watchList->addLink(watchOne);
 	watchList->addLink(watchTwo);
-	watchList->addLink(watchTree);
 
 	cout << "|===============<Origin_list>===============|" << endl;
 	watchList->showAll();
@@ -37,6 +39,6 @@ int main()
 	cout << "|-------------------------------------------|" << endl;
 	delete watchList;
 	delete manufacturer;
-	delete watchOne;
+	delete watchTree;
 	return 0;
 }
