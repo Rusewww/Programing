@@ -20,6 +20,7 @@ int main()
 	watchList->setCount(0);
 
 	watchList->addLink(*watchTree);
+	delete watchTree;
 	watchList->addLink(watchTwo);
 	//watchList->addLink(watchOne);
 
@@ -46,7 +47,6 @@ int main()
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
 	delete manufacturer;
-	delete watchTree;
 	delete tmp;
 	//delete test;
 	return 0;
