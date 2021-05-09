@@ -40,8 +40,7 @@ int main()
 	//*test = watch::toClass(one);
 	//test->show();
 	//watchList->addLink(*test);
-	string path = "../assets/input.txt";
-	watchList->readFromFile(path);
+	watchList->readFromFile("../assets/input.txt");
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
