@@ -16,6 +16,8 @@ int main()
 	watchTree->setManufacturer(manufacturer);
 	watchTree->setStyle(ARMOURED);
 
+	delete manufacturer;
+
 	list *watchList = new list;
 	watchList->setCount(0);
 
@@ -46,7 +48,6 @@ int main()
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
-	delete manufacturer;
 	delete tmp;
 	//delete test;
 	return 0;
