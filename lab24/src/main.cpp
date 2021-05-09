@@ -44,6 +44,7 @@ int main()
 	watchList->readFromFile(path);
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
+	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
 	delete manufacturer;
 	delete watchTree;

@@ -164,13 +164,29 @@ void list::readFromFile(const string &sList)
 	this->setCount(3);
 	delete[] this->watches;
 	this->watches = new watch *[count + 1];
-	if (!fileInf.is_open()) {
-		cout << "Program can`t open the file!" << endl;
-	} else {
+	if (fileInf.is_open()) {
 		for (int i = 0; i < count; i++) {
 			getline(fileInf, classL);
 			this->watches[i] = &this->ToClass(classL);
 		}
+	} else {
+		cout << "Program can`t open the file!" << endl;
 	}
 	fileInf.close();
+}
+
+void list::writeToFile(const string &path) const
+{
+	ofstream file;
+	file.open(path);
+
+	for (int i = 0; i < count; ++i) {
+		if (file.is_open()) {
+			file << this->getLink(i).toString();
+		} else {
+			cout << "Program can`t open the file!" << endl;
+		}
+	}
+
+	file.close();
 }

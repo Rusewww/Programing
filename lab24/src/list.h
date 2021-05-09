@@ -16,8 +16,9 @@ class list {
 	watch &getLink(int index) const;
 	void showAll() const;
 	watch &findByPrice(int price) const;
+	static watch &ToClass(const string &obj);
 	void readFromFile(const string &sList);
-	static watch &ToClass(const string &obj) ;
+	void writeToFile(const string &path) const;
 };
 
 #endif
