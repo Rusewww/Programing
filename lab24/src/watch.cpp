@@ -222,6 +222,7 @@ watch watch::toClass(const string &sWatch)
 						string country = clone.substr(0, position);
 						auto *manufacturer = new manufacturerStruct(firm, country);
 						tmp.setManufacturer(manufacturer);
+						delete manufacturer;
 						break;
 					}
 				}
