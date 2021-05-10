@@ -42,7 +42,7 @@ int main()
 	watchList->deleteList();
 	auto *test = new watch;
 	string fromFileOne;
-	fromFileOne = watchList->readFromFile("../assets/input.txt");
+	fromFileOne = list::readFromFile("../assets/input.txt");
 	*test = watch::toClass(fromFileOne);
 	watchList->addLink(*test);
 	watchList->showAll();
