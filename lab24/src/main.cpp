@@ -35,7 +35,7 @@ int main()
 	cout << "|=========<Watch_on_first_position>=========|" << endl;
 	watch *tmp = &watchList->getLink(0);
 	tmp->show();
-	delete tmp;
+	//delete tmp;
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	string one = watchOne.toString();
