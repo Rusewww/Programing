@@ -40,7 +40,7 @@ class watch {
 
     public:
 	watch();
-	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct& manufacturerClone, watchStyle styleClone);
+	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone);
 	watch(const watch &clone);
 	virtual ~watch();
 	bool getWaterproof() const;
