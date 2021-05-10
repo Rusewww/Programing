@@ -46,7 +46,7 @@ int main()
 	*test = watch::toClass(fromFileOne);
 	watchList->addLink(*test);
 	watchList->addLink(*test);
-	delete &test;
+	delete test;
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
