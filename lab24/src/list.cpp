@@ -159,18 +159,12 @@ string &list::readFromFile(const string &sList, string classL[3])
 {
 	ifstream fileInf;
 	fileInf.open(sList);
-	getline(fileInf, classL[0]);
-	getline(fileInf, classL[1]);
-	getline(fileInf, classL[2]);
-	/*this->watches = new watch *[count + 1];
-	if (fileInf.is_open()) {
-		for (int i = 0; i < count; i++) {
-			getline(fileInf, classL);
-			this->watches[i] = &this->ToClass(classL);
-		}
-	} else {
-		cout << "Program can`t open the file!" << endl;
-	}*/
+	int length = 3;
+	for (int i = 0; i < length; i++) {
+		getline(fileInf, classL[i]);
+		//getline(fileInf, classL[1]);
+		//getline(fileInf, classL[2]);
+	}
 	fileInf.close();
 	return *classL;
 }

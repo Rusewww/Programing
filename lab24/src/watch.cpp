@@ -149,7 +149,7 @@ string watch::toString() const
 {
 	stringstream out;
 	out << getWaterproof() << " " << getModel() << " " << getCost() << " " << getManufacturer().getFirm() << " " << getManufacturer().getCountry()
-	    << getStyle() << " " << endl;
+	    << " " << getStyle() << endl;
 	return out.str();
 }
 

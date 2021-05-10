@@ -20,48 +20,35 @@ int main()
 
 	list *watchList = new list;
 	watchList->setCount(0);
-
+	watchList->addLink(watchOne);
+	watchList->addLink(watchTwo);
 	watchList->addLink(*watchTree);
 	delete watchTree;
-	watchList->addLink(watchTwo);
-	//watchList->addLink(watchOne);
 
 	cout << "|===============<Origin_list>===============|" << endl;
-	watchList->showAll();
+	for (int i = 0; i < 3; i++) {
+		string out = watchList->getLink(i).toString();
+		cout << out << endl;
+	}
 	cout << "|-------------------------------------------|" << endl;
-	cout << "|=======<Watch_with_price_under_1500>=======|" << endl;
-	watchList->findByPrice(1500);
-	cout << "|-------------------------------------------|" << endl;
-	cout << "|=========<Watch_on_first_position>=========|" << endl;
-	watch *tmp = &watchList->getLink(0);
-	tmp->show();
-	//delete tmp;
-	cout << "|-------------------------------------------|" << endl;
-	cout << "|=======<List_with_deleted_first_link>======|" << endl;
-	string one = watchOne.toString();
-
+	cout << "|==========<List_redden_from_file>==========|" << endl;
 
 	string fromFile[3];
-	*fromFile = list::readFromFile("../assets/input.txt",fromFile);
+	list::readFromFile("../assets/input.txt",fromFile);
 
 	watchList->deleteList();
+
 	int i = 0;
 	while(i < 3){
 		auto *test = new watch;
 		*test = watch::toClass(fromFile[i++]);
 		watchList->addLink(*test);
-		watch *tmp1 = &watchList->getLink(i);
-		tmp1->show();
+		watch *tmp = &watchList->getLink(i);
+		string out = watchList->getLink(i).toString();
+		cout << out << endl;
 		delete test;
 	}
 
-	/**test2[1] = watch::toClass(fromFileOne[0]);
-	*test[1] = watch::toClass(fromFileOne[1]);
-	*test3 = watch::toClass(fromFileOne[2]);
-	watchList->addLink(*test);
-	watchList->addLink(*test2);
-	watchList->addLink(*test3);*/
-	//watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
