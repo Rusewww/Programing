@@ -14,7 +14,7 @@ int main()
 	watchTree->setModel("RIM");
 	watchTree->setCost(2200);
 	watchTree->setManufacturer(manufacturer);
-	watchTree->setStyle();
+	watchTree->setStyle(ARMOURED);
 
 	list *watchList = new list;
 	watchList->setCount(0);
