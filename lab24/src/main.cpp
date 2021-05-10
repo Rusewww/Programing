@@ -40,24 +40,28 @@ int main()
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	string one = watchOne.toString();
 
-	auto *test = new watch;
 
-	watchList->addLink(*test);
-	string fromFileOne[3];
-	*fromFileOne = list::readFromFile("../assets/input.txt",fromFileOne);
-	auto *test2 = new watch;
-	auto *test3 = new watch;
+	string fromFile[3];
+	*fromFile = list::readFromFile("../assets/input.txt",fromFile);
+
 	watchList->deleteList();
-	*test2 = watch::toClass(fromFileOne[0]);
-	*test = watch::toClass(fromFileOne[1]);
+	int i = 0;
+	while(i < 3){
+		auto *test = new watch;
+		*test = watch::toClass(fromFile[i++]);
+		watchList->addLink(*test);
+		watch *tmp1 = &watchList->getLink(i);
+		tmp1->show();
+		delete test;
+	}
+
+	/**test2[1] = watch::toClass(fromFileOne[0]);
+	*test[1] = watch::toClass(fromFileOne[1]);
 	*test3 = watch::toClass(fromFileOne[2]);
 	watchList->addLink(*test);
 	watchList->addLink(*test2);
-	watchList->addLink(*test3);
-	delete test;
-	delete test2;
-	delete test3;
-	watchList->showAll();
+	watchList->addLink(*test3);*/
+	//watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
