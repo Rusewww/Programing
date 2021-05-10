@@ -54,6 +54,8 @@ int main()
 	watchList->addLink(*test2);
 	watchList->addLink(*test3);
 	delete test;
+	delete test2;
+	delete test3;
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
