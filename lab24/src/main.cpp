@@ -38,15 +38,13 @@ int main()
 
 	watchList->deleteList();
 
-	int i = 0;
-	while(i < 3){
-		auto *test = new watch;
-		*test = watch::toClass(fromFile[i++]);
-		watchList->addLink(*test);
-		watch *tmp = &watchList->getLink(i);
+	watchList->addLink(watch::toClass(fromFile[0]));
+	watchList->addLink(watch::toClass(fromFile[1]));
+	watchList->addLink(watch::toClass(fromFile[2]));
+
+	for (int i = 0; i < 3; i++) {
 		string out = watchList->getLink(i).toString();
 		cout << out << endl;
-		delete test;
 	}
 
 	cout << "|-------------------------------------------|" << endl;

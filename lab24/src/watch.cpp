@@ -148,8 +148,8 @@ void watch::show()
 string watch::toString() const
 {
 	stringstream out;
-	out << getWaterproof() << " " << getModel() << " " << getCost() << " " << getManufacturer().getFirm() << " " << getManufacturer().getCountry()
-	    << " " << getStyle() << endl;
+	out << getWaterproof() << " " << getModel() << " " << getCost() << " " << getStyle()<< " " << getManufacturer().getFirm() << " "
+	    << getManufacturer().getCountry() << endl;
 	return out.str();
 }
 
@@ -162,26 +162,27 @@ watch watch::toClass(const string &sWatch)
 	int counter = 0;
 	unsigned long position = 0;
 	watch tmp;
-	for (unsigned long i = 0; i < length; i++) {
-		if (sWatch[i] == ' ') {
-			if (counter == 0) {
+	for (int i = 0; i < length; ++i) {
+		if(sWatch[i] == ' '){
+			if (counter == 0){
 				position = clone.find(' ');
 				str = clone.substr(0, position);
 				int waterproof;
 				buffer << str;
 				buffer >> waterproof;
+
 				tmp.setWaterproof(waterproof);
 				clone.erase(0, position + 1);
 				buffer.clear();
-				position = i;
 				counter++;
-			} else if (counter == 1) {
+				position = i;
+			}else if (counter == 1){
 				position = clone.find(' ');
 				str = clone.substr(0, position);
 				tmp.setModel(str);
 				clone.erase(0, position + 1);
 				counter++;
-			} else if (counter == 2) {
+			}else if (counter == 2) {
 				position = clone.find(' ');
 				str = clone.substr(0, position);
 				int cost;
@@ -191,29 +192,13 @@ watch watch::toClass(const string &sWatch)
 				clone.erase(0, position + 1);
 				buffer.clear();
 				counter++;
-			} else if (counter == 3) {
-				for (unsigned long j = 0; j < clone.length(); ++j) {
-					if (clone[j] == ' ') {
-						position = clone.find(' ');
-						string firm = clone.substr(0, position);
-						clone.erase(0, position + 1);
-						string country = clone.substr(0, position + 1);
-						auto *manufacturer = new manufacturerStruct(firm, country);
-						tmp.setManufacturer(manufacturer);
-						delete manufacturer;
-						break;
-					}
-				}
-				buffer.clear();
-				clone.erase(0, position + 1);
-				counter++;
-			} else if (counter == 4) {
+			} else if (counter == 3){
 				position = clone.find(' ');
 				str = clone.substr(0, position);
-				int style;
+				int aim;
 				buffer << str;
-				buffer >> style;
-				switch (style) {
+				buffer >> aim;
+				switch (aim) {
 				case 0:
 					tmp.setStyle(ARMOURED);
 					break;
@@ -224,6 +209,21 @@ watch watch::toClass(const string &sWatch)
 					tmp.setStyle(SPORT);
 				default:
 					break;
+				}
+				buffer.clear();
+				clone.erase(0, position + 1);
+				counter++;
+			}else if(counter == 4){
+				for (int j = 0; j < clone.length(); ++j) {
+					if(clone[j] == ' '){
+						position = clone.find(' ');
+						string firm = clone.substr(0, position);
+						clone.erase(0, position + 1);
+						string country = clone.substr(0, position);
+						auto *manufacturer = new manufacturerStruct(firm, country);
+						tmp.setManufacturer(manufacturer);
+						break;
+					}
 				}
 				break;
 			}

@@ -1,3 +1,3 @@
-1 WAf2 1999 Zodiac Germany 0
-1 WAf2 400 sadas sssssy 1
-0 WFAFA 2400 Zodiac sgawny 2
+1 One 1999 0 Zodiac Germany
+1 Two 400 1 CASIO Japan
+0 Tree 2400 2 Rocket USSR
