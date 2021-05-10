@@ -76,7 +76,7 @@ list::~list()
 	delete[] watches;
 }
 
-watch &list::ToClass(const string &sWatch)
+/*watch &list::ToClass(const string &sWatch)
 {
 	string clone = sWatch;
 	unsigned long length = sWatch.length();
@@ -153,17 +153,15 @@ watch &list::ToClass(const string &sWatch)
 		}
 	}
 	return *tmp;
-}
+}*/
 
-void list::readFromFile(const string &sList)
+string list::readFromFile(const string &sList)
 {
 	ifstream fileInf;
 	fileInf.open(sList);
 	string classL;
-
-	this->setCount(3);
-	delete[] this->watches;
-	this->watches = new watch *[count + 1];
+	getline(fileInf, classL);
+	/*this->watches = new watch *[count + 1];
 	if (fileInf.is_open()) {
 		for (int i = 0; i < count; i++) {
 			getline(fileInf, classL);
@@ -171,8 +169,9 @@ void list::readFromFile(const string &sList)
 		}
 	} else {
 		cout << "Program can`t open the file!" << endl;
-	}
+	}*/
 	fileInf.close();
+	return classL;
 }
 
 void list::writeToFile(const string &path) const
@@ -189,4 +188,10 @@ void list::writeToFile(const string &path) const
 	}
 
 	file.close();
+}
+
+void list::deleteList() {
+	delete[] this->watches;
+	this->setCount(0);
+	this->watches = new watch * [count];
 }

@@ -38,17 +38,18 @@ int main()
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|=======<List_with_deleted_first_link>======|" << endl;
 	string one = watchOne.toString();
-	//watchList->removeLink(0);
-	//auto *test = new watch;
-	//*test = watch::toClass(one);
-	//test->show();
-	//watchList->addLink(*test);
-	watchList->readFromFile("../assets/input.txt");
+
+	watchList->deleteList();
+	auto *test = new watch;
+	string fromFileOne;
+	fromFileOne = watchList->readFromFile("../assets/input.txt");
+	*test = watch::toClass(fromFileOne);
+	watchList->addLink(*test);
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
 	delete tmp;
-	//delete test;
+	delete test;
 	return 0;
 }

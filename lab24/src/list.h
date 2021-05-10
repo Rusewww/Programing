@@ -17,8 +17,9 @@ class list {
 	void showAll() const;
 	watch &findByPrice(int price) const;
 	static watch &ToClass(const string &obj);
-	void readFromFile(const string &sList);
+	static string readFromFile(const string &sList);
 	void writeToFile(const string &path) const;
+	void deleteList();
 };
 
 #endif
