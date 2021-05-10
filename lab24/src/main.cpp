@@ -45,11 +45,12 @@ int main()
 	fromFileOne = list::readFromFile("../assets/input.txt");
 	*test = watch::toClass(fromFileOne);
 	watchList->addLink(*test);
+	watchList->addLink(*test);
+	delete &test;
 	watchList->showAll();
 	cout << "|-------------------------------------------|" << endl;
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
 	delete tmp;
-	delete test;
 	return 0;
 }
