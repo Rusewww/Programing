@@ -16,10 +16,10 @@ class list {
 	watch &getLink(int index) const;
 	void showAll() const;
 	watch &findByPrice(int price) const;
-	static watch &ToClass(const string &obj);
-	static string readFromFile(const string &sList);
+	//static watch &ToClass(const string &obj);
 	void writeToFile(const string &path) const;
 	void deleteList();
+	static string &readFromFile(const string &sList, string *classL);
 };
 
 #endif

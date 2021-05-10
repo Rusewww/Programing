@@ -155,12 +155,13 @@ list::~list()
 	return *tmp;
 }*/
 
-string list::readFromFile(const string &sList)
+string &list::readFromFile(const string &sList, string classL[3])
 {
 	ifstream fileInf;
 	fileInf.open(sList);
-	string classL;
-	getline(fileInf, classL);
+	getline(fileInf, classL[0]);
+	getline(fileInf, classL[1]);
+	getline(fileInf, classL[2]);
 	/*this->watches = new watch *[count + 1];
 	if (fileInf.is_open()) {
 		for (int i = 0; i < count; i++) {
@@ -171,7 +172,7 @@ string list::readFromFile(const string &sList)
 		cout << "Program can`t open the file!" << endl;
 	}*/
 	fileInf.close();
-	return classL;
+	return *classL;
 }
 
 void list::writeToFile(const string &path) const
