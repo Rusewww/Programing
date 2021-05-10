@@ -195,10 +195,10 @@ watch watch::toClass(const string &sWatch)
 			} else if (counter == 3){
 				position = clone.find(' ');
 				str = clone.substr(0, position);
-				int aim;
+				int style;
 				buffer << str;
-				buffer >> aim;
-				switch (aim) {
+				buffer >> style;
+				switch (style) {
 				case 0:
 					tmp.setStyle(ARMOURED);
 					break;
