@@ -38,7 +38,6 @@ int main()
 
 	watchList->deleteList();
 
-
 	watchList->addLink(watch::toClass(fromFile[0]));
 	watchList->addLink(watch::toClass(fromFile[1]));
 	watchList->addLink(watch::toClass(fromFile[2]));
