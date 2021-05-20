@@ -162,7 +162,7 @@ ifstream &operator>>(ifstream &in, list &list1)
 {
 	delete[] list1.watches;
 	list1.watches = new watch *[list1.count + 1];
-	for (size_t i = 0; i < (size_t)list1.count; ++i) {
+	for (size_t i = 0; i <= (size_t)list1.count; ++i) {
 		list1.watches[i] = new watch;
 	}
 	regex reg("^[0-1] [A-Z][a-z]* [0-9]{1,6} [0-2] [a-zA-Z.&]* [A-Z][a-zA-Z]*");
