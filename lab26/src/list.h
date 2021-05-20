@@ -32,5 +32,36 @@ ostream &operator<<(ostream &output, const list &list1);
 ofstream &operator<<(ofstream &output, const list &list1);
 ifstream &operator>>(ifstream &input, list &list1);
 
+class quartzWatchesList {
+    private:
+	quartzWatches **quartzWatch{};
+	size_t count{};
+    public:
+	quartzWatchesList();
+	quartzWatchesList(const quartzWatchesList &clone);
+	virtual ~quartzWatchesList();
+	void setCount(size_t countCopy);
+	void addLink(quartzWatches &watchLink);
+	quartzWatches &getLink(int index) const;
+	quartzWatches &findByPrice(int price) const;
+	quartzWatches &findClassicWatches() const;
+	void showAll() const;
+};
+
+class mechanicalWatchList {
+    private:
+	mechanicalWatches **mechanicalWatch{};
+	size_t count{};
+    public:
+	mechanicalWatchList();
+	mechanicalWatchList(const mechanicalWatchList &clone);
+	virtual ~mechanicalWatchList();
+	void setCount(size_t countCopy);
+	void addLink(mechanicalWatches &watchLink);
+	mechanicalWatches &getLink(int index) const;
+	mechanicalWatches &findByPrice(int price) const;
+	mechanicalWatches &findSwitzerlandWithSkeleton() const;
+	void showAll() const;
+};
 
 #endif

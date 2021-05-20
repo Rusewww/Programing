@@ -195,3 +195,165 @@ ifstream &operator>>(ifstream &in, list &list1)
 	}
 	return in;
 }
+
+quartzWatchesList::quartzWatchesList() = default;
+
+quartzWatchesList::quartzWatchesList(const quartzWatchesList &clone) : count(clone.count)
+{
+	quartzWatch = new quartzWatches *[count];
+	for (int i = 0; i < count; i++) {
+		quartzWatch[i] = new quartzWatches(*clone.quartzWatch[i]);
+	}
+}
+quartzWatchesList::~quartzWatchesList()
+{
+	delete[] quartzWatch;
+}
+void quartzWatchesList::setCount(size_t countCopy)
+{
+	this->count = countCopy;
+}
+void quartzWatchesList::addLink(quartzWatches &watchLink)
+{
+	auto *tmp = new quartzWatches *[this->count + 2];
+	for (int i = 0; i < this->count; i++) {
+		tmp[i] = this->quartzWatch[i];
+	}
+	tmp[count] = &watchLink;
+	delete[] this->quartzWatch;
+	this->quartzWatch = tmp;
+	this->count += 1;
+}
+quartzWatches &quartzWatchesList::getLink(int index) const
+{
+	if (index >= this->count) {
+		index = this->count - 1;
+	}
+	return *quartzWatch[index];
+}
+quartzWatches &quartzWatchesList::findByPrice(int price) const
+{
+	int index = 0;
+	int countOfWatchUnder = 0;
+	for (int i = 0; i < this->count; i++) {
+		quartzWatches temp = getLink(i);
+		if (price >= temp.getCost()) {
+			temp.show();
+			index = i;
+			countOfWatchUnder++;
+		}
+	}
+	if (countOfWatchUnder == 0) {
+		cout << "There are no suitable watches!";
+		return getLink(0);
+	} else {
+		return getLink(index);
+	}
+}
+quartzWatches &quartzWatchesList::findClassicWatches() const
+{
+	int index = 0;
+	int countOfWatch = 0;
+	for (int i = 0; i < this->count; i++) {
+		quartzWatches temp = getLink(i);
+		if (SPORT == temp.getStyle()) {
+			temp.show();
+			index = i;
+			countOfWatch++;
+		}
+	}
+	if (countOfWatch == 0) {
+		cout << "There are no suitable watches!";
+		return getLink(0);
+	} else {
+		return getLink(index);
+	}
+}
+void quartzWatchesList::showAll() const
+{
+	for (int i = 0; i < this->count; i++) {
+		quartzWatches tmp = getLink(i);
+		tmp.show();
+	}
+}
+
+mechanicalWatchList::mechanicalWatchList() = default;
+
+mechanicalWatchList::mechanicalWatchList(const mechanicalWatchList &clone) : count(clone.count)
+{
+	mechanicalWatch = new mechanicalWatches *[count];
+	for (int i = 0; i < count; i++) {
+		mechanicalWatch[i] = new mechanicalWatches(*clone.mechanicalWatch[i]);
+	}
+}
+mechanicalWatchList::~mechanicalWatchList()
+{
+	delete[] mechanicalWatch;
+}
+void mechanicalWatchList::setCount(size_t countCopy)
+{
+	this->count = countCopy;
+}
+void mechanicalWatchList::addLink(mechanicalWatches &watchLink)
+{
+	auto *tmp = new mechanicalWatches *[this->count + 2];
+	for (int i = 0; i < this->count; i++) {
+		tmp[i] = this->mechanicalWatch[i];
+	}
+	tmp[count] = &watchLink;
+	delete[] this->mechanicalWatch;
+	this->mechanicalWatch = tmp;
+	this->count += 1;
+}
+mechanicalWatches &mechanicalWatchList::getLink(int index) const
+{
+	if (index >= this->count) {
+		index = this->count - 1;
+	}
+	return *mechanicalWatch[index];
+}
+mechanicalWatches &mechanicalWatchList::findByPrice(int price) const
+{
+	int index = 0;
+	int countOfWatchUnder = 0;
+	for (int i = 0; i < this->count; i++) {
+		mechanicalWatches temp = getLink(i);
+		if (price >= temp.getCost()) {
+			temp.show();
+			index = i;
+			countOfWatchUnder++;
+		}
+	}
+	if (countOfWatchUnder == 0) {
+		cout << "There are no suitable watches!";
+		return getLink(0);
+	} else {
+		return getLink(index);
+	}
+}
+mechanicalWatches &mechanicalWatchList::findSwitzerlandWithSkeleton() const
+{
+	int index = 0;
+	int countOfWatchUnder = 0;
+	for (int i = 0; i < this->count; i++) {
+		mechanicalWatches temp = getLink(i);
+		if (temp.getSkeleton() && temp.getManufacturer().getCountry() == "Switzerland") {
+			temp.show();
+			index = i;
+			countOfWatchUnder++;
+		}
+	}
+	if (countOfWatchUnder == 0) {
+		cout << "There are no suitable watches!";
+		return getLink(0);
+	} else {
+		return getLink(index);
+	}
+}
+void mechanicalWatchList::showAll() const
+{
+	for (int i = 0; i < this->count; i++) {
+		mechanicalWatches tmp = getLink(i);
+		tmp.show();
+	}
+}

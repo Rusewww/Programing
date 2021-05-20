@@ -363,5 +363,18 @@ void quartzWatches::setCapacity(int capacityClone)
 	this->capacity = capacityClone;
 }
 
+void quartzWatches::show()
+{
+	watch::show();
+	if (battery == GRAPHENE) {
+		cout << "Battery: Graphene" << endl;
+	} else if (battery == LI_ION){
+		cout << "Battery: Li-Ion" << endl;
+	}else {
+		cout << "Battery: Solar" << endl;
+	}
+	cout << endl;
+}
+
 mechanicalWatches::~mechanicalWatches() = default;
 quartzWatches::~quartzWatches() = default;

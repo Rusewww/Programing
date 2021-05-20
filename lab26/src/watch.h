@@ -64,7 +64,7 @@ class watch {
 	void setCost(const int &costClone);
 	void setManufacturer(manufacturerStruct *manufacturerClone);
 	void setStyle(const watchStyle &styleClone);
-	void show();
+	virtual void show();
 	string toString() const;
 	static watch toClass(const string &sWatch);
 	watch &operator=(const watch &watch1);
@@ -108,6 +108,7 @@ class quartzWatches : public watch {
 	int getCapacity() const;
 	void setBattery(batteryType batteryTypeClone);
 	void setCapacity(int capacityClone);
+	void show() override;
 };
 
 #endif //PROGRAMING_WATCH_H
