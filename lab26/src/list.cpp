@@ -216,7 +216,7 @@ void quartzWatchesList::setCount(size_t countCopy)
 void quartzWatchesList::addLink(quartzWatches &watchLink)
 {
 	auto *tmp = new quartzWatches *[this->count + 2];
-	for (int i = 0; i < this->count; i++) {
+	for (size_t i = 0; i < this->count; i++) {
 		tmp[i] = this->quartzWatch[i];
 	}
 	tmp[count] = &watchLink;
@@ -226,8 +226,8 @@ void quartzWatchesList::addLink(quartzWatches &watchLink)
 }
 quartzWatches &quartzWatchesList::getLink(int index) const
 {
-	if (index >= this->count) {
-		index = this->count - 1;
+	if ((size_t)index >= this->count) {
+		index = (int)this->count - 1;
 	}
 	return *quartzWatch[index];
 }
@@ -235,11 +235,11 @@ quartzWatches &quartzWatchesList::findByPrice(int price) const
 {
 	int index = 0;
 	int countOfWatchUnder = 0;
-	for (int i = 0; i < this->count; i++) {
-		quartzWatches temp = getLink(i);
+	for (size_t i = 0; i < this->count; i++) {
+		quartzWatches temp = getLink((int)i);
 		if (price >= temp.getCost()) {
 			temp.show();
-			index = i;
+			index = (int)i;
 			countOfWatchUnder++;
 		}
 	}
@@ -254,11 +254,11 @@ quartzWatches &quartzWatchesList::findClassicWatches() const
 {
 	int index = 0;
 	int countOfWatch = 0;
-	for (int i = 0; i < this->count; i++) {
-		quartzWatches temp = getLink(i);
+	for (size_t i = 0; i < this->count; i++) {
+		quartzWatches temp = getLink((int)i);
 		if (CLASSIC == temp.getStyle()) {
 			temp.show();
-			index = i;
+			index = (int)i;
 			countOfWatch++;
 		}
 	}
@@ -297,7 +297,7 @@ void mechanicalWatchList::setCount(size_t countCopy)
 void mechanicalWatchList::addLink(mechanicalWatches &watchLink)
 {
 	auto *tmp = new mechanicalWatches *[this->count + 2];
-	for (int i = 0; i < this->count; i++) {
+	for (size_t i = 0; i < this->count; i++) {
 		tmp[i] = this->mechanicalWatch[i];
 	}
 	tmp[count] = &watchLink;
@@ -307,8 +307,8 @@ void mechanicalWatchList::addLink(mechanicalWatches &watchLink)
 }
 mechanicalWatches &mechanicalWatchList::getLink(int index) const
 {
-	if (index >= this->count) {
-		index = this->count - 1;
+	if ((size_t)index >= this->count) {
+		index = (int)this->count - 1;
 	}
 	return *mechanicalWatch[index];
 }
@@ -316,11 +316,11 @@ mechanicalWatches &mechanicalWatchList::findByPrice(int price) const
 {
 	int index = 0;
 	int countOfWatchUnder = 0;
-	for (int i = 0; i < this->count; i++) {
-		mechanicalWatches temp = getLink(i);
+	for (size_t i = 0; i < this->count; i++) {
+		mechanicalWatches temp = getLink((int)i);
 		if (price >= temp.getCost()) {
 			temp.show();
-			index = i;
+			index = (int)i;
 			countOfWatchUnder++;
 		}
 	}
@@ -335,11 +335,11 @@ mechanicalWatches &mechanicalWatchList::findSwitzerlandWithSkeleton() const
 {
 	int index = 0;
 	int countOfWatchUnder = 0;
-	for (int i = 0; i < this->count; i++) {
-		mechanicalWatches temp = getLink(i);
+	for (size_t i = 0; i < this->count; i++) {
+		mechanicalWatches temp = getLink((int)i);
 		if (temp.getSkeleton() && temp.getManufacturer().getCountry() == "Switzerland") {
 			temp.show();
-			index = i;
+			index = (int)i;
 			countOfWatchUnder++;
 		}
 	}
@@ -352,8 +352,8 @@ mechanicalWatches &mechanicalWatchList::findSwitzerlandWithSkeleton() const
 }
 void mechanicalWatchList::showAll() const
 {
-	for (int i = 0; i < this->count; i++) {
-		mechanicalWatches tmp = getLink(i);
+	for (size_t i = 0; i < this->count; i++) {
+		mechanicalWatches tmp = getLink((int)i);
 		tmp.show();
 	}
 }
@@ -361,11 +361,11 @@ mechanicalWatches &mechanicalWatchList::findClassicWatches() const
 {
 	int index = 0;
 	int countOfWatch = 0;
-	for (int i = 0; i < this->count; i++) {
+	for (size_t i = 0; i < (size_t)this->count; i++) {
 		mechanicalWatches temp = getLink(i);
 		if (CLASSIC == temp.getStyle()) {
 			temp.show();
-			index = i;
+			index = (int)i;
 			countOfWatch++;
 		}
 	}
