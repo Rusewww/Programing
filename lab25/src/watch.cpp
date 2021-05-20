@@ -263,7 +263,6 @@ ostream &operator<<(ostream &output, watch &watch1)
 
 istream &operator>>(istream &in, watch &watch1)
 {
-	bool truth;
 	cout << "Enter the data: " << endl;
 	cout << "Waterproof(0 - No; 1 - Have): " << endl;
 	bool waterproof;
