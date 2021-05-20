@@ -119,7 +119,7 @@ void list::deleteList()
 
 watch &list::operator[](const size_t index) const
 {
-	if (index < count) {
+	if (index < (size_t)count) {
 		return *watches[index];
 	} else {
 		return *watches[0];
@@ -141,7 +141,7 @@ istream &operator>>(istream &in, list &list1)
 	cin >> count;
 	list1.setCount(count);
 	list1.watches = new watch *[count];
-	for (size_t i = 0; i < count; ++i) {
+	for (size_t i = 0; i < (size_t)count; i++) {
 		list1.watches[i] = new watch;
 	}
 	for (size_t i = 0; i < (size_t)count; i++) {
