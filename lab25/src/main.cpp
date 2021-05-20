@@ -16,5 +16,6 @@ int main()
 
 	watchList->writeToFile("../dist/output.txt");
 	delete watchList;
+	delete watchTree;
 	return 0;
 }
