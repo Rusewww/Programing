@@ -201,7 +201,7 @@ quartzWatchesList::quartzWatchesList() = default;
 quartzWatchesList::quartzWatchesList(const quartzWatchesList &clone) : count(clone.count)
 {
 	quartzWatch = new quartzWatches *[count];
-	for (int i = 0; i < count; i++) {
+	for (size_t i = 0; i < count; i++) {
 		quartzWatch[i] = new quartzWatches(*clone.quartzWatch[i]);
 	}
 }
@@ -271,8 +271,8 @@ quartzWatches &quartzWatchesList::findClassicWatches() const
 }
 void quartzWatchesList::showAll() const
 {
-	for (int i = 0; i < this->count; i++) {
-		quartzWatches tmp = getLink(i);
+	for (size_t i = 0; i < this->count; i++) {
+		quartzWatches tmp = getLink((int)i);
 		tmp.show();
 	}
 }
@@ -282,7 +282,7 @@ mechanicalWatchList::mechanicalWatchList() = default;
 mechanicalWatchList::mechanicalWatchList(const mechanicalWatchList &clone) : count(clone.count)
 {
 	mechanicalWatch = new mechanicalWatches *[count];
-	for (int i = 0; i < count; i++) {
+	for (size_t i = 0; i < count; i++) {
 		mechanicalWatch[i] = new mechanicalWatches(*clone.mechanicalWatch[i]);
 	}
 }
@@ -362,7 +362,7 @@ mechanicalWatches &mechanicalWatchList::findClassicWatches() const
 	int index = 0;
 	int countOfWatch = 0;
 	for (size_t i = 0; i < (size_t)this->count; i++) {
-		mechanicalWatches temp = getLink(i);
+		mechanicalWatches temp = getLink((int)i);
 		if (CLASSIC == temp.getStyle()) {
 			temp.show();
 			index = (int)i;
