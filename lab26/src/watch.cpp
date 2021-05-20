@@ -300,3 +300,68 @@ istream &operator>>(istream &in, watch &watch1)
 		return in;
 	}
 }
+
+mechanicalWatches::mechanicalWatches() : watch(), selfWinding(false), skeleton(false)
+{
+}
+
+mechanicalWatches::mechanicalWatches(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone,
+				     watchStyle styleClone, bool selfWindingClone, bool skeletonClone)
+	: watch(waterproofClone, modelClone, costClone, manufacturerClone, styleClone), selfWinding(selfWindingClone), skeleton(skeletonClone)
+{
+}
+
+mechanicalWatches::mechanicalWatches(mechanicalWatches &clone)
+	: watch(clone.getWaterproof(), clone.getModel(), clone.getCost(), clone.getManufacturer(), clone.getStyle()), selfWinding(clone.selfWinding),
+	  skeleton(clone.skeleton)
+{
+}
+bool mechanicalWatches::getSelfWinding() const
+{
+	return this->selfWinding;
+}
+bool mechanicalWatches::getSkeleton() const
+{
+	return this->skeleton;
+}
+void mechanicalWatches::setSelfWinding(bool selfWindingClone)
+{
+	this->selfWinding = selfWindingClone;
+}
+void mechanicalWatches::setSkeleton(bool skeletonClone)
+{
+	this->skeleton = skeletonClone;
+}
+
+quartzWatches::quartzWatches() : watch(), battery(GRAPHENE), capacity(0)
+{
+}
+quartzWatches::quartzWatches(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone,
+			     watchStyle styleClone, batteryType batteryClone, int capacityClone)
+	: watch(waterproofClone, modelClone, costClone, manufacturerClone, styleClone), battery(batteryClone), capacity(capacityClone)
+{
+}
+quartzWatches::quartzWatches(quartzWatches &clone)
+	: watch(clone.getWaterproof(), clone.getModel(), clone.getCost(), clone.getManufacturer(), clone.getStyle()), battery(clone.battery),
+	  capacity(clone.capacity)
+{
+}
+batteryType quartzWatches::getBattery() const
+{
+	return this->battery;
+}
+int quartzWatches::getCapacity() const
+{
+	return this->capacity;
+}
+void quartzWatches::setBattery(batteryType batteryTypeClone)
+{
+	this->battery = batteryTypeClone;
+}
+void quartzWatches::setCapacity(int capacityClone)
+{
+	this->capacity = capacityClone;
+}
+
+mechanicalWatches::~mechanicalWatches() = default;
+quartzWatches::~quartzWatches() = default;

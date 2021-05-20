@@ -74,18 +74,40 @@ bool operator==(watch &watch1, watch &watch2);
 ostream &operator<<(ostream &output, watch &watch1);
 istream &operator>>(istream &input, watch &watch1);
 
-class mechanicalWatches : public watch{
+class mechanicalWatches : public watch {
     private:
 	bool selfWinding;
 	bool skeleton;
+
+    public:
+	mechanicalWatches();
+	mechanicalWatches(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone,
+			  bool selfWindingClone, bool skeletonClone);
+	mechanicalWatches(mechanicalWatches &clone);
+	~mechanicalWatches() override;
+	bool getSelfWinding() const;
+	bool getSkeleton() const;
+	void setSelfWinding(bool selfWindingClone);
+	void setSkeleton(bool skeletonClone);
 };
 
-enum batteryType { LI_ION, SOLAR, GRAPHENE };
+enum batteryType { GRAPHENE, LI_ION, SOLAR };
 
-class quartzWatch : public watch{
+class quartzWatches : public watch {
     private:
-	batteryType batteryType;
+	batteryType battery;
 	int capacity;
+
+    public:
+	quartzWatches();
+	quartzWatches(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone,
+		      batteryType batteryClone, int capacityClone);
+	quartzWatches(quartzWatches &clone);
+	~quartzWatches() override;
+	batteryType getBattery() const;
+	int getCapacity() const;
+	void setBattery(batteryType batteryTypeClone);
+	void setCapacity(int capacityClone);
 };
 
 #endif //PROGRAMING_WATCH_H
