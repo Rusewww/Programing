@@ -266,7 +266,7 @@ istream &operator>>(istream &input, watch &watch1)
 	bool truth;
 	cout << "Enter the data: " << endl;
 	cout << "Waterproof(0 - No; 1 - Have): " << endl;
-	int waterproof;
+	bool waterproof;
 	input >> waterproof;
 	cout << "Model: " << endl;
 	string model;

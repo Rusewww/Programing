@@ -19,7 +19,7 @@ class list {
 	watch &findByPrice(int price) const;
 	void writeToFile(const string &path) const;
 	void deleteList();
-	static string &readFromFile(const string &sList, string *classL);
+	void readFromFile(const string &sList);
 	watch &operator[](size_t index) const;
 	friend istream &operator>>(istream &input, list &list1);
 	friend ostream &operator<<(ostream &output, const list &list1);

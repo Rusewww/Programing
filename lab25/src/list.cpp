@@ -81,16 +81,18 @@ list::~list()
 	delete[] watches;
 }
 
-string &list::readFromFile(const string &sList, string classL[3])
+void list::readFromFile(const string &sList)
 {
 	ifstream fileInf;
 	fileInf.open(sList);
-	int length = 3;
-	for (int i = 0; i < length; i++) {
-		getline(fileInf, classL[i]);
+	string object;
+	if (fileInf.is_open()) {
+		delete[] this->watches;
+		fileInf >> *this;
+	} else {
+		cout << "ERROR: The file did not open!";
 	}
 	fileInf.close();
-	return *classL;
 }
 
 void list::writeToFile(const string &path) const

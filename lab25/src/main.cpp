@@ -26,29 +26,16 @@ int main()
 	delete watchTree;
 
 	cout << "|===============<Origin_list>===============|" << endl;
-	for (int i = 0; i < 3; i++) {
-		string out = watchList->getLink(i).toString();
-		cout << out << endl;
-	}
+	cout << *watchList;
 	cout << "|-------------------------------------------|" << endl;
 	cout << "|==========<List_redden_from_file>==========|" << endl;
 
-	string fromFile[3];
-	list::readFromFile("../assets/input.txt", fromFile);
-
-	watchList->deleteList();
-
-	watchList->addLink(watch::toClass(fromFile[0]));
-	watchList->addLink(watch::toClass(fromFile[1]));
-	watchList->addLink(watch::toClass(fromFile[2]));
-
-	for (int i = 0; i < 3; i++) {
-		string out = watchList->getLink(i).toString();
-		cout << out << endl;
-	}
+	watchList->setCount(5);
+	watchList->readFromFile("./assets/input.txt");
+	cout << *watchList;
 
 	cout << "|-------------------------------------------|" << endl;
-	watchList->writeToFile("../dist/output.txt");
+	watchList->writeToFile("./dist/output.txt");
 	delete watchList;
 	return 0;
 }

@@ -18,6 +18,7 @@ using std::ofstream;
 using std::ostream;
 using std::regex;
 using std::regex_match;
+using std::stoi;
 using std::string;
 using std::stringstream;
 
