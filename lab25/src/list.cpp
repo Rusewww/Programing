@@ -81,18 +81,30 @@ list::~list()
 	delete[] watches;
 }
 
-void list::readFromFile(const string &sList)
+void list::readFromFile(const string &file)
 {
-	ifstream fileInf;
-	fileInf.open(sList);
+	/*ifstream fileInf;
+	fileInf.open(file);
 	string object;
 	if (fileInf.is_open()) {
+		this->setCount(5);
 		delete[] this->watches;
 		fileInf >> *this;
 	} else {
-		cout << "ERROR: The file did not open!";
+		cout << "Program can`t open the file!" << endl;
 	}
-	fileInf.close();
+	fileInf.close();*/
+	ifstream fin;
+	fin.open(file);
+	string obj;
+	if (fin.is_open()) {
+		this->setCount(5);
+		delete[] this->watches;
+		fin >> *this;
+	}else{
+		cout << "ERROR: The file did not open!" << endl;
+	}
+	fin.close();
 }
 
 void list::writeToFile(const string &path) const
@@ -169,7 +181,6 @@ ifstream &operator>>(ifstream &input, list &list1)
 	string country;
 	int style;
 	stringstream str;
-	stringstream buffer;
 	regex regComp("^[0-1] [A-Z][a-z]* [0-9]{1,5} [a-zA-Z.&]* [A-Z][a-zA-Z] [0-2]*");
 	for (int i = 0; i < list1.getCount(); ++i) {
 		input >> waterproof;
@@ -180,7 +191,7 @@ ifstream &operator>>(ifstream &input, list &list1)
 		input >> style;
 
 		str << ' ' << waterproof << ' ' << model << ' ' << cost << ' ' << firm << ' ' << country << ' ' << style;
-		if (regex_match(buffer.str(), regComp)) {
+		if (regex_match(str.str(), regComp)) {
 			list1[i].setWaterproof(waterproof);
 			list1[i].setModel(model);
 			list1[i].setCost(cost);
@@ -188,7 +199,7 @@ ifstream &operator>>(ifstream &input, list &list1)
 			list1[i].setManufacturer(&manufacturerClone);
 			list1[i].setStyle((watchStyle)style);
 		}
-		buffer.str("");
+		str.str("");
 	}
 
 	return input;
