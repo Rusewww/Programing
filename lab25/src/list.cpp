@@ -161,7 +161,7 @@ ofstream &operator<<(ofstream &out, const list &list1)
 ifstream &operator>>(ifstream &in, list &list1)
 {
 	delete[] list1.watches;
-	list1.watches = new watch *[list1.count];
+	list1.watches = new watch *[list1.count + 1];
 	for (size_t i = 0; i < (size_t)list1.count; ++i) {
 		list1.watches[i] = new watch;
 	}
