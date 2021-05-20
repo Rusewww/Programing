@@ -162,7 +162,7 @@ watch watch::toClass(const string &sWatch)
 	int counter = 0;
 	unsigned long position = 0;
 	watch tmp;
-	for (unsigned long i = 0; i < length; ++i) {
+	for (unsigned long i = 0; i < length; i++) {
 		if (sWatch[i] == ' ') {
 			if (counter == 0) {
 				position = clone.find(' ');
@@ -232,6 +232,16 @@ watch watch::toClass(const string &sWatch)
 	}
 	return tmp;
 }
+watch &watch::operator=(const watch &watch1)
+{
+	manufacturerStruct manufacturerClone(getManufacturer().getFirm(), getManufacturer().getCountry());
+	setManufacturer(&manufacturerClone);
+	setWaterproof(watch1.getWaterproof());
+	setCost(watch1.getCost());
+	setModel(watch1.getModel());
+	setStyle(watch1.getStyle());
+	return *this;
+}
 
 bool operator==(watch &watch1, watch &watch2)
 {
@@ -241,5 +251,53 @@ bool operator==(watch &watch1, watch &watch2)
 		return true;
 	} else {
 		return false;
+	}
+}
+
+ostream &operator<<(ostream &output, watch &watch1)
+{
+	output << watch1.getWaterproof() << ' ' << watch1.getModel() << ' ' << watch1.getCost() << ' ' << watch1.getManufacturer().getFirm() << ' '
+	       << watch1.getManufacturer().getCountry() << ' ' << watch1.getStyle() << endl;
+	return output;
+}
+
+istream &operator>>(istream &input, watch &watch1)
+{
+	bool truth;
+	cout << "Enter the data: " << endl;
+	cout << "Waterproof(0 - No; 1 - Have): " << endl;
+	int waterproof;
+	input >> waterproof;
+	cout << "Model: " << endl;
+	string model;
+	input >> model;
+	cout << "Cost: " << endl;
+	int cost;
+	input >> cost;
+	cout << "Firm: " << endl;
+	string firm;
+	input >> firm;
+	cout << "Country: " << endl;
+	string country;
+	input >> country;
+	cout << "Style(0 - Armoured; 1 - Classic; 2 - Sport): " << endl;
+	int style;
+	input >> style;
+	stringstream str;
+	str << ' ' << waterproof << ' ' << model << ' ' << cost << ' ' << firm << ' ' << country << ' ' << style;
+	regex regComp("^[0-1] [A-Z][a-z]* [0-9]{1,5} [a-zA-Z.&]* [A-Z][a-zA-Z] [0-2]*");
+	truth = regex_match(str.str(), regComp);
+	if (truth) {
+		watch1.setWaterproof(waterproof);
+		watch1.setModel(model);
+		watch1.setCost(cost);
+		manufacturerStruct manufacturerClone(firm, country);
+		watch1.setManufacturer(&manufacturerClone);
+		watch1.setStyle((watchStyle)style);
+		return input;
+	} else {
+		cout << "Error:criterion entered incorrectly!" << endl;
+		input.clear();
+		return input;
 	}
 }

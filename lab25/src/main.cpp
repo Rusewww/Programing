@@ -34,7 +34,7 @@ int main()
 	cout << "|==========<List_redden_from_file>==========|" << endl;
 
 	string fromFile[3];
-	list::readFromFile("../assets/input.txt",fromFile);
+	list::readFromFile("../assets/input.txt", fromFile);
 
 	watchList->deleteList();
 

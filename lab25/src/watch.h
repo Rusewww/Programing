@@ -7,6 +7,7 @@
 #include <utility>
 #include <sstream>
 #include <fstream>
+#include <regex>
 
 using std::cin;
 using std::cout;
@@ -15,6 +16,8 @@ using std::ifstream;
 using std::istream;
 using std::ofstream;
 using std::ostream;
+using std::regex;
+using std::regex_match;
 using std::string;
 using std::stringstream;
 
@@ -63,7 +66,10 @@ class watch {
 	void show();
 	string toString() const;
 	static watch toClass(const string &sWatch);
-	bool operator=(watch &watch1);
+	watch &operator=(const watch &watch1);
+	friend bool operator==(watch &watch1, watch &watch2);
+	friend ostream &operator<<(ostream &output, watch &watch1);
+	friend istream &operator>>(istream &input, watch &watch1);
 };
 
 bool operator==(watch &watch1, watch &watch2);

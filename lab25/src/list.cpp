@@ -5,6 +5,11 @@ void list::setCount(const int countCopy)
 	this->count = countCopy;
 }
 
+int list::getCount() const
+{
+	return this->count;
+}
+
 void list::addLink(watch watchLink)
 {
 	auto *tmp = new watch *[this->count + 2];
@@ -93,7 +98,7 @@ void list::writeToFile(const string &path) const
 	ofstream file;
 	file.open(path);
 
-	for (int i = 0; i < count; ++i) {
+	for (int i = 0; i < count; i++) {
 		if (file.is_open()) {
 			file << this->getLink(i).toString();
 		} else {
@@ -104,8 +109,85 @@ void list::writeToFile(const string &path) const
 	file.close();
 }
 
-void list::deleteList() {
+void list::deleteList()
+{
 	delete[] this->watches;
 	this->setCount(0);
-	this->watches = new watch * [count];
+	this->watches = new watch *[count];
+}
+
+watch &list::operator[](const size_t index) const
+{
+	if (index < count) {
+		return *watches[index];
+	} else {
+		return *watches[0];
+	}
+}
+
+ostream &operator<<(ostream &output, const list &list1)
+{
+	for (int i = 0; i < list1.getCount(); i++) {
+		output << list1[i];
+	}
+	return output;
+}
+
+istream &operator>>(istream &input, list &list1)
+{
+	list1.watches = new watch *[list1.getCount()];
+	for (int i = 0; i < list1.getCount(); ++i) {
+		list1.watches[i] = new watch;
+	}
+	for (int i = 0; i < list1.getCount(); ++i) {
+		cin >> list1[i];
+	}
+	return input;
+}
+
+ofstream &operator<<(ofstream &output, const list &list1)
+{
+	for (int i = 0; i < list1.getCount(); ++i) {
+		output << list1[i];
+	}
+	return output;
+}
+
+ifstream &operator>>(ifstream &input, list &list1)
+{
+	delete[] list1.watches;
+	list1.watches = new watch *[list1.count];
+	for (int i = 0; i < list1.count; ++i) {
+		list1.watches[i] = new watch;
+	}
+	bool waterproof;
+	string model;
+	int cost;
+	string firm;
+	string country;
+	int style;
+	stringstream str;
+	stringstream buffer;
+	regex regComp("^[0-1] [A-Z][a-z]* [0-9]{1,5} [a-zA-Z.&]* [A-Z][a-zA-Z] [0-2]*");
+	for (int i = 0; i < list1.getCount(); ++i) {
+		input >> waterproof;
+		input >> model;
+		input >> cost;
+		input >> firm;
+		input >> country;
+		input >> style;
+
+		str << ' ' << waterproof << ' ' << model << ' ' << cost << ' ' << firm << ' ' << country << ' ' << style;
+		if (regex_match(buffer.str(), regComp)) {
+			list1[i].setWaterproof(waterproof);
+			list1[i].setModel(model);
+			list1[i].setCost(cost);
+			manufacturerStruct manufacturerClone(firm, country);
+			list1[i].setManufacturer(&manufacturerClone);
+			list1[i].setStyle((watchStyle)style);
+		}
+		buffer.str("");
+	}
+
+	return input;
 }
