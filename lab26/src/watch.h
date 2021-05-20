@@ -89,6 +89,7 @@ class mechanicalWatches : public watch {
 	bool getSkeleton() const;
 	void setSelfWinding(bool selfWindingClone);
 	void setSkeleton(bool skeletonClone);
+	void show() override;
 };
 
 enum batteryType { GRAPHENE, LI_ION, SOLAR };

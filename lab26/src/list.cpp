@@ -244,7 +244,7 @@ quartzWatches &quartzWatchesList::findByPrice(int price) const
 		}
 	}
 	if (countOfWatchUnder == 0) {
-		cout << "There are no suitable watches!";
+		cout << "There are no suitable watches!" << endl;
 		return getLink(0);
 	} else {
 		return getLink(index);
@@ -256,14 +256,14 @@ quartzWatches &quartzWatchesList::findClassicWatches() const
 	int countOfWatch = 0;
 	for (int i = 0; i < this->count; i++) {
 		quartzWatches temp = getLink(i);
-		if (SPORT == temp.getStyle()) {
+		if (CLASSIC == temp.getStyle()) {
 			temp.show();
 			index = i;
 			countOfWatch++;
 		}
 	}
 	if (countOfWatch == 0) {
-		cout << "There are no suitable watches!";
+		cout << "There are no suitable watches!" << endl;
 		return getLink(0);
 	} else {
 		return getLink(index);
@@ -325,7 +325,7 @@ mechanicalWatches &mechanicalWatchList::findByPrice(int price) const
 		}
 	}
 	if (countOfWatchUnder == 0) {
-		cout << "There are no suitable watches!";
+		cout << "There are no suitable watches!" << endl;
 		return getLink(0);
 	} else {
 		return getLink(index);
@@ -344,7 +344,7 @@ mechanicalWatches &mechanicalWatchList::findSwitzerlandWithSkeleton() const
 		}
 	}
 	if (countOfWatchUnder == 0) {
-		cout << "There are no suitable watches!";
+		cout << "There are no suitable watches!" << endl;
 		return getLink(0);
 	} else {
 		return getLink(index);
@@ -355,5 +355,24 @@ void mechanicalWatchList::showAll() const
 	for (int i = 0; i < this->count; i++) {
 		mechanicalWatches tmp = getLink(i);
 		tmp.show();
+	}
+}
+mechanicalWatches &mechanicalWatchList::findClassicWatches() const
+{
+	int index = 0;
+	int countOfWatch = 0;
+	for (int i = 0; i < this->count; i++) {
+		mechanicalWatches temp = getLink(i);
+		if (CLASSIC == temp.getStyle()) {
+			temp.show();
+			index = i;
+			countOfWatch++;
+		}
+	}
+	if (countOfWatch == 0) {
+		cout << "There are no suitable watches!" << endl;
+		return getLink(0);
+	} else {
+		return getLink(index);
 	}
 }

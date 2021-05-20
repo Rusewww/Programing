@@ -36,6 +36,7 @@ class quartzWatchesList {
     private:
 	quartzWatches **quartzWatch{};
 	size_t count{};
+
     public:
 	quartzWatchesList();
 	quartzWatchesList(const quartzWatchesList &clone);
@@ -52,6 +53,7 @@ class mechanicalWatchList {
     private:
 	mechanicalWatches **mechanicalWatch{};
 	size_t count{};
+
     public:
 	mechanicalWatchList();
 	mechanicalWatchList(const mechanicalWatchList &clone);
@@ -60,6 +62,7 @@ class mechanicalWatchList {
 	void addLink(mechanicalWatches &watchLink);
 	mechanicalWatches &getLink(int index) const;
 	mechanicalWatches &findByPrice(int price) const;
+	mechanicalWatches &findClassicWatches() const;
 	mechanicalWatches &findSwitzerlandWithSkeleton() const;
 	void showAll() const;
 };

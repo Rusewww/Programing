@@ -142,7 +142,6 @@ void watch::show()
 	} else {
 		cout << "Style: Sport" << endl;
 	}
-	cout << endl;
 }
 
 string watch::toString() const
@@ -332,6 +331,21 @@ void mechanicalWatches::setSkeleton(bool skeletonClone)
 {
 	this->skeleton = skeletonClone;
 }
+void mechanicalWatches::show()
+{
+	watch::show();
+	if (selfWinding) {
+		cout << "Self winding: Have" << endl;
+	} else {
+		cout << "Self winding: No" << endl;
+	}
+	if (skeleton) {
+		cout << "Skeleton: Have" << endl;
+	} else {
+		cout << "Skeleton: No" << endl;
+	}
+	cout << endl;
+}
 
 quartzWatches::quartzWatches() : watch(), battery(GRAPHENE), capacity(0)
 {
@@ -368,11 +382,12 @@ void quartzWatches::show()
 	watch::show();
 	if (battery == GRAPHENE) {
 		cout << "Battery: Graphene" << endl;
-	} else if (battery == LI_ION){
+	} else if (battery == LI_ION) {
 		cout << "Battery: Li-Ion" << endl;
-	}else {
+	} else {
 		cout << "Battery: Solar" << endl;
 	}
+	cout << "Capacity: " << capacity << "mAh" << endl;
 	cout << endl;
 }
 
