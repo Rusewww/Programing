@@ -83,17 +83,6 @@ list::~list()
 
 void list::readFromFile(const string &file)
 {
-	/*ifstream fileInf;
-	fileInf.open(file);
-	string object;
-	if (fileInf.is_open()) {
-		this->setCount(5);
-		delete[] this->watches;
-		fileInf >> *this;
-	} else {
-		cout << "Program can`t open the file!" << endl;
-	}
-	fileInf.close();*/
 	ifstream fin;
 	fin.open(file);
 	string obj;
@@ -101,8 +90,8 @@ void list::readFromFile(const string &file)
 		this->setCount(5);
 		delete[] this->watches;
 		fin >> *this;
-	}else{
-		cout << "ERROR: The file did not open!" << endl;
+	} else {
+		cout << "Program can`t open the file!" << endl;
 	}
 	fin.close();
 }
@@ -112,12 +101,10 @@ void list::writeToFile(const string &path) const
 	ofstream file;
 	file.open(path);
 
-	for (int i = 0; i < count; i++) {
-		if (file.is_open()) {
-			file << this->getLink(i).toString();
-		} else {
-			cout << "Program can`t open the file!" << endl;
-		}
+	if (file.is_open()) {
+		file << *this;
+	} else {
+		cout << "Program can`t open the file!" << endl;
 	}
 
 	file.close();
@@ -139,68 +126,72 @@ watch &list::operator[](const size_t index) const
 	}
 }
 
-ostream &operator<<(ostream &output, const list &list1)
+ostream &operator<<(ostream &out, const list &list1)
 {
-	for (int i = 0; i < list1.getCount(); i++) {
-		output << list1[i];
+	for (size_t i = 0; i < (size_t)list1.getCount(); i++) {
+		out << list1[i];
 	}
-	return output;
+	return out;
 }
 
-istream &operator>>(istream &input, list &list1)
+istream &operator>>(istream &in, list &list1)
 {
-	list1.watches = new watch *[list1.getCount()];
-	for (int i = 0; i < list1.getCount(); ++i) {
+	int count;
+	cout << "Enter count: " << endl;
+	cin >> count;
+	list1.setCount(count);
+	list1.watches = new watch *[count];
+	for (size_t i = 0; i < count; ++i) {
 		list1.watches[i] = new watch;
 	}
-	for (int i = 0; i < list1.getCount(); ++i) {
+	for (size_t i = 0; i < (size_t)count; i++) {
 		cin >> list1[i];
 	}
-	return input;
+	return in;
 }
 
-ofstream &operator<<(ofstream &output, const list &list1)
+ofstream &operator<<(ofstream &out, const list &list1)
 {
-	for (int i = 0; i < list1.getCount(); ++i) {
-		output << list1[i];
+	for (size_t i = 0; i < (size_t)list1.getCount(); ++i) {
+		out << list1[i];
 	}
-	return output;
+	return out;
 }
 
-ifstream &operator>>(ifstream &input, list &list1)
+ifstream &operator>>(ifstream &in, list &list1)
 {
 	delete[] list1.watches;
 	list1.watches = new watch *[list1.count];
-	for (int i = 0; i < list1.count; ++i) {
+	for (size_t i = 0; i < (size_t)list1.count; ++i) {
 		list1.watches[i] = new watch;
 	}
-	bool waterproof;
-	string model;
-	int cost;
-	string firm;
-	string country;
-	int style;
-	stringstream str;
-	regex regComp("^[0-1] [A-Z][a-z]* [0-9]{1,5} [a-zA-Z.&]* [A-Z][a-zA-Z] [0-2]*");
-	for (int i = 0; i < list1.getCount(); ++i) {
-		input >> waterproof;
-		input >> model;
-		input >> cost;
-		input >> firm;
-		input >> country;
-		input >> style;
-
-		str << ' ' << waterproof << ' ' << model << ' ' << cost << ' ' << firm << ' ' << country << ' ' << style;
-		if (regex_match(str.str(), regComp)) {
+	regex reg("^[0-1] [A-Z][a-z]* [0-9]{1,6} [0-2] [a-zA-Z.&]* [A-Z][a-zA-Z]*");
+	for (size_t i = 0; i < (size_t)list1.getCount(); ++i) {
+		int waterproof;
+		in >> waterproof;
+		string model;
+		in >> model;
+		int cost;
+		in >> cost;
+		int style;
+		in >> style;
+		string firm;
+		in >> firm;
+		string country;
+		in >> country;
+		stringstream str;
+		str << waterproof << " " << model << " " << cost << " " << style << " " << firm << " " << country;
+		if (regex_match(str.str(), reg)) {
 			list1[i].setWaterproof(waterproof);
 			list1[i].setModel(model);
 			list1[i].setCost(cost);
-			manufacturerStruct manufacturerClone(firm, country);
-			list1[i].setManufacturer(&manufacturerClone);
 			list1[i].setStyle((watchStyle)style);
+			manufacturerStruct manufacturerC(firm, country);
+			list1[i].setManufacturer(&manufacturerC);
+		} else {
+			cout << "Error:criterion entered incorrectly!" << endl;
 		}
 		str.str("");
 	}
-
-	return input;
+	return in;
 }

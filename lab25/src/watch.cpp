@@ -261,43 +261,43 @@ ostream &operator<<(ostream &output, watch &watch1)
 	return output;
 }
 
-istream &operator>>(istream &input, watch &watch1)
+istream &operator>>(istream &in, watch &watch1)
 {
 	bool truth;
 	cout << "Enter the data: " << endl;
 	cout << "Waterproof(0 - No; 1 - Have): " << endl;
 	bool waterproof;
-	input >> waterproof;
+	in >> waterproof;
 	cout << "Model: " << endl;
 	string model;
-	input >> model;
+	in >> model;
 	cout << "Cost: " << endl;
 	int cost;
-	input >> cost;
+	in >> cost;
 	cout << "Firm: " << endl;
 	string firm;
-	input >> firm;
+	in >> firm;
 	cout << "Country: " << endl;
 	string country;
-	input >> country;
+	in >> country;
 	cout << "Style(0 - Armoured; 1 - Classic; 2 - Sport): " << endl;
 	int style;
-	input >> style;
-	stringstream str;
-	str << ' ' << waterproof << ' ' << model << ' ' << cost << ' ' << firm << ' ' << country << ' ' << style;
-	regex regComp("^[0-1] [A-Z][a-z]* [0-9]{1,5} [a-zA-Z.&]* [A-Z][a-zA-Z] [0-2]*");
-	truth = regex_match(str.str(), regComp);
-	if (truth) {
+	in >> style;
+	stringstream buffer;
+	buffer << waterproof << " " << model << " " << cost << " " << style << " " << firm << " " << country;
+	regex reg("^[0-1] [A-Z][a-z]* [0-9]{1,3} [0-2] [a-zA-Z.&]* [A-Z][a-zA-Z]*");
+
+	if (regex_match(buffer.str(), reg)) {
 		watch1.setWaterproof(waterproof);
 		watch1.setModel(model);
 		watch1.setCost(cost);
-		manufacturerStruct manufacturerClone(firm, country);
-		watch1.setManufacturer(&manufacturerClone);
 		watch1.setStyle((watchStyle)style);
-		return input;
+		manufacturerStruct manufacturerS(firm, country);
+		watch1.setManufacturer(&manufacturerS);
+		return in;
 	} else {
 		cout << "Error:criterion entered incorrectly!" << endl;
-		input.clear();
-		return input;
+		in.clear();
+		return in;
 	}
 }

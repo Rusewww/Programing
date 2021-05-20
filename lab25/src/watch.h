@@ -68,9 +68,6 @@ class watch {
 	string toString() const;
 	static watch toClass(const string &sWatch);
 	watch &operator=(const watch &watch1);
-	friend bool operator==(watch &watch1, watch &watch2);
-	friend ostream &operator<<(ostream &output, watch &watch1);
-	friend istream &operator>>(istream &input, watch &watch1);
 };
 
 bool operator==(watch &watch1, watch &watch2);
