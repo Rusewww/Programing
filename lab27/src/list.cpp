@@ -100,4 +100,7 @@ void list::showAll() const
 }
 
 list::list() = default;
-list::~list() = default;
+list::~list()
+{
+	delete[] watches;
+}

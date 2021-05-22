@@ -23,7 +23,7 @@ int main()
 	mechanicalWatches watch2(true, "Two", 1000, manufacturerStruct("G-Shock", "Japan"), SPORT, true, false);
 	watchList->addLink(&watch2);
 	mechanicalWatches watch3(false, "Tree", 2400, manufacturerStruct("Rocket", "USSR"), CLASSIC, true, false);
-	watchList->addLink(&watch3);
+	//watchList->addLink(&watch3);
 	watchList->findSwitzerlandWithSkeleton();
 	//watchList.showAll();
 	delete watchList;
