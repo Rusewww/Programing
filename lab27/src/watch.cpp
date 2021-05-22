@@ -171,7 +171,6 @@ watch *mechanicalWatches::copy()
 	return (watch *)new mechanicalWatches(*this);
 }
 
-
 mechanicalWatches::~mechanicalWatches() = default;
 quartzWatches::quartzWatches()
 {
@@ -292,36 +291,4 @@ watch *quartzWatches::copy()
 	return (watch *)new quartzWatches(*this);
 }
 
-
 quartzWatches::~quartzWatches() = default;
-
-watch::watch()
-{
-	waterproof = false;
-	model = "empty";
-	cost = 0;
-	watch::manufacturer = manufacturerStruct();
-	style = ARMOURED;
-}
-
-watch::watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone)
-{
-	waterproof = waterproofClone;
-	model = move(modelClone);
-	cost = costClone;
-	watch::manufacturer = manufacturerStruct(manufacturerClone);
-	style = styleClone;
-}
-
-watch::watch(const watch &clone)
-{
-	waterproof = clone.waterproof;
-	model = clone.model;
-	cost = clone.cost;
-	watch::manufacturer = manufacturerStruct(clone.manufacturer);
-	style = clone.style;
-}
-bool watch::getWaterproof()
-{
-	return this->waterproof;
-}

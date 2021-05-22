@@ -44,16 +44,7 @@ class manufacturerStruct {
 };
 
 class watch {
-    private:
-	bool waterproof{};
-	string model;
-	int cost{};
-	manufacturerStruct manufacturer;
-	watchStyle style;
     public:
-	watch();
-	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone);
-	watch(const watch &clone);
 	virtual bool getWaterproof() = 0;
 	virtual string getModel() = 0;
 	virtual int getCost() = 0;
@@ -95,7 +86,7 @@ class mechanicalWatches : public watch {
 	void setSelfWinding(bool selfWindingClone);
 	void setSkeleton(bool skeletonClone);
 	void show() override;
-	watch * copy() override;
+	watch *copy() override;
 };
 
 class quartzWatches : public watch {
@@ -129,6 +120,6 @@ class quartzWatches : public watch {
 	void setBattery(batteryType batteryTypeClone);
 	void setCapacity(int capacityClone);
 	void show() override;
-	watch * copy() override;
+	watch *copy() override;
 };
 #endif //PROGRAMING_WATCH_H
