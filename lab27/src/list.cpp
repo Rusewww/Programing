@@ -24,7 +24,6 @@ void list::addLink(watch *watchLink)
 	tmp[count] = watchLink;
 	delete[] this->watches;
 	this->watches = tmp;
-	delete[] &tmp;
 	this->count += 1;
 }
 watch *list::getLink(int index) const
