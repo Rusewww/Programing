@@ -44,10 +44,23 @@ class manufacturerStruct {
 };
 
 class watch {
+    private:
+	bool waterproof{};
+	string model;
+	int cost{};
+	manufacturerStruct manufacturer;
+	watchStyle style;
     public:
+	watch();
+	watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone);
+	watch(const watch &clone);
+	virtual bool getWaterproof() = 0;
+	virtual string getModel() = 0;
+	virtual int getCost() = 0;
+	virtual manufacturerStruct getManufacturer() = 0;
+	virtual watchStyle getStyle() = 0;
 	virtual watch *copy() = 0;
 	virtual void show() = 0;
-	virtual char typeOut() = 0;
 	virtual ~watch();
 };
 
@@ -67,11 +80,11 @@ class mechanicalWatches : public watch {
 			  bool selfWindingClone, bool skeletonClone);
 	mechanicalWatches(mechanicalWatches &clone);
 	~mechanicalWatches() override;
-	bool getWaterproof() const;
-	string getModel() const;
-	int getCost() const;
-	manufacturerStruct getManufacturer() const;
-	watchStyle getStyle() const;
+	bool getWaterproof() override;
+	string getModel() override;
+	int getCost() override;
+	manufacturerStruct getManufacturer() override;
+	watchStyle getStyle() override;
 	void setWaterproof(const bool &waterproofClone);
 	void setModel(const string &modelClone);
 	void setCost(const int &costClone);
@@ -83,7 +96,6 @@ class mechanicalWatches : public watch {
 	void setSkeleton(bool skeletonClone);
 	void show() override;
 	watch * copy() override;
-	char typeOut() override;
 };
 
 class quartzWatches : public watch {
@@ -102,11 +114,11 @@ class quartzWatches : public watch {
 		      batteryType batteryClone, int capacityClone);
 	quartzWatches(quartzWatches &clone);
 	~quartzWatches() override;
-	bool getWaterproof() const;
-	string getModel() const;
-	int getCost() const;
-	manufacturerStruct getManufacturer() const;
-	watchStyle getStyle() const;
+	bool getWaterproof() override;
+	string getModel() override;
+	int getCost() override;
+	manufacturerStruct getManufacturer() override;
+	watchStyle getStyle() override;
 	void setWaterproof(const bool &waterproofClone);
 	void setModel(const string &modelClone);
 	void setCost(const int &costClone);
@@ -118,6 +130,5 @@ class quartzWatches : public watch {
 	void setCapacity(int capacityClone);
 	void show() override;
 	watch * copy() override;
-	char typeOut() override;
 };
 #endif //PROGRAMING_WATCH_H

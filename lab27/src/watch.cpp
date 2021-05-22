@@ -66,7 +66,7 @@ mechanicalWatches::mechanicalWatches(bool waterproofClone, string modelClone, in
 	waterproof = waterproofClone;
 	model = move(modelClone);
 	cost = costClone;
-	mechanicalWatches::manufacturer = manufacturerStruct(manufacturerClone.getFirm(), manufacturerClone.getFirm());
+	mechanicalWatches::manufacturer = manufacturerStruct(manufacturerClone.getFirm(), manufacturerClone.getCountry());
 	style = styleClone;
 	selfWinding = selfWindingClone;
 	skeleton = skeletonClone;
@@ -81,23 +81,23 @@ mechanicalWatches::mechanicalWatches(mechanicalWatches &clone)
 	selfWinding = clone.selfWinding;
 	skeleton = clone.skeleton;
 }
-bool mechanicalWatches::getWaterproof() const
+bool mechanicalWatches::getWaterproof()
 {
 	return this->waterproof;
 }
-string mechanicalWatches::getModel() const
+string mechanicalWatches::getModel()
 {
 	return this->model;
 }
-int mechanicalWatches::getCost() const
+int mechanicalWatches::getCost()
 {
 	return this->cost;
 }
-manufacturerStruct mechanicalWatches::getManufacturer() const
+manufacturerStruct mechanicalWatches::getManufacturer()
 {
 	return this->manufacturer;
 }
-watchStyle mechanicalWatches::getStyle() const
+watchStyle mechanicalWatches::getStyle()
 {
 	return this->style;
 }
@@ -170,10 +170,7 @@ watch *mechanicalWatches::copy()
 {
 	return (watch *)new mechanicalWatches(*this);
 }
-char mechanicalWatches::typeOut()
-{
-	return 'M';
-}
+
 
 mechanicalWatches::~mechanicalWatches() = default;
 quartzWatches::quartzWatches()
@@ -192,7 +189,7 @@ quartzWatches::quartzWatches(bool waterproofClone, string modelClone, int costCl
 	waterproof = waterproofClone;
 	model = move(modelClone);
 	cost = costClone;
-	quartzWatches::manufacturer = manufacturerStruct(manufacturerClone.getFirm(), manufacturerClone.getFirm());
+	quartzWatches::manufacturer = manufacturerStruct(manufacturerClone.getFirm(), manufacturerClone.getCountry());
 	style = styleClone;
 	battery = batteryClone;
 	capacity = capacityClone;
@@ -207,23 +204,23 @@ quartzWatches::quartzWatches(quartzWatches &clone)
 	battery = clone.battery;
 	capacity = clone.capacity;
 }
-bool quartzWatches::getWaterproof() const
+bool quartzWatches::getWaterproof()
 {
 	return this->waterproof;
 }
-string quartzWatches::getModel() const
+string quartzWatches::getModel()
 {
 	return this->model;
 }
-int quartzWatches::getCost() const
+int quartzWatches::getCost()
 {
 	return this->cost;
 }
-manufacturerStruct quartzWatches::getManufacturer() const
+manufacturerStruct quartzWatches::getManufacturer()
 {
 	return this->manufacturer;
 }
-watchStyle quartzWatches::getStyle() const
+watchStyle quartzWatches::getStyle()
 {
 	return this->style;
 }
@@ -294,9 +291,37 @@ watch *quartzWatches::copy()
 {
 	return (watch *)new quartzWatches(*this);
 }
-char quartzWatches::typeOut()
-{
-	return 'Q';
-}
+
 
 quartzWatches::~quartzWatches() = default;
+
+watch::watch()
+{
+	waterproof = false;
+	model = "empty";
+	cost = 0;
+	watch::manufacturer = manufacturerStruct();
+	style = ARMOURED;
+}
+
+watch::watch(bool waterproofClone, string modelClone, int costClone, const manufacturerStruct &manufacturerClone, watchStyle styleClone)
+{
+	waterproof = waterproofClone;
+	model = move(modelClone);
+	cost = costClone;
+	watch::manufacturer = manufacturerStruct(manufacturerClone);
+	style = styleClone;
+}
+
+watch::watch(const watch &clone)
+{
+	waterproof = clone.waterproof;
+	model = clone.model;
+	cost = clone.cost;
+	watch::manufacturer = manufacturerStruct(clone.manufacturer);
+	style = clone.style;
+}
+bool watch::getWaterproof()
+{
+	return this->waterproof;
+}

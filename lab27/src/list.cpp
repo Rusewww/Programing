@@ -39,7 +39,7 @@ watch *list::findByPrice(int price) const
 	int index = 0;
 	int countOfWatchUnder = 0;
 	for (int i = 0; i < this->count; i++) {
-		auto *temp = (quartzWatches *)getLink(i);
+		auto *temp = (watch *)getLink(i);
 		if (price >= temp->getCost()) {
 			temp->show();
 			index = i;
@@ -58,7 +58,7 @@ watch *list::findClassicWatches() const
 	int index = 0;
 	int countOfWatch = 0;
 	for (size_t i = 0; i < this->count; i++) {
-		auto *temp = (quartzWatches *)getLink((int)i);
+		auto *temp = (watch *)getLink((int)i);
 		if (CLASSIC == temp->getStyle()) {
 			temp->show();
 			index = (int)i;
@@ -75,16 +75,16 @@ watch *list::findClassicWatches() const
 watch *list::findSwitzerlandWithSkeleton() const
 {
 	int index = 0;
-	int countOfWatchUnder = 0;
+	int countOfWatch = 0;
 	for (size_t i = 0; i < this->count; i++) {
 		auto *temp = (mechanicalWatches *)getLink((int)i);
 		if (temp->getSkeleton() && temp->getManufacturer().getCountry() == "Switzerland") {
 			temp->show();
 			index = (int)i;
-			countOfWatchUnder++;
+			countOfWatch++;
 		}
 	}
-	if (countOfWatchUnder == 0) {
+	if (countOfWatch == 0) {
 		cout << "There are no suitable watches!" << endl;
 		return getLink(0);
 	} else {

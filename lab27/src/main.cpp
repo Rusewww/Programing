@@ -24,6 +24,9 @@ int main()
 	watchList.addLink(&watch2);
 	mechanicalWatches watch3(false, "Tree", 2400, manufacturerStruct("Rocket", "USSR"), CLASSIC, true, false);
 	watchList.addLink(&watch3);
-	watchList.showAll();
+	//watch watch4(false, "Tree", 2400, manufacturerStruct("Rocket", "USSR"), CLASSIC);
+	//watchList.findClassicWatches();
+	watchList.findSwitzerlandWithSkeleton();
+	//watchList.showAll();
 	return 0;
 }
