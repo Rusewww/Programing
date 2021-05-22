@@ -57,7 +57,7 @@ watch *list::findClassicWatches() const
 {
 	int index = 0;
 	int countOfWatch = 0;
-	for (size_t i = 0; i < this->count; i++) {
+	for (int i = 0; i < this->count; i++) {
 		auto *temp = getLink((int)i);
 		if (CLASSIC == temp->getStyle()) {
 			temp->show();
@@ -76,7 +76,7 @@ watch *list::findSwitzerlandWithSkeleton() const
 {
 	int index = 0;
 	int countOfWatch = 0;
-	for (size_t i = 0; i < this->count; i++) {
+	for (int i = 0; i < this->count; i++) {
 		auto *temp = (mechanicalWatches *)getLink((int)i);
 		if (temp->getSkeleton() && temp->getManufacturer().getCountry() == "Switzerland") {
 			temp->show();
