@@ -17,13 +17,14 @@ list::list(const list &clone)
 }
 void list::addLink(watch *watchLink)
 {
-	auto *tmp = new watch *[this->count + 1];
+	auto *tmp = new watch *[this->count + 2];
 	for (int i = 0; i < this->count; i++) {
 		tmp[i] = this->watches[i];
 	}
 	tmp[count] = watchLink;
 	delete[] this->watches;
 	this->watches = tmp;
+	delete[] &tmp;
 	this->count += 1;
 }
 watch *list::getLink(int index) const
