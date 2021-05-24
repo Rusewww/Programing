@@ -234,7 +234,9 @@ watch watch::toClass(const string &sWatch)
 }
 watch &watch::operator=(const watch &watch1)
 {
-	manufacturerStruct manufacturerClone(getManufacturer().getFirm(), getManufacturer().getCountry());
+	manufacturerStruct manufacturerClone;
+	manufacturerClone.setFirm(watch1.getManufacturer().getFirm());
+	manufacturerClone.setCountry(watch1.getManufacturer().getCountry());
 	setManufacturer(&manufacturerClone);
 	setWaterproof(watch1.getWaterproof());
 	setCost(watch1.getCost());
