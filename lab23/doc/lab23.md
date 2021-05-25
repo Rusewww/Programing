@@ -34,7 +34,29 @@
 
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── Makefile
+├── doc
+│   ├── assets
+│   │   ├── addLink.png
+│   │   ├── findByPrice.png
+│   │   ├── getLink.png
+│   │   ├── lab23.drawio
+│   │   ├── main.png
+│   │   ├── removeLink.png
+│   │   ├── run.png
+│   │   ├── showAll.png
+│   │   └── test.png
+│   └── lab23.md
+├── src
+│   ├── list.cpp
+│   ├── list.h
+│   ├── main.cpp
+│   ├── watch.cpp
+│   └── watch.h
+└── test
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * Структура базового класу прикладної галузі:

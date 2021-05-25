@@ -22,7 +22,28 @@
     
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── Makefile
+├── assets
+│   └── input.txt
+├── doc
+│   ├── assets
+│   │   ├── findClassicWatches.png
+│   │   ├── findSwitzerlandWithSkeleton.png
+│   │   ├── lab26.drawio
+│   │   ├── main.png
+│   │   ├── run.png
+│   │   └── test.png
+│   └── lab26.md
+├── src
+│   ├── list.cpp
+│   ├── list.h
+│   ├── main.cpp
+│   ├── watch.cpp
+│   └── watch.h
+└── test
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * Один з кассів спадкоємців:

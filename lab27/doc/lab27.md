@@ -22,7 +22,26 @@
     
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── Makefile
+├── doc
+│   ├── assets
+│   │   ├── findClassicWatches.png
+│   │   ├── findSwitzerlandWithSkeleton.png
+│   │   ├── lab27.drawio
+│   │   ├── main.png
+│   │   ├── run.png
+│   │   └── test.png
+│   └── lab27.md
+├── src
+│   ├── list.cpp
+│   ├── list.h
+│   ├── main.cpp
+│   ├── watch.cpp
+│   └── watch.h
+└── test
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * Головний клас:

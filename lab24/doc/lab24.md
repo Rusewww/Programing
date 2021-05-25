@@ -23,7 +23,28 @@
 
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── Makefile
+├── assets
+│   └── input.txt
+├── doc
+│   ├── assets
+│   │   ├── lab24.drawio
+│   │   ├── main.png
+│   │   ├── run.png
+│   │   ├── test.png
+│   │   ├── toClass.png
+│   │   └── toString.png
+│   └── lab24.md
+├── src
+│   ├── list.cpp
+│   ├── list.h
+│   ├── main.cpp
+│   ├── watch.cpp
+│   └── watch.h
+└── test
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * Перетврорення інформації про об'єкт в рядок:
