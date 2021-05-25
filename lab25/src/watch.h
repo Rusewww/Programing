@@ -1,3 +1,11 @@
+/**
+* @file watch.h
+* @brief First declaration of function.
+* @author Zozulia Igor.
+* @date 20-may-2021
+* @version 1.0
+*/
+
 #ifndef PROGRAMING_WATCH_H
 #define PROGRAMING_WATCH_H
 

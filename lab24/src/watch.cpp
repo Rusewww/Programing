@@ -1,3 +1,13 @@
+
+/**
+ * @file watch.cpp
+ * @brief file of function declared in data.h
+ *
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
 #include "watch.h"
 
 manufacturerStruct::manufacturerStruct()

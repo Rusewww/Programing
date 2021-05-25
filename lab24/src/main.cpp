@@ -1,3 +1,16 @@
+/**
+ * @file main.cpp
+ * @brief OOP. Streams.
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
+/**
+ * function main - main program function.
+ * @return 0 - successful return code
+ */
+
 #include "list.h"
 
 int main()
