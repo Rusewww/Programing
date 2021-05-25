@@ -1,5 +1,18 @@
 #include "list.h"
 
+/**
+ * @file main.cpp
+ * @brief OOP. Introduction to OOP.
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
+/**
+ * function main - main program function.
+ * @return 0 - successful return code
+ */
+
 int main()
 {
 	watch watchOne(false, "ZO9507", 1995, manufacturerStruct("Zodiac", "Germany"), CLASSIC);

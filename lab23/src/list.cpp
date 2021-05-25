@@ -1,3 +1,12 @@
+/**
+ * @file lib.cpp
+ * @brief file of function declared in list.h
+ *
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
 #include "list.h"
 
 void list::setCount(const int countCopy)
