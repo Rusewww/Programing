@@ -11,7 +11,7 @@ prep:
 	mkdir dist
 format:
 	doxygen
-compile: main.bin test.bin
+compile: main.bin
 
 debug: testD.bin
 

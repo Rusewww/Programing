@@ -5,6 +5,3 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(src)
 add_executable(Main25 src/main.cpp src/watch.cpp src/list.cpp)
-
-include_directories(src)
-add_executable(Test25 test/test.cpp src/watch.cpp src/list.cpp)
