@@ -79,9 +79,9 @@ bool findByPriceTest()
 	List->addLink(watchOne);
 	List->addLink(watchTwo);
 	List->addLink(watchTree);
-
+    cout.clear(std::ios_base::badbit);
 	watch find = List->findByPrice(1500);
-
+    cout.clear(std::ios_base::goodbit);
 	if (List->getLink(1).getWaterproof() == find.getWaterproof() && List->getLink(1).getModel() == find.getModel() &&
 	    List->getLink(1).getCost() == find.getCost() && List->getLink(1).getStyle() == find.getStyle()) {
 		result = true;
@@ -112,7 +112,7 @@ int main()
 		cout << "Error." << endl;
 	}
 
-	cout << "Test findByPrice: " << endl;
+	cout << "Test findByPrice: ";
 	result = findByPriceTest();
 	if (result) {
 		cout << "Finally!" << endl;
