@@ -36,6 +36,10 @@ public:
     watch *findSwitzerlandWithSkeleton();
 
     void showAll() const;
+
+    void sortByCost(char way);
+
+    void combineLists(list &in);
 };
 
 #endif

@@ -40,6 +40,14 @@ int main()
     cout << "|====<Switzerland_Watches_With_Skeleton>====|" << endl;
     watchList->findSwitzerlandWithSkeleton();
     cout << "|-------------------------------------------|" << endl;
+    quartzWatches watchFour(true, "Seven", 242, manufacturerStruct("Rocket", "USSR"), CLASSIC, SOLAR, 95);
+    mechanicalWatches watch4(false, "Eight", 2200, manufacturerStruct("Tissot", "Switzerland"), CLASSIC, true, true);
+    auto *watchListSecond = new list;
+    watchListSecond->addLink(&watchFour);
+    watchListSecond->addLink(&watch4);
+    watchList->combineLists(*watchListSecond);
+    //watchList->sortByCost('>');
+    watchList->showAll();
     delete watchList;
     return 0;
 }

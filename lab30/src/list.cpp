@@ -67,11 +67,11 @@ bool findPriceHelp(watch *one) {
 }
 
 watch *list::findByPrice() {
-    watch *res = nullptr;
+    watch *res;
     bool flag = true;
     auto iter = watches.begin();
-    for (iter = watches.begin(); iter != watches.end(); iter++) {
-        iter = std::find_if(iter, this->watches.end(), findPriceHelp);
+    for (; iter != watches.end(); iter++) {
+        iter = find_if(iter, this->watches.end(), findPriceHelp);
         flag = false;
         ((watch *) *iter)->show();
         cout << endl;
@@ -95,11 +95,11 @@ bool findClassicHelp(watch *one) {
 }
 
 watch *list::findClassicWatches() {
-    watch *res = nullptr;
+    watch *res;
     bool flag = true;
     auto iter = watches.begin();
-    for (iter = watches.begin(); iter != watches.end(); iter++) {
-        iter = std::find_if(iter, this->watches.end(), findClassicHelp);
+    for (; iter != watches.end(); iter++) {
+        iter = find_if(iter, this->watches.end(), findClassicHelp);
         flag = false;
         ((watch *) *iter)->show();
         cout << endl;
@@ -123,11 +123,11 @@ bool findSwitzerlandWithSkeletonHelp(watch *one) {
 }
 
 watch *list::findSwitzerlandWithSkeleton() {
-    watch *res = nullptr;
+    watch *res;
     bool flag = true;
     auto iter = watches.begin();
-    for (iter = watches.begin(); iter != watches.end(); iter++) {
-        iter = std::find_if(iter, this->watches.end(), findSwitzerlandWithSkeletonHelp);
+    for (; iter != watches.end(); iter++) {
+        iter = find_if(iter, this->watches.end(), findSwitzerlandWithSkeletonHelp);
         flag = false;
         ((watch *) *iter)->show();
         cout << endl;
@@ -137,6 +137,48 @@ watch *list::findSwitzerlandWithSkeleton() {
     }
     res = (watch *) *iter;
     return res;
+}
+
+bool functorLess(watch *one, watch *two) {
+    bool result = false;
+    auto *tempOne = (watch *) one->copy();
+    auto *tempTwo = (watch *) two->copy();
+    if (tempOne->getCost() > tempTwo->getCost()) {
+        result = true;
+        delete tempOne;
+        delete tempTwo;
+    }
+    return result;
+}
+
+bool functorMore(watch *one, watch *two) {
+    bool result = false;
+    auto *tempOne = (watch *) one->copy();
+    auto *tempTwo = (watch *) two->copy();
+    if (tempOne->getCost() < tempTwo->getCost()) {
+        result = true;
+        delete tempOne;
+        delete tempTwo;
+    }
+    return result;
+}
+
+void list::sortByCost(char way) {
+    if (way == '<') {
+        sort(watches.begin(), watches.end(), functorMore);
+    } else {
+        sort(watches.begin(), watches.end(), functorLess);
+    }
+}
+
+void list::combineLists(list &second) {
+    this->watches.reserve(this->count + second.count);
+    auto iter = this->watches.end();
+    for (int i = 0; i < second.count; ++i) {
+        this->watches.insert(iter + i, second.watches[i]);
+    }
+    this->count += second.count;
+
 }
 
 void list::showAll() const {

@@ -37,6 +37,8 @@ using std::stringstream;
 using std::vector;
 using std::map;
 using std::set;
+using std::sort;
+using std::find_if;
 
 enum watchStyle {
     ARMOURED, CLASSIC, SPORT
