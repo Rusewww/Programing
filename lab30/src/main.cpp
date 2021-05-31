@@ -46,8 +46,10 @@ int main()
     watchListSecond->addLink(&watchFour);
     watchListSecond->addLink(&watch4);
     watchList->combineLists(*watchListSecond);
-    //watchList->sortByCost('>');
+    watchList->sortByCost('>');
     watchList->showAll();
+    cout << "|-------------------------------------------|" << endl;
+    fiveTask();
     delete watchList;
     return 0;
 }

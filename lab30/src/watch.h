@@ -9,36 +9,7 @@
 #ifndef PROGRAMING_WATCH_H
 #define PROGRAMING_WATCH_H
 
-#include <string>
-#include <cstring>
-#include <iostream>
-#include <utility>
-#include <sstream>
-#include <fstream>
-#include <regex>
-#include <vector>
-#include <set>
-#include <list>
-#include <algorithm>
-
-using std::cin;
-using std::cout;
-using std::endl;
-using std::ifstream;
-using std::istream;
-using std::move;
-using std::ofstream;
-using std::ostream;
-using std::regex;
-using std::regex_match;
-using std::stoi;
-using std::string;
-using std::stringstream;
-using std::vector;
-using std::map;
-using std::set;
-using std::sort;
-using std::find_if;
+#include "data.h"
 
 enum watchStyle {
     ARMOURED, CLASSIC, SPORT
