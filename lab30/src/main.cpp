@@ -13,8 +13,7 @@
 
 #include "list.h"
 
-int main()
-{
+int main() {
     cout << "|===========<Origin_list>===========|" << endl;
     auto *watchList = new list;
     quartzWatches watchOne(false, "One", 199, manufacturerStruct("Zodiac", "Germany"), CLASSIC, GRAPHENE, 400);
