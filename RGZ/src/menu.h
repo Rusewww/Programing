@@ -5,9 +5,12 @@
 #ifndef LAB30_MENU_H
 #define LAB30_MENU_H
 
+#include "controller.h"
 
 class menu {
-
+public:
+    static void showMainMenu();
+    static void showForm();
 };
 
 

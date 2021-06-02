@@ -40,7 +40,10 @@ void manufacturerStruct::setCountry(const string &countryClone) {
 }
 
 void manufacturerStruct::showManufacturer() {
-    cout << "Manufacturer: " << firm << "; " << country << endl;
+    cout.width(15);
+    cout << firm;
+    cout.width(15);
+    cout << country;
 }
 
 watch::~watch() = default;
@@ -134,32 +137,45 @@ void mechanicalWatches::setSkeleton(bool skeletonClone) {
 }
 
 void mechanicalWatches::show() {
+    cout << "|";
     if (waterproof == 0) {
-        cout << "Waterproof: No" << endl;
+        cout.width(10);
+        cout << "No";
     } else {
-        cout << "Waterproof: Have" << endl;
+        cout.width(10);
+        cout << "Have";
     }
-    cout << "Model: " << model << endl;
+    cout.width(10);
+    cout << model;
     manufacturer.showManufacturer();
-    cout << "Cost: " << cost << "USD" << endl;
+    cout.width(7);
+    cout << cost;
+    cout.width(3);
+    cout << "USD";
     if (style == 0) {
-        cout << "Style: Armoured" << endl;
+        cout.width(10);
+        cout << "Armoured";
     } else if (style == 1) {
-        cout << "Style: Classic" << endl;
+        cout.width(10);
+        cout << "Classic";
     } else {
-        cout << "Style: Sport" << endl;
+        cout.width(10);
+        cout << "Sport";
     }
     if (selfWinding) {
-        cout << "Self winding: Have" << endl;
+        cout.width(25);
+        cout << "Have";
     } else {
-        cout << "Self winding: No" << endl;
+        cout.width(25);
+        cout << "No";
     }
     if (skeleton) {
-        cout << "Skeleton: Have" << endl;
+        cout.width(20);
+        cout << "Have";
     } else {
-        cout << "Skeleton: No" << endl;
+        cout.width(20);
+        cout << "No";
     }
-    cout << endl;
 }
 
 watch *mechanicalWatches::copy() {
@@ -257,30 +273,45 @@ void quartzWatches::setCapacity(int capacityClone) {
 }
 
 void quartzWatches::show() {
+    cout << "|";
     if (waterproof == 0) {
-        cout << "Waterproof: No" << endl;
+        cout.width(10);
+        cout << "No";
     } else {
-        cout << "Waterproof: Have" << endl;
+        cout.width(10);
+        cout << "Have";
     }
-    cout << "Model: " << model << endl;
+    cout.width(10);
+    cout << model;
     manufacturer.showManufacturer();
-    cout << "Cost: " << cost << "USD" << endl;
+    cout.width(7);
+    cout << cost;
+    cout.width(3);
+    cout << "USD";
     if (style == 0) {
-        cout << "Style: Armoured" << endl;
+        cout.width(10);
+        cout << "Armoured";
     } else if (style == 1) {
-        cout << "Style: Classic" << endl;
+        cout.width(10);
+        cout << "Classic";
     } else {
-        cout << "Style: Sport" << endl;
+        cout.width(10);
+        cout << "Sport";
     }
     if (battery == GRAPHENE) {
-        cout << "Battery: Graphene" << endl;
+        cout.width(25);
+        cout << "Graphene";
     } else if (battery == LI_ION) {
-        cout << "Battery: Li-Ion" << endl;
+        cout.width(25);
+        cout << "Li-Ion";
     } else {
-        cout << "Battery: Solar" << endl;
+        cout.width(25);
+        cout << "Solar";
     }
-    cout << "Capacity: " << capacity << "mAh" << endl;
-    cout << endl;
+    cout.width(17);
+    cout << capacity;
+    cout.width(3);
+    cout << "mAh";
 }
 
 watch *quartzWatches::copy() {
@@ -341,7 +372,7 @@ istream &operator>>(istream &in, quartzWatches &watch1) {
     watch1.setStyle((watchStyle) style);
     manufacturerStruct manufacturerS(firm, country);
     watch1.setManufacturer(&manufacturerS);
-    watch1.setBattery((batteryType)battery);
+    watch1.setBattery((batteryType) battery);
     watch1.setCapacity(capacity);
     return in;
 
