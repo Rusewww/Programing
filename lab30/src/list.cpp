@@ -148,7 +148,7 @@ void list::combineLists(list &second) {
     this->watches.reserve((unsigned long) this->count + (unsigned long) second.count);
     auto iter = this->watches.end();
     for (unsigned long i = 0; i < (unsigned long) second.count; ++i) {
-        this->watches.insert(iter + i, second.watches[i]);
+        this->watches.insert(iter + (long)i, second.watches[i]);
     }
     this->count += second.count;
 
