@@ -6,7 +6,7 @@ void controller::setList(list *watchListCopy) {
 
 void controller::showList() const {
     auto tmp = watchList.getLink();
-    for (int i = 0; i < this->watchList.getCount(); ++i) {
+    for ((unsigned long) i = 0; i < (unsigned long) this->watchList.getCount(); ++i) {
         tmp[i]->show();
         cout << endl;
     }
@@ -354,7 +354,7 @@ void controller::writeToFile(const string &path) {
     if (!fOut.is_open()) {
         cout << "ERROR: The file did not open!" << endl;
     } else {
-        for (int i = 0; i < watchList.getLink().size(); ++i) {
+        for (unsigned long i = 0; i < watchList.getLink().size(); ++i) {
             fOut << toString(watchList.getLink(i));
         }
 
