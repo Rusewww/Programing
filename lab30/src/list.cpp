@@ -18,7 +18,7 @@ int list::getCount() const {
 }
 
 list::list(const list &clone) {
-    for (int i = 0; i < count; i++) {
+    for (unsigned long i = 0; i < count; i++) {
         watches[i] = clone.watches[i];
     }
 }
@@ -27,33 +27,6 @@ void list::addLink(watch *watchLink) {
     this->watches.push_back(watchLink->copy());
     this->count++;
 }
-/*watch *list::getLink(int index) const
-{
-    if (index >= this->count) {
-        index = this->count - 1;
-    }
-    return watches[index];
-}*/
-
-/*watch *list::findByPrice(int price) const
-{
-    int index = 0;
-    int countOfWatchUnder = 0;
-    for (int i = 0; i < this->count; i++) {
-        auto *temp = watches[i];
-        if (price >= temp->getCost()) {
-            temp->show();
-            index = i;
-            countOfWatchUnder++;
-        }
-    }
-    if (countOfWatchUnder == 0) {
-        cout << "There are no suitable watches!";
-        return watches[0];
-    } else {
-        return watches[index];
-    }
-}*/
 
 bool findPriceHelp(watch *one) {
     auto *temp = (watch *) one->copy();
@@ -172,7 +145,7 @@ void list::sortByCost(char way) {
 }
 
 void list::combineLists(list &second) {
-    this->watches.reserve(this->count + second.count);
+    this->watches.reserve((unsigned long )this->count + second.count);
     auto iter = this->watches.end();
     for (int i = 0; i < second.count; ++i) {
         this->watches.insert(iter + i, second.watches[i]);
@@ -182,7 +155,7 @@ void list::combineLists(list &second) {
 }
 
 void list::showAll() const {
-    for (int i = 0; i < this->count; ++i) {
+    for (unsigned long i = 0; i < (unsigned long)this->count; ++i) {
         watches[i]->show();
         cout << endl;
     }
