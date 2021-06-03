@@ -29,128 +29,8 @@ void list::addLink(watch *watchLink) {
     this->count++;
 }
 
-bool findPriceHelp(watch *one) {
-    auto *temp = (watch *) one->copy();
-    if (temp->getCost() <= 400) {
-        delete temp;
-        return true;
-    } else {
-        delete temp;
-        return false;
-    }
-}
-
-watch *list::findByPrice() {
-    watch *res;
-    bool flag = true;
-    auto iter = watches.begin();
-    for (; iter != watches.end(); iter++) {
-        iter = find_if(iter, this->watches.end(), findPriceHelp);
-        flag = false;
-        ((watch *) *iter)->show();
-        cout << endl;
-    }
-    if (flag) {
-        cout << "There are no suitable watches!" << endl;
-    }
-    res = (watch *) *iter;
-    return res;
-}
-
-bool findClassicHelp(watch *one) {
-    auto *temp = (watch *) one->copy();
-    if (temp->getStyle() == CLASSIC) {
-        delete temp;
-        return true;
-    } else {
-        delete temp;
-        return false;
-    }
-}
-
-watch *list::findClassicWatches() {
-    watch *res;
-    bool flag = true;
-    auto iter = watches.begin();
-    for (; iter != watches.end(); iter++) {
-        iter = find_if(iter, this->watches.end(), findClassicHelp);
-        flag = false;
-        ((watch *) *iter)->show();
-        cout << endl;
-    }
-    if (flag) {
-        cout << "There are no suitable watches!" << endl;
-    }
-    res = (watch *) *iter;
-    return res;
-}
-
-bool findSwitzerlandWithSkeletonHelp(watch *one) {
-    auto *temp = (mechanicalWatches *) one->copy();
-    if (temp->getManufacturer().getCountry() == "Switzerland" && temp->getSkeleton()) {
-        delete temp;
-        return true;
-    } else {
-        delete temp;
-        return false;
-    }
-}
-
-watch *list::findSwitzerlandWithSkeleton() {
-    watch *res;
-    bool flag = true;
-    auto iter = watches.begin();
-    for (; iter != watches.end(); iter++) {
-        iter = find_if(iter, this->watches.end(), findSwitzerlandWithSkeletonHelp);
-        flag = false;
-        ((watch *) *iter)->show();
-        cout << endl;
-    }
-    if (flag) {
-        cout << "There are no suitable watches!" << endl;
-    }
-    res = (watch *) *iter;
-    return res;
-}
-
-bool functorLess(watch *one, watch *two) {
-    bool result = false;
-    auto *tempOne = (watch *) one->copy();
-    auto *tempTwo = (watch *) two->copy();
-    if (tempOne->getCost() > tempTwo->getCost()) {
-        result = true;
-        delete tempOne;
-        delete tempTwo;
-    }
-    return result;
-}
-
-bool functorMore(watch *one, watch *two) {
-    bool result = false;
-    auto *tempOne = (watch *) one->copy();
-    auto *tempTwo = (watch *) two->copy();
-    if (tempOne->getCost() < tempTwo->getCost()) {
-        result = true;
-        delete tempOne;
-        delete tempTwo;
-    }
-    return result;
-}
-
-void list::sortByCost(char way) {
-    if (way == '<') {
-        sort(watches.begin(), watches.end(), functorMore);
-    } else {
-        sort(watches.begin(), watches.end(), functorLess);
-    }
-}
-
-
-void list::showAll() const {
-    for (int i = 0; i < this->count; ++i) {
-        watches[i]->show();
-        cout << endl;
-    }
+vector<watch *> list::getLink() const {
+    return this->watches;
 }
 
 watch *list::getLink(int index) {
@@ -169,13 +49,30 @@ void list::clearLink(int index) {
 }
 
 void list::clearList() {
-    while (!watches.empty()){
+    while (!watches.empty()) {
         watches.pop_back();
     }
     watches.clear();
     watches.shrink_to_fit();
     this->count = 0;
 }
+
+void list::setLinks(const vector<watch *>& watchesCopy) {
+    while (!watches.empty()) {
+        watches.pop_back();
+    }
+    watches.clear();
+    watches.shrink_to_fit();
+    this->watches = watchesCopy;
+}
+
+void list::showAll() const {
+    for (int i = 0; i < this->count; ++i) {
+        watches[i]->show();
+        cout << endl;
+    }
+}
+
 
 list::list() = default;
 

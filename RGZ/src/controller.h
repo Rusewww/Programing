@@ -1,27 +1,27 @@
-//
-// Created by Rusewww on 28.05.2021.
-//
-
 #ifndef RGZ_CONTROLLER_H
 #define RGZ_CONTROLLER_H
 
 #include "list.h"
 
 class controller {
-private:
-    list watchList;
 public:
+    list watchList;
+
+    controller();
+
+    ~controller();
+
     void setList(list *watchListCopy);
 
     void showList() const;
 
-    void sortByCost(char way);
+    void sorting(char way, int criterion);
 
-    watch *findByPrice();
+    vector<mechanicalWatches *> find(int criterion) const;
 
-    watch *findClassicWatches();
+    bool readFromFile(const string &path);
 
-    watch *findSwitzerlandWithSkeleton();
+    void writeToFile(const string &path);
 };
 
 

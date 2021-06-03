@@ -1,24 +1,146 @@
-//
-// Created by Rusewww on 31.05.2021.
-//
 #include "menu.h"
-int main(){
+
+int main() {
     auto watchList = new list;
-    menu::showMainMenu();
-    quartzWatches watchOne(false, "One", 199, manufacturerStruct("Zodiac", "Germany"), CLASSIC, GRAPHENE, 400);
-    watchList->addLink(&watchOne);
-    quartzWatches watchTwo(true, "Two", 400, manufacturerStruct("G-Shock", "Japan"), SPORT, LI_ION, 445);
-    watchList->addLink(&watchTwo);
-    quartzWatches watchTree(false, "Tree", 24, manufacturerStruct("Rocket", "USSR"), CLASSIC, SOLAR, 95);
-    watchList->addLink(&watchTree);
-    mechanicalWatches watch1(false, "Four", 1400, manufacturerStruct("Timex", "USA"), CLASSIC, false, true);
-    watchList->addLink(&watch1);
-    mechanicalWatches watch2(true, "Five", 300, manufacturerStruct("Casio", "Japan"), SPORT, true, false);
-    watchList->addLink(&watch2);
-    mechanicalWatches watch3(false, "Six", 200, manufacturerStruct("Tissot", "Switzerland"), CLASSIC, true, true);
     auto Control = new controller;
     Control->setList(watchList);
-    menu::showForm();
-    Control->showList();
+    bool run = true;
+    while (run) {
+        menu::showMainMenu();
+        int point = menu::gettingPoint();
+        switch (point) {
+            case 1:
+                menu::showListMenu();
+                Control->showList();
+                menu::ending();
+                break;
+            case 2:
+                Control->writeToFile("../dist/output.txt");
+                menu::finallyWriteToFile();
+                break;
+            case 3:
+                Control->readFromFile("../assets/input.txt");
+                menu::finallyReadFromFile();
+                break;
+            case 4: {
+                menu::showSortMenu();
+                char way = menu::getWay();
+                int pointSort = menu::gettingPoint();
+                Control->sorting(way, pointSort);
+                menu::Finally();
+                break;
+            }
+            case 5: {
+                menu::addMenu();
+                char type;
+                cout << ("| Enter type of watch(Q - quartz watches; M - mechanical watches): ") << endl;
+                cin >> type;
+                bool waterproof;
+                string model;
+                int cost;
+                string firm;
+                string country;
+                int style;
+                int filedOne;
+                int filedTwo;
+                stringstream buffer;
+                regex regular(
+                        "^[0-1] [A-Z][a-z]* [0-9]{1,5} [0-2] [A-Z][a-zA-Z]* [A-Z][a-zA-Z]* [0-2] [0-9]{1,3}$");
+                switch (type) {
+                    case 'Q':
+                        cout << ("| Enter waterproof: ") << endl;
+                        cin >> waterproof;
+                        cout << ("| Enter model name: ") << endl;
+                        cin >> model;
+                        cout << ("| Enter cost: ") << endl;
+                        cin >> cost;
+                        cout << ("| Enter firm name: ") << endl;
+                        cin >> firm;
+                        cout << ("| Enter country: ") << endl;
+                        cin >> country;
+                        cout << ("| Enter style of watch: ") << endl;
+                        cin >> style;
+                        cout << ("| Enter battery type: ") << endl;
+                        cin >> filedOne;
+                        cout << ("| Enter capacity of battery: ") << endl;
+                        cin >> filedTwo;
+                        buffer << waterproof << " " << model << " " << cost << " " << style << " " << firm << " "
+                               << country
+                               << " "
+                               << filedOne << " " << filedTwo;
+                        if (regex_match(buffer.str(), regular)) {
+                            quartzWatches watchAdd(waterproof, model, cost, manufacturerStruct(firm, country),
+                                                   (watchStyle) style, (batteryType) filedOne, filedTwo);
+                            Control->watchList.addLink(&watchAdd);
+                        }
+                        break;
+                    case 'M':
+                        cout << ("| Enter waterproof: ") << endl;
+                        cin >> waterproof;
+                        cout << ("| Enter model name: ") << endl;
+                        cin >> model;
+                        cout << ("| Enter cost: ") << endl;
+                        cin >> cost;
+                        cout << ("| Enter firm name: ") << endl;
+                        cin >> firm;
+                        cout << ("| Enter country: ") << endl;
+                        cin >> country;
+                        cout << ("| Enter style of watch: ") << endl;
+                        cin >> style;;
+                        cout << ("| Enter self wilding: ") << endl;
+                        cin >> filedOne;
+                        cout << ("| Enter skeleton: ") << endl;
+                        cin >> filedTwo;
+                        buffer << waterproof << " " << model << " " << cost << " " << style << " " << firm << " "
+                               << country
+                               << " "
+                               << filedOne << " " << filedTwo;
+                        if (regex_match(buffer.str(), regular)) {
+                            mechanicalWatches watchAdd(waterproof, model, cost, manufacturerStruct(firm, country),
+                                                       (watchStyle) style, (batteryType) filedOne, filedTwo);
+                            Control->watchList.addLink(&watchAdd);
+                            menu::Finally();
+                        } else {
+                            cout << ("| Some criterion entered incorrectly!!!") << endl;
+                            menu::ending();
+                        }
+                        break;
+                    default:
+                        cout << ("| Incorrect variant!!!") << endl;
+                        menu::ending();
+                        break;
+                }
+                break;
+            }
+            case 6: {
+                menu::deleteMenu();
+                int index = menu::gettingPoint();
+                Control->watchList.clearLink(index);
+                menu::Finally();
+                break;
+            }
+            case 7: {
+                menu::showFindMenu();
+                int criterion = menu::gettingPoint();
+                menu::showForm();
+                Control->find(criterion);
+                break;
+            }
+            case 8:
+                menu::showDeletingMenu();
+                Control->watchList.clearList();
+                menu::Finally();
+                menu::ending();
+                break;
+            case 9:
+                run = false;
+                break;
+            default:
+                cout << ("| Incorrect variant!!!") << endl;
+                menu::ending();
+        }
+    }
+    delete Control;
+    delete watchList;
     return 0;
 }

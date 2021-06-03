@@ -1,7 +1,3 @@
-//
-// Created by Rusewww on 28.05.2021.
-//
-
 #ifndef RGZ_WATCH_H
 #define RGZ_WATCH_H
 

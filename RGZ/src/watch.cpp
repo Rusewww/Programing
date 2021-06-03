@@ -1,9 +1,3 @@
-//
-// Created by Rusewww on 28.05.2021.
-//
-
-#include "watch.h"
-
 #include "watch.h"
 
 manufacturerStruct::manufacturerStruct() {
@@ -40,10 +34,10 @@ void manufacturerStruct::setCountry(const string &countryClone) {
 }
 
 void manufacturerStruct::showManufacturer() {
-    cout.width(15);
-    cout << firm;
-    cout.width(15);
-    cout << country;
+    cout.width(14);
+    cout << firm << "|";
+    cout.width(14);
+    cout << country << "|";
 }
 
 watch::~watch() = default;
@@ -139,42 +133,42 @@ void mechanicalWatches::setSkeleton(bool skeletonClone) {
 void mechanicalWatches::show() {
     cout << "|";
     if (waterproof == 0) {
-        cout.width(10);
-        cout << "No";
+        cout.width(11);
+        cout << "No|";
     } else {
-        cout.width(10);
-        cout << "Have";
+        cout.width(11);
+        cout << "Have|";
     }
-    cout.width(10);
-    cout << model;
+    cout.width(9);
+    cout << model << "|";
     manufacturer.showManufacturer();
     cout.width(7);
     cout << cost;
-    cout.width(3);
-    cout << "USD";
+    cout.width(4);
+    cout << "USD|";
     if (style == 0) {
         cout.width(10);
-        cout << "Armoured";
+        cout << "Armoured|";
     } else if (style == 1) {
         cout.width(10);
-        cout << "Classic";
+        cout << "Classic|";
     } else {
         cout.width(10);
-        cout << "Sport";
+        cout << "Sport|";
     }
     if (selfWinding) {
-        cout.width(25);
-        cout << "Have";
+        cout.width(26);
+        cout << "Have|";
     } else {
-        cout.width(25);
-        cout << "No";
+        cout.width(26);
+        cout << "No|";
     }
     if (skeleton) {
         cout.width(20);
-        cout << "Have";
+        cout << "Have|";
     } else {
         cout.width(20);
-        cout << "No";
+        cout << "No|";
     }
 }
 
@@ -275,43 +269,51 @@ void quartzWatches::setCapacity(int capacityClone) {
 void quartzWatches::show() {
     cout << "|";
     if (waterproof == 0) {
-        cout.width(10);
-        cout << "No";
+        cout.width(11);
+        cout << "No|";
     } else {
-        cout.width(10);
-        cout << "Have";
+        cout.width(11);
+        cout << "Have|";
     }
-    cout.width(10);
-    cout << model;
+    cout.width(9);
+    cout << model << "|";
     manufacturer.showManufacturer();
     cout.width(7);
     cout << cost;
-    cout.width(3);
-    cout << "USD";
+    cout.width(4);
+    cout << "USD|";
     if (style == 0) {
         cout.width(10);
-        cout << "Armoured";
+        cout << "Armoured|";
     } else if (style == 1) {
         cout.width(10);
-        cout << "Classic";
+        cout << "Classic|";
     } else {
         cout.width(10);
-        cout << "Sport";
+        cout << "Sport|";
     }
     if (battery == GRAPHENE) {
-        cout.width(25);
+        cout.width(12);
         cout << "Graphene";
+        cout.width(14);
+        cout << "|";
     } else if (battery == LI_ION) {
-        cout.width(25);
+        cout.width(12);
         cout << "Li-Ion";
+        cout.width(14);
+        cout << "|";
     } else {
-        cout.width(25);
+        cout.width(12);
         cout << "Solar";
+        cout.width(14);
+        cout << "|";
     }
-    cout.width(17);
+    cout.width(6);
     cout << capacity;
     cout.width(3);
     cout << "mAh";
+    cout.width(11);
+    cout << "|";
 }
 
 watch *quartzWatches::copy() {

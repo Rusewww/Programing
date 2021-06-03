@@ -1,7 +1,3 @@
-//
-// Created by Rusewww on 28.05.2021.
-//
-
 #include "watch.h"
 
 #ifndef RGZ_LIST_H
@@ -10,7 +6,7 @@
 
 class list {
 private:
-    vector<watch *> watches{};
+    vector<watch *> watches;
     int count{};
 public:
     list();
@@ -25,13 +21,7 @@ public:
 
     void addLink(watch *watchLink);
 
-    watch *findByPrice();
-
-    watch *findClassicWatches();
-
-    watch *findSwitzerlandWithSkeleton();
-
-    void sortByCost(char way);
+    vector<watch*> getLink() const;
 
     watch *getLink(int index);
 
@@ -40,6 +30,8 @@ public:
     void clearList();
 
     void showAll() const;
+
+    void setLinks(const vector<watch *>& watchesCopy);
 };
 
 #endif //RGZ_LIST_H
