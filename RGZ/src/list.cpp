@@ -19,7 +19,7 @@ int list::getCount() const {
 }
 
 list::list(const list &clone) {
-    for (int i = 0; i < count; i++) {
+    for (unsigned long i = 0; i < (unsigned long) count; i++) {
         watches[i] = clone.watches[i];
     }
 }
@@ -57,7 +57,7 @@ void list::clearList() {
     this->count = 0;
 }
 
-void list::setLinks(const vector<watch *>& watchesCopy) {
+void list::setLinks(const vector<watch *> &watchesCopy) {
     while (!watches.empty()) {
         watches.pop_back();
     }
