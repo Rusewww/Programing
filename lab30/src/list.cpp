@@ -18,7 +18,7 @@ int list::getCount() const {
 }
 
 list::list(const list &clone) {
-    for (unsigned long i = 0; i < count; i++) {
+    for (unsigned long i = 0; i < (unsigned long) count; i++) {
         watches[i] = clone.watches[i];
     }
 }
@@ -145,9 +145,9 @@ void list::sortByCost(char way) {
 }
 
 void list::combineLists(list &second) {
-    this->watches.reserve((unsigned long )this->count + second.count);
+    this->watches.reserve((unsigned long) this->count + (unsigned long) second.count);
     auto iter = this->watches.end();
-    for (int i = 0; i < second.count; ++i) {
+    for (unsigned long i = 0; i < (unsigned long) second.count; ++i) {
         this->watches.insert(iter + i, second.watches[i]);
     }
     this->count += second.count;
@@ -155,7 +155,7 @@ void list::combineLists(list &second) {
 }
 
 void list::showAll() const {
-    for (unsigned long i = 0; i < (unsigned long)this->count; ++i) {
+    for (unsigned long i = 0; i < (unsigned long) this->count; ++i) {
         watches[i]->show();
         cout << endl;
     }
