@@ -19,7 +19,7 @@ int list::getCount() const {
 }
 
 list::list(const list &clone) {
-    for (unsigned long i = 0; i < (unsigned long) count; i++) {
+    for (int i = 0; i < count; i++) {
         watches[i] = clone.watches[i];
     }
 }
@@ -34,11 +34,11 @@ vector<watch *> list::getLink() const {
 }
 
 watch *list::getLink(int index) {
-    return watches[(unsigned long) index];
+    return watches[index];
 }
 
 void list::clearLink(int index) {
-    if ((unsigned long) index > watches.size()) {
+    if (index > watches.size()) {
         index = watches.size();
     } else if (index < 0) {
         index = 0;
@@ -57,7 +57,7 @@ void list::clearList() {
     this->count = 0;
 }
 
-void list::setLinks(const vector<watch *> &watchesCopy) {
+void list::setLinks(const vector<watch *>& watchesCopy) {
     while (!watches.empty()) {
         watches.pop_back();
     }
@@ -65,14 +65,6 @@ void list::setLinks(const vector<watch *> &watchesCopy) {
     watches.shrink_to_fit();
     this->watches = watchesCopy;
 }
-
-void list::showAll() const {
-    for (unsigned long i = 0; i < this->count; ++i) {
-        watches[i]->show();
-        cout << endl;
-    }
-}
-
 
 list::list() = default;
 
