@@ -34,7 +34,7 @@ vector<watch *> list::getLink() const {
 }
 
 watch *list::getLink(int index) {
-    return watches[index];
+    return watches[(unsigned long) index];
 }
 
 void list::clearLink(int index) {
