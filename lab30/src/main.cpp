@@ -50,5 +50,6 @@ int main() {
     cout << "|-------------------------------------------|" << endl;
     fiveTask();
     delete watchList;
+    delete watchListSecond;
     return 0;
 }
