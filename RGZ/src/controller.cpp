@@ -6,7 +6,7 @@ void controller::setList(list *watchListCopy) {
 
 void controller::showList() const {
     auto tmp = watchList.getLink();
-    for (unsigned long i = 0; i < this->watchList.getCount(); ++i) {
+    for (unsigned long i = 0; i < (unsigned long) this->watchList.getCount(); ++i) {
         tmp[i]->show();
         cout << endl;
     }
