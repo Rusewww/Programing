@@ -38,8 +38,8 @@ watch *list::getLink(int index) {
 }
 
 void list::clearLink(int index) {
-    if (index > watches.size()) {
-        index = watches.size();
+    if ((unsigned long) index > (unsigned long) watches.size()) {
+        index = (int) watches.size();
     } else if (index < 0) {
         index = 0;
     }
