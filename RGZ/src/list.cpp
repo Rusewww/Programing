@@ -39,11 +39,11 @@ watch *list::getLink(int index) {
 
 void list::clearLink(int index) {
     if ((unsigned long) index > watches.size()) {
-        (unsigned long) index = watches.size();
+        index = watches.size();
     } else if (index < 0) {
-        (unsigned long) index = 0;
+        index = 0;
     }
-    auto pos = watches.begin() + (unsigned long) index;
+    auto pos = watches.begin() + index;
     watches.erase(pos);
     this->count--;
 }
@@ -67,7 +67,7 @@ void list::setLinks(const vector<watch *> &watchesCopy) {
 }
 
 void list::showAll() const {
-    for (unsigned long i = 0; i < (unsigned long) this->count; ++i) {
+    for (unsigned long i = 0; i < this->count; ++i) {
         watches[i]->show();
         cout << endl;
     }
