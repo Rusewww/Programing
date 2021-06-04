@@ -29,8 +29,6 @@ public:
 
     void clearList();
 
-    void showAll() const;
-
     void setLinks(const vector<watch *>& watchesCopy);
 };
 
