@@ -21,6 +21,13 @@ void controller::showList() const {
     }
 }
 
+/**
+ * functorLessCost - функтор сортування за ціною (від більшого до меншого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
+
 bool functorLessCost(watch *one, watch *two) {
     bool result = false;
     auto *tempOne = (watch *) one->copy();
@@ -32,6 +39,13 @@ bool functorLessCost(watch *one, watch *two) {
     }
     return result;
 }
+
+/**
+ * functorMoreCost - функтор сортування за ціною (від меншого до більшого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
 
 bool functorMoreCost(watch *one, watch *two) {
     bool result = false;
@@ -45,6 +59,13 @@ bool functorMoreCost(watch *one, watch *two) {
     return result;
 }
 
+/**
+ * functorLessWaterproof - функтор сортування за вологостійкістю (від меншого до більшого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
+
 bool functorLessWaterproof(watch *one, watch *two) {
     bool result = false;
     auto *tempOne = (watch *) one->copy();
@@ -56,6 +77,13 @@ bool functorLessWaterproof(watch *one, watch *two) {
     }
     return result;
 }
+
+/**
+ * functorMoreWaterproof - функтор сортування за вологостійкістю (від більшого до меншого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
 
 bool functorMoreWaterproof(watch *one, watch *two) {
     bool result = false;
@@ -69,6 +97,13 @@ bool functorMoreWaterproof(watch *one, watch *two) {
     return result;
 }
 
+/**
+ * functorLessModel - функтор сортування за моделлю (від меншого до більшого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
+
 bool functorLessModel(watch *one, watch *two) {
     bool result = false;
     auto *tempOne = (watch *) one->copy();
@@ -80,6 +115,13 @@ bool functorLessModel(watch *one, watch *two) {
     }
     return result;
 }
+
+/**
+ * functorMoreModel - функтор сортування за моделлю (від більшого до меншого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
 
 bool functorMoreModel(watch *one, watch *two) {
     bool result = false;
@@ -93,6 +135,13 @@ bool functorMoreModel(watch *one, watch *two) {
     return result;
 }
 
+/**
+ * functorLessFirm - функтор сортування за фірмою (від меншого до більшого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
+
 bool functorLessFirm(watch *one, watch *two) {
     bool result = false;
     auto *tempOne = (watch *) one->copy();
@@ -104,6 +153,13 @@ bool functorLessFirm(watch *one, watch *two) {
     }
     return result;
 }
+
+/**
+ * functorMoreFirm - функтор сортування за фірмою (від більшого до меншого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
 
 bool functorMoreFirm(watch *one, watch *two) {
     bool result = false;
@@ -117,6 +173,13 @@ bool functorMoreFirm(watch *one, watch *two) {
     return result;
 }
 
+/**
+ * functorLessCountry - функтор сортування за країною (від меншого до більшого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
+
 bool functorLessCountry(watch *one, watch *two) {
     bool result = false;
     auto *tempOne = (watch *) one->copy();
@@ -128,6 +191,13 @@ bool functorLessCountry(watch *one, watch *two) {
     }
     return result;
 }
+
+/**
+ * functorMoreCountry - функтор сортування за країною (від більшого до меншого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
 
 bool functorMoreCountry(watch *one, watch *two) {
     bool result = false;
@@ -141,6 +211,13 @@ bool functorMoreCountry(watch *one, watch *two) {
     return result;
 }
 
+/**
+ * functorLessStyle - функтор сортування за стилем (від меншого до більшого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
+
 bool functorLessStyle(watch *one, watch *two) {
     bool result = false;
     auto *tempOne = (watch *) one->copy();
@@ -152,6 +229,13 @@ bool functorLessStyle(watch *one, watch *two) {
     }
     return result;
 }
+
+/**
+ * functorMoreStyle - функтор сортування за стилем (від більшого до меншого)
+ * @param one - перший обєкт порівняння
+ * @param two - другий обєкт порівняння
+ * @return Результат порівняння.
+ */
 
 bool functorMoreStyle(watch *one, watch *two) {
     bool result = false;
@@ -217,6 +301,12 @@ void controller::sorting(char way, int criterion) {
     this->watchList.setLinks(tmp);
 }
 
+/**
+ * findPriceHelp - Допоміжна функція пошуку за ціною
+ * @param one - обєкт для перевірки
+ * @return Результат відповідності
+ */
+
 bool findPriceHelp(watch *one) {
     auto *temp = (watch *) one->copy();
     if (temp->getCost() <= 400) {
@@ -228,6 +318,13 @@ bool findPriceHelp(watch *one) {
     }
 }
 
+/**
+ * findClassicHelp - Допоміжна функція пошуку класичних годинників
+ * @param one - обєкт для перевірки
+ * @return Результат відповідності
+ */
+
+
 bool findClassicHelp(watch *one) {
     auto *temp = (watch *) one->copy();
     if (temp->getStyle() == CLASSIC) {
@@ -238,6 +335,12 @@ bool findClassicHelp(watch *one) {
         return false;
     }
 }
+
+/**
+ * findSwitzerlandWithSkeletonHelp - Допоміжна функція пошуку годинників зі скалетоном із Швейцарії
+ * @param one - обєкт для перевірки
+ * @return Результат відповідності
+ */
 
 bool findSwitzerlandWithSkeletonHelp(watch *one) {
     auto *temp = (mechanicalWatches *) one->copy();
@@ -290,7 +393,7 @@ vector<mechanicalWatches *> controller::find(int criterion) const {
     return result;
 }
 
-bool controller::readFromFile(const string &path) {
+void controller::readFromFile(const string &path) {
     bool checker = false;
     cout << endl;
     ifstream fin;
@@ -343,8 +446,13 @@ bool controller::readFromFile(const string &path) {
         }
     }
     fin.close();
-    return checker;
 }
+
+/**
+ * toString - перетворює обєкт в строку для запису у файл
+ * @param watches - обєкт для перетворення
+ * @return Інформаційна строка обєкту
+ */
 
 string toString(watch *watches) {
     stringstream buffer;
