@@ -3,7 +3,7 @@
  * @brief Файл базового класу
  *
  * @author Zoulia I.
- * @date 27-may-2021
+ * @date 20-may-2021
  * @version 1.0
  */
 
