@@ -29,7 +29,7 @@ void list::addLink(watch *watchLink) {
     this->count++;
 }
 
-vector<watch *> list::getLink() const {
+vector<watch *> list::getList() const {
     return this->watches;
 }
 

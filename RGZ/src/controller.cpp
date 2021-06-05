@@ -5,7 +5,7 @@ void controller::setList(list *watchListCopy) {
 }
 
 void controller::showList() const {
-    auto tmp = watchList.getLink();
+    auto tmp = watchList.getList();
     for (unsigned long i = 0; i < (unsigned long) this->watchList.getCount(); ++i) {
         tmp[i]->show();
         cout << endl;
@@ -157,7 +157,7 @@ bool functorMoreStyle(watch *one, watch *two) {
 }
 
 void controller::sorting(char way, int criterion) {
-    auto tmp = watchList.getLink();
+    auto tmp = watchList.getList();
     switch (criterion) {
         case 1:
             if (way == '<') {
@@ -243,7 +243,7 @@ bool findSwitzerlandWithSkeletonHelp(watch *one) {
 
 vector<mechanicalWatches *> controller::find(int criterion) const {
     vector<mechanicalWatches *> result;
-    vector<watch *> tmp = this->watchList.getLink();
+    vector<watch *> tmp = this->watchList.getList();
     bool flag = true;
     auto iter = tmp.begin();
     while (true) {
@@ -354,7 +354,7 @@ void controller::writeToFile(const string &path) {
     if (!fOut.is_open()) {
         cout << "ERROR: The file did not open!" << endl;
     } else {
-        for (int i = 0; i < (int) watchList.getLink().size(); ++i) {
+        for (int i = 0; i < (int) watchList.getList().size(); ++i) {
             fOut << toString(watchList.getLink(i));
         }
 
