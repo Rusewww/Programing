@@ -1,3 +1,12 @@
+/**
+ * @file main.cpp
+ * @brief Код головної функції
+ *
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
 #include "menu.h"
 
 int main() {

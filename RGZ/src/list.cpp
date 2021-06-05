@@ -1,7 +1,6 @@
-
 /**
- * @file lib.cpp
- * @brief file of function declared in list.h
+ * @file list.cpp
+ * @brief Код функцій задекларованих у list.h
  *
  * @author Zozulia Igor.
  * @date 20-may-2021

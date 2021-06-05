@@ -1,3 +1,13 @@
+/**
+ * @file menu.cpp
+ * @brief Код функцій задекларованих у menu.h
+ *
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
+
 #include "menu.h"
 
 void menu::showMainMenu() {

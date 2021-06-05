@@ -1,3 +1,12 @@
+/**
+ * @file controller.cpp
+ * @brief Код функцій задекларованих у controller.h
+ *
+ * @author Zozulia Igor.
+ * @date 20-may-2021
+ * @version 1.0
+ */
+
 #include "controller.h"
 
 void controller::setList(list *watchListCopy) {
