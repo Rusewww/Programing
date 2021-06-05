@@ -9,6 +9,11 @@
 
 #include "menu.h"
 
+/**
+ * main - головна функція программи
+ * @return Код 0 - успышне виконання программи
+ */
+
 int main() {
     auto watchList = new list;
     auto Control = new controller;
