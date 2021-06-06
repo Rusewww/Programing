@@ -20,7 +20,7 @@ AccessModifierOffset: -4
 AlignAfterOpenBracket: Align
 AlignConsecutiveAssignments: None
 AlignConsecutiveDeclarations: None
-#AlignEscapedNewlines: Left # Unknown to clang-format-4.0
+AlignEscapedNewlines: Left # Unknown to clang-format-4.0
 AlignOperands: Align
 AlignTrailingComments: false
 AllowAllParametersOfDeclarationOnNextLine: false
