@@ -1,5 +1,7 @@
 #include "list.h"
 
+#include <utility>
+
 list::list() : fileName(), count(0), sizes(nullptr), arrays(nullptr), result(nullptr) {}
 
 list::~list() {
@@ -10,37 +12,6 @@ list::~list() {
     delete[] sizes;
     delete[] result;
 }
-
-void list::run() {
-    while (true) {
-        try {
-            cout << "Enter name of input file:  ";
-            cin >> fileName;
-            if (fileName == "\\exit")
-                return;
-            cout << "Finally! " << endl;
-            readFromFile();
-            result = findAverageValue();
-            cout << endl << "Enter name of output file:  ";
-            cin >> fileName;
-            if (fileName == "\\exit")
-                return;
-            cout << "Finally! " << endl;
-            writeToFile();
-            break;
-        }
-        catch (out_of_range &e) {
-            cout << e.what() << endl;
-        }
-        catch (ios_base::failure &e) {
-            cout << e.what() << endl;
-        }
-        catch (invalid_argument &e) {
-            cout << e.what() << endl;
-        }
-    }
-}
-
 
 void list::readFromFile() {
     ifstream fin;
@@ -132,3 +103,20 @@ void list::ForTest() {
     fileName = "TestResult.txt";
     writeToFile();
 }
+
+string list::getFileName() const {
+    return fileName;
+}
+
+void list::setFileName(string FName) {
+    fileName = move(FName);
+}
+
+int *list::getResult() {
+    return result;
+}
+
+void list::setResult(int *res) {
+    result = res;
+}
+

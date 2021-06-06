@@ -15,6 +15,7 @@ using std::ifstream;
 using std::ofstream;
 using std::ios_base;
 using std::invalid_argument;
+using std::move;
 
 class list {
     string fileName;
@@ -25,9 +26,12 @@ class list {
 public:
     list();
     ~list();
-    void run();
     void readFromFile();
     void writeToFile();
+    string getFileName() const;
+    void setFileName(string FName);
+    int *getResult();
+    void setResult(int *res);
     int getSize(int arrIndex);
     int getElem(int arrIndex, int index);
     void setSize(int arrIndex, int val);
