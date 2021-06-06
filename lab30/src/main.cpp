@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @brief OOP. Polymorphism.
+ * @brief OOP. STL-containers.
  * @author Zozulia Igor.
  * @date 20-may-2021
  * @version 1.0
