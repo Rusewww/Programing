@@ -464,17 +464,17 @@ string toString(watch *watches) {
 }
 
 void controller::writeToFile(const string &path) {
-    ofstream fOut;
-    fOut.open(path, ios_base::out);
-    if (!fOut.is_open()) {
+    ofstream FOut;
+    FOut.open(path, ios_base::out);
+    if (!FOut.is_open()) {
         cout << "Program can`t open file." << endl;
     } else {
         for (int i = 0; i < (int) watchList.getList().size(); ++i) {
-            fOut << toString(watchList.getLink(i));
+            FOut << toString(watchList.getLink(i));
         }
 
     }
-    fOut.close();
+    FOut.close();
 }
 
 controller::~controller() = default;
