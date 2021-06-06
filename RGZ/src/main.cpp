@@ -135,6 +135,19 @@ int main() {
             case 7: {
                 menu::showFindMenu();
                 int criterion = menu::gettingPoint();
+                switch (criterion) {
+                    case 1:
+                        menu::watchesUnder400();
+                        break;
+                    case 2:
+                        menu::classicWatches();
+                        break;
+                    case 3:
+                        menu::switzerlandWatchesWithSkeleton();
+                        break;
+                    default:
+                        cout << ("| Criterion entered incorrectly!!!") << endl;
+                }
                 menu::showForm();
                 Control->find(criterion);
                 break;

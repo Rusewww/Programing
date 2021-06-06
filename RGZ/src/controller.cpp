@@ -371,7 +371,7 @@ vector<mechanicalWatches *> controller::find(int criterion) const {
                 break;
             default:
                 cout << ("| Criterion entered incorrectly!!!") << endl;
-                break;
+                return result;
         }
         if (iter == tmp.end()) {
             break;

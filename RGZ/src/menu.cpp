@@ -142,4 +142,22 @@ void menu::showDeletingMenu() {
             << endl;
 }
 
+void menu::watchesUnder400(){
+    cout
+            << ("|================================================<Watch_under_400USD>=================================================|")
+            << endl;
+}
+
+void menu::classicWatches(){
+    cout
+            << ("|==================================================<Classic_watches>==================================================|")
+            << endl;
+}
+
+void menu::switzerlandWatchesWithSkeleton(){
+    cout
+            << ("|=========================================<Switzerland_watches_with_skeleton>=========================================|")
+            << endl;
+}
+
 menu::~menu() = default;

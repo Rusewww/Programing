@@ -110,6 +110,24 @@ public:
      */
 
     static void showDeletingMenu();
+
+    /**
+     * watchesUnder400 - виводить рядок з повідомленням про пошук годинників з ціною меншою за 400
+     */
+
+    static void watchesUnder400();
+
+    /**
+     * classicWatches - виводить рядок з повідомленням про пошук годинників класичного стилю
+     */
+
+    static void classicWatches();
+
+    /**
+     * switzerlandWatchesWithSkeleton - виводить рядок з повідомленням про пошук годинників зі Щвейцарії та зі скелетоном
+     */
+
+    static void switzerlandWatchesWithSkeleton();
 };
 
 
