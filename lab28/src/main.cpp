@@ -11,7 +11,7 @@ int main() {
                 return 0;
             }
             menu.setFileName(fileName);
-            cout << "Finally!" << endl;
+            cout << "Read..." << endl;
             menu.readFromFile();
             int *result = menu.findAverageValue();
             menu.setResult(result);
@@ -21,7 +21,7 @@ int main() {
                 return 0;
             }
             menu.setFileName(fileName);
-            cout << "Finally!" << endl;
+            cout << "Write..." << endl;
             menu.writeToFile();
             break;
         }

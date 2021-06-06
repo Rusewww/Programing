@@ -1,7 +1,5 @@
 #include "list.h"
 
-#include <utility>
-
 list::list() : fileName(), count(0), sizes(nullptr), arrays(nullptr), result(nullptr) {}
 
 list::~list() {
