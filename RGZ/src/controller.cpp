@@ -353,8 +353,8 @@ bool findSwitzerlandWithSkeletonHelp(watch *one) {
     }
 }
 
-vector<mechanicalWatches *> controller::find(int criterion) const {
-    vector<mechanicalWatches *> result;
+vector<watch *> controller::find(int criterion) const {
+    vector<watch *> result;
     vector<watch *> tmp = this->watchList.getList();
     bool flag = true;
     auto iter = tmp.begin();

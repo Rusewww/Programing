@@ -50,7 +50,7 @@ public:
      * @return Вектор необхідної ланки
      */
 
-    vector<mechanicalWatches *> find(int criterion) const;
+    vector<watch *> find(int criterion) const;
 
     /**
      * readFromFile - зчитує данні з файлу

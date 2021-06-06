@@ -332,7 +332,7 @@ watch *quartzWatches::copy() {
 
 quartzWatches::~quartzWatches() = default;
 
-bool operator==(watch &watch1, watch &watch2) {
+bool operator==(quartzWatches &watch1, quartzWatches &watch2) {
     if (watch1.getWaterproof() == watch2.getWaterproof() && watch1.getModel() == watch2.getModel() &&
         watch1.getCost() == watch2.getCost() &&
         watch1.getManufacturer().getCountry() == watch2.getManufacturer().getCountry() &&
@@ -342,6 +342,22 @@ bool operator==(watch &watch1, watch &watch2) {
     } else {
         return false;
     }
+}
+
+bool operator==(mechanicalWatches &watch1, mechanicalWatches &watch2) {
+    if (watch1.getWaterproof() == watch2.getWaterproof() && watch1.getModel() == watch2.getModel() &&
+        watch1.getCost() == watch2.getCost() &&
+        watch1.getManufacturer().getCountry() == watch2.getManufacturer().getCountry() &&
+        watch1.getManufacturer().getFirm() == watch2.getManufacturer().getFirm() &&
+        watch1.getStyle() == watch2.getStyle()) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool operator==(quartzWatches &watch1, mechanicalWatches &watch2) {
+    return false;
 }
 
 ostream &operator<<(ostream &output, quartzWatches &watch1) {

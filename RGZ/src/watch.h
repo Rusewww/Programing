@@ -525,7 +525,25 @@ public:
  * @return Результат порівняння
  */
 
-bool operator==(watch &watch1, watch &watch2);
+bool operator==(quartzWatches &watch1, quartzWatches &watch2);
+
+/**
+ * Оператор порівняння двох типів годинників.
+ * @param watch1 - перший годинник для порівняння
+ * @param watch2 - другий годинник для порівняння
+ * @return Результат порівняння
+ */
+
+bool operator==(mechanicalWatches &watch1, mechanicalWatches &watch2);
+
+/**
+ * Оператор порівняння двох типів годинників.
+ * @param watch1 - перший годинник для порівняння
+ * @param watch2 - другий годинник для порівняння
+ * @return Результат порівняння
+ */
+
+bool operator==(quartzWatches &watch1, mechanicalWatches &watch2);
 
 /**
  * Оператор виведення для классу quartzWatches
