@@ -26,7 +26,27 @@
     
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── assets
+│   └── input.txt
+├── doc
+│   ├── assets
+│   │   ├── findAverageValue.png
+│   │   ├── input.png
+│   │   ├── lab28.drawio
+│   │   ├── output.png
+│   │   ├── run.png
+│   │   └── test.png
+│   └── lab28.md
+├── src
+│   ├── list.cpp
+│   ├── list.h
+│   └── main.cpp
+└── test
+    ├── assets
+    │   └── testInput.txt
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * Перевірка на коректність вхідних з файлу даних:
