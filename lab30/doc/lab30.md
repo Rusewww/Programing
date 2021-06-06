@@ -20,7 +20,28 @@
 
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── Doxyfile
+├── Makefile
+├── doc
+│   ├── assets
+│   │   ├── lab30.drawio
+│   │   ├── run.png
+│   │   ├── sort.png
+│   │   ├── sortByCost.png
+│   │   └── test.png
+│   └── lab30.md
+├── src
+│   ├── data.cpp
+│   ├── data.h
+│   ├── list.cpp
+│   ├── list.h
+│   ├── main.cpp
+│   ├── watch.cpp
+│   └── watch.h
+└── test
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * *Функція знаходження годинників*:
