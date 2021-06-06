@@ -42,6 +42,7 @@ using std::sort;
 using std::find_if;
 using std::for_each;
 using std::pair;
+using std::ios_base;
 
 /**
  * watchStyle - стилі годинників

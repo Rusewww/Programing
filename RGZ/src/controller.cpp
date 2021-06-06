@@ -465,8 +465,8 @@ string toString(watch *watches) {
 
 void controller::writeToFile(const string &path) {
     ofstream fOut;
-    fOut.exceptions(std::ios_base::failbit | std::ios_base::badbit);
-    fOut.open(path, std::ios_base::out);
+    fOut.exceptions(ios_base::failbit | ios_base::badbit);
+    fOut.open(path, ios_base::out);
     if (!fOut.is_open()) {
         cout << "ERROR: The file did not open!" << endl;
     } else {
