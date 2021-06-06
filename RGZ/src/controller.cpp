@@ -399,8 +399,7 @@ void controller::readFromFile(const string &path) {
     ifstream fin;
     fin.open(path);
     if (!fin.is_open()) {
-        cout << "ERROR: The file did not open!" << endl;
-        cout << "Try again.." << endl << endl;
+        cout << "Program can`t open file." << endl;
         checker = true;
     } else {
         char type;
