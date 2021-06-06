@@ -36,7 +36,7 @@ watch *list::getLink(int index) {
     return watches[(unsigned long) index];
 }
 
-void list::clearLink(int index) {
+void list::deleteLink(int index) {
     if ((unsigned long) index > (unsigned long) watches.size()) {
         index = (int) watches.size();
     } else if (index < 0) {

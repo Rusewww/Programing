@@ -82,7 +82,7 @@ public:
      * @param index - позиція ланки
      */
 
-    void clearLink(int index);
+    void deleteLink(int index);
 
     /**
      * clearList - видаляє увесь список

@@ -128,7 +128,7 @@ int main() {
             case 6: {
                 menu::deleteMenu();
                 int index = menu::gettingPoint();
-                Control->watchList.clearLink(index);
+                Control->watchList.deleteLink(index);
                 menu::Finally();
                 break;
             }
