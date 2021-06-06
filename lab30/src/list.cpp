@@ -1,5 +1,5 @@
 /**
- * @file lib.cpp
+ * @file list.cpp
  * @brief file of function declared in list.h
  *
  * @author Zozulia Igor.
@@ -28,6 +28,10 @@ void list::addLink(watch *watchLink) {
     this->count++;
 }
 
+watch *list::getLink(int index) {
+    return watches[(unsigned long) index];
+}
+
 bool findPriceHelp(watch *one) {
     auto *temp = (watch *) one->copy();
     if (temp->getCost() <= 400) {
@@ -39,21 +43,31 @@ bool findPriceHelp(watch *one) {
     }
 }
 
-watch *list::findByPrice() {
-    watch *res;
+vector<watch *> list::findByPrice() {
+    vector<watch *> result;
+    vector<watch *> tmp = this->watches;
     bool flag = true;
-    auto iter = watches.begin();
-    for (; iter != watches.end(); iter++) {
-        iter = find_if(iter, this->watches.end(), findPriceHelp);
+    auto iter = tmp.begin();
+    while (true) {
+        iter = find_if(iter, tmp.end(), findPriceHelp);
+        if (iter == tmp.end()) {
+            break;
+        }
         flag = false;
+        result.push_back((watch *) *iter);
         ((watch *) *iter)->show();
         cout << endl;
+        iter++;
     }
     if (flag) {
-        cout << "There are no suitable watches!" << endl;
+        cout << "|There are no suitable watches!" << endl;
     }
-    res = (watch *) *iter;
-    return res;
+    while (!tmp.empty()) {
+        tmp.pop_back();
+    }
+    tmp.clear();
+    tmp.shrink_to_fit();
+    return result;
 }
 
 bool findClassicHelp(watch *one) {
@@ -67,21 +81,31 @@ bool findClassicHelp(watch *one) {
     }
 }
 
-watch *list::findClassicWatches() {
-    watch *res;
+vector<watch *> list::findClassicWatches() {
+    vector<watch *> result;
+    vector<watch *> tmp = this->watches;
     bool flag = true;
-    auto iter = watches.begin();
-    for (; iter != watches.end(); iter++) {
-        iter = find_if(iter, this->watches.end(), findClassicHelp);
+    auto iter = tmp.begin();
+    while (true) {
+        iter = find_if(iter, tmp.end(), findClassicHelp);
+        if (iter == tmp.end()) {
+            break;
+        }
         flag = false;
+        result.push_back((watch *) *iter);
         ((watch *) *iter)->show();
         cout << endl;
+        iter++;
     }
     if (flag) {
-        cout << "There are no suitable watches!" << endl;
+        cout << "|There are no suitable watches!" << endl;
     }
-    res = (watch *) *iter;
-    return res;
+    while (!tmp.empty()) {
+        tmp.pop_back();
+    }
+    tmp.clear();
+    tmp.shrink_to_fit();
+    return result;
 }
 
 bool findSwitzerlandWithSkeletonHelp(watch *one) {
@@ -95,21 +119,31 @@ bool findSwitzerlandWithSkeletonHelp(watch *one) {
     }
 }
 
-watch *list::findSwitzerlandWithSkeleton() {
-    watch *res;
+vector<watch *> list::findSwitzerlandWithSkeleton() {
+    vector<watch *> result;
+    vector<watch *> tmp = this->watches;
     bool flag = true;
-    auto iter = watches.begin();
-    for (; iter != watches.end(); iter++) {
-        iter = find_if(iter, this->watches.end(), findSwitzerlandWithSkeletonHelp);
+    auto iter = tmp.begin();
+    while (true) {
+        iter = find_if(iter, tmp.end(), findSwitzerlandWithSkeletonHelp);
+        if (iter == tmp.end()) {
+            break;
+        }
         flag = false;
+        result.push_back((watch *) *iter);
         ((watch *) *iter)->show();
         cout << endl;
+        iter++;
     }
     if (flag) {
-        cout << "There are no suitable watches!" << endl;
+        cout << "|There are no suitable watches!" << endl;
     }
-    res = (watch *) *iter;
-    return res;
+    while (!tmp.empty()) {
+        tmp.pop_back();
+    }
+    tmp.clear();
+    tmp.shrink_to_fit();
+    return result;
 }
 
 bool functorLess(watch *one, watch *two) {
@@ -148,7 +182,7 @@ void list::combineLists(list &second) {
     this->watches.reserve((unsigned long) this->count + (unsigned long) second.count);
     auto iter = this->watches.end();
     for (unsigned long i = 0; i < (unsigned long) second.count; ++i) {
-        this->watches.insert(iter + (long)i, second.watches[i]);
+        this->watches.insert(iter + (long) i, second.watches[i]);
     }
     this->count += second.count;
 

@@ -29,17 +29,19 @@ public:
 
     void addLink(watch *watchLink);
 
-    watch *findByPrice();
+    vector<watch *> findByPrice();
 
-    watch *findClassicWatches();
+    vector<watch *> findClassicWatches();
 
-    watch *findSwitzerlandWithSkeleton();
+    vector<watch *> findSwitzerlandWithSkeleton();
 
     void showAll() const;
 
     void sortByCost(char way);
 
     void combineLists(list &in);
+
+    watch *getLink(int index);
 };
 
 #endif
