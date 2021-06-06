@@ -85,8 +85,8 @@ public:
     manufacturerStruct(string firmClone, string countryClone);
 
     /**
-     * Конструктор класу manufacturerStruct який копіює данні з іншого обєкту
-     * @param clone - обєкт з якого копіюються данні
+     * Конструктор класу manufacturerStruct який копіює данні з іншого об’єкту
+     * @param clone - об’єкт з якого копіюються данні
      */
 
     manufacturerStruct(const manufacturerStruct &clone);
@@ -126,7 +126,7 @@ public:
     void setCountry(const string &countryClone);
 
     /**
-     * showManufacturer - виводить вміст полів данних обєкту
+     * showManufacturer - виводить вміст полів данних об’єкту
      */
 
     void showManufacturer();
@@ -175,14 +175,14 @@ public:
     virtual watchStyle getStyle() = 0;
 
     /**
-     * copy - функція копіювання одного обєкту до іншого
-     * @return Копію обєкту.
+     * copy - функція копіювання одного об’єкту до іншого
+     * @return Копію об’єкту.
      */
 
     virtual watch *copy() = 0;
 
     /**
-     * show - виводить вміст обєкту базового класу
+     * show - виводить вміст об’єкту базового класу
      */
 
     virtual void show() = 0;
@@ -232,8 +232,8 @@ public:
                       bool selfWindingClone, bool skeletonClone);
 
     /**
-     * Конструктор класу mechanicalWatches який копіює данні з іншого обєкту
-     * @param clone - обєкт з якого копіюються данні
+     * Конструктор класу mechanicalWatches який копіює данні з іншого об’єкту
+     * @param clone - об’єкт з якого копіюються данні
      */
 
     mechanicalWatches(mechanicalWatches &clone);
@@ -343,14 +343,14 @@ public:
     void setSkeleton(bool skeletonClone);
 
     /**
-     * show - виводить вміст обєкту класу mechanicalWatches
+     * show - виводить вміст об’єкту класу mechanicalWatches
      */
 
     void show() override;
 
     /**
-     * copy - функція копіювання одного обєкту до іншого
-     * @return Копію обєкту.
+     * copy - функція копіювання одного об’єкту до іншого
+     * @return Копію об’єкту.
      */
 
     watch *copy() override;
@@ -394,8 +394,8 @@ public:
                   batteryType batteryClone, int capacityClone);
 
     /**
-     * Конструктор класу mechanicalWatches який копіює данні з іншого обєкту
-     * @param clone - обєкт з якого копіюються данні
+     * Конструктор класу mechanicalWatches який копіює данні з іншого об’єкту
+     * @param clone - об’єкт з якого копіюються данні
      */
 
     quartzWatches(quartzWatches &clone);
@@ -505,14 +505,14 @@ public:
     void setCapacity(int capacityClone);
 
     /**
-     * show - виводить вміст обєкту класу quartzWatches
+     * show - виводить вміст об’єкту класу quartzWatches
      */
 
     void show() override;
 
     /**
-     * copy - функція копіювання одного обєкту до іншого
-     * @return Копію обєкту.
+     * copy - функція копіювання одного об’єкту до іншого
+     * @return Копію об’єкту.
      */
 
     watch *copy() override;
@@ -530,8 +530,8 @@ bool operator==(watch &watch1, watch &watch2);
 /**
  * Оператор виведення для классу quartzWatches
  * @param output - поток виведення
- * @param watch1 - обєкт який виводится
- * @return Виведений обєкт
+ * @param watch1 - об’єкт який виводится
+ * @return Виведений об’єкт
  */
 
 ostream &operator<<(ostream &output, quartzWatches &watch1);
@@ -539,8 +539,8 @@ ostream &operator<<(ostream &output, quartzWatches &watch1);
 /**
  * Оператор введення для классу quartzWatches
  * @param input  - поток введення
- * @param watch1  - обєкт який вводиться
- * @return Введений обєкт
+ * @param watch1  - об’єкт який вводиться
+ * @return Введений об’єкт
  */
 
 istream &operator>>(istream &input, quartzWatches &watch1);
@@ -548,8 +548,8 @@ istream &operator>>(istream &input, quartzWatches &watch1);
 /**
  * Оператор виведення для классу mechanicalWatches
  * @param output - поток виведення
- * @param watch1 - обєкт який виводится
- * @return Виведений обєкт
+ * @param watch1 - об’єкт який виводится
+ * @return Виведений об’єкт
  */
 
 ostream &operator<<(ostream &output, mechanicalWatches &watch1);
@@ -557,8 +557,8 @@ ostream &operator<<(ostream &output, mechanicalWatches &watch1);
 /**
  * Оператор введення для классу mechanicalWatches
  * @param input  - поток введення
- * @param watch1  - обєкт який вводиться
- * @return Введений обєкт
+ * @param watch1  - об’єкт який вводиться
+ * @return Введений об’єкт
  */
 
 istream &operator>>(istream &input, mechanicalWatches &watch1);
