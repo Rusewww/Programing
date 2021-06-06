@@ -37,7 +37,6 @@ public:
     void setSize(int arrIndex, int val);
     void setElem(int arrIndex, int index, int val);
     int* findAverageValue();
-    void ForTest();
 };
 
 

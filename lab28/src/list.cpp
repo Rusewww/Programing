@@ -96,14 +96,6 @@ int *list::findAverageValue() {
     return temp_res;
 }
 
-void list::ForTest() {
-    fileName = "test_test.txt";
-    readFromFile();
-    result = findAverageValue();
-    fileName = "TestResult.txt";
-    writeToFile();
-}
-
 string list::getFileName() const {
     return fileName;
 }
