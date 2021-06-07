@@ -33,7 +33,22 @@
     
 * *Структура програми*:
 ```
-
+.
+├── CMakeLists.txt
+├── doc
+│   ├── assets
+│   │   ├── findIndexLink.png
+│   │   ├── lab29.drawio
+│   │   ├── run.png
+│   │   └── test.png
+│   └── lab29.md
+├── src
+│   ├── list.hpp
+│   ├── main.cpp
+│   ├── watch.cpp
+│   └── watch.h
+└── test
+    └── test.cpp
 ```
 * *Важливі елементи програми*:
     * Функція пошуку індексу заданого елемента:
