@@ -1,85 +1,52 @@
-﻿# Лабораторна робота №27. ООП. Поліморфізм.
+﻿# Лабораторна робота №29. Шаблонні функції та класи.
 ## Вимоги:
 * *Розробник*: Зозуля Ігор студент группи КІТ-120а.
-* *Загальне завдання*: Зробити базовий клас абстрактним, розроблені класи списків об'єднуються в один.
-* *Індивідуальне завдання* : Створення модульних тестів для перевірки функціоналу.
+* *Загальне завдання*: Створити, шаблонний клас та наступні методи:
+  Вивод вмісту масиву на екран;
+  Визначення індексу переданого елемента в заданому масиві;
+  Відсортувати елементи масиву;
+  Визначити значення мінімального елементу масиву;
+  Додати елемент до кінця масиву;
+  Видалити елемент з масиву за індексом.
     
 ## Опис програми:
-* *Функціональне призначення* : Взаємодія з базовим класом прикладної галузі та його спадкоємцями.
+* *Функціональне призначення* : Загальне завдання виконується за допомогою розроблених шаблонних методів.
 
 * *Опис логічної структури* :
-    * Функція `main`. Створює один список класів спадкоємців та виконуэ операції над ними. Викликає функції `addLink`, `showAll`, `findByPrice`, `findClassicWatches`, `findSwitzerlandWithSkeleton`. Схема алгоритму функції:
+    * _Функція:_  `findIndexLink`: Знаходить в списку індекс заданого елементу. Схема алгоритму метода:
 
-      ![main](assets/main.png)
+        ![findIndexLink](assets/findIndexLink.png)
+    
+    *_Функція_ `addLink` Додає новий елемент в кінець списку.
 
-    * Оператор `findClassicWatches`. Копіює один об'єкт до іншого. Схема алгоритму функції:
+    *_Функція_   `getLink` Повертає елемент зі списку за заданим індексом
 
-      ![findClassicWatches](assets/findClassicWatches.png)
+    *_Функція_   `deleteLink`.  Видаляє елемент із списку за індексом
 
-    * Функція `findSwitzerlandWithSkeleton`. Порівнює два об'єкти, чи не є вони однаковими. Схема алгоритму функції:
+    *_Функція_   `findMinLink`,  Повертає значення мінімального елемента
 
-      ![findSwitzerlandWithSkeleton](assets/findSwitzerlandWithSkeleton.png)
+    *_Функція_  `findIndexLink`, Повертає індекс заданого елемента
+
+    *_Функція_   `sortList`,   Сортує список від меншого до більшого
+
+    *_Функція_   `showList` Виводить вміст списку на екран
     
 * *Структура програми*:
 ```
-.
-├── CMakeLists.txt
-├── Makefile
-├── doc
-│   ├── assets
-│   │   ├── findClassicWatches.png
-│   │   ├── findSwitzerlandWithSkeleton.png
-│   │   ├── lab27.drawio
-│   │   ├── main.png
-│   │   ├── run.png
-│   │   └── test.png
-│   └── lab27.md
-├── src
-│   ├── list.cpp
-│   ├── list.h
-│   ├── main.cpp
-│   ├── watch.cpp
-│   └── watch.h
-└── test
-    └── test.cpp
+
 ```
 * *Важливі елементи програми*:
-    * Головний клас:
+    * Функція пошуку індексу заданого елемента:
 
    ```
-    class watch {
-      public:
-	    virtual bool getWaterproof() = 0;
-	    virtual string getModel() = 0;
-        virtual int getCost() = 0;
-	    virtual manufacturerStruct getManufacturer() = 0;
-	    virtual watchStyle getStyle() = 0;
-	    virtual watch *copy() = 0;
-	    virtual void show() = 0;
-	    virtual ~watch();
-    };
-   ```
-
-    * Клас список:
-
-   ```
-    class list {
-      private:
-	    watch **watches{};
-	    int count{};
-
-      public:
-	    list();
-	    list(const list &clone);
-	    ~list();
-	    void setCount(int countCopy);
-	    int getCount() const;
-	    void addLink(watch *watchLink);
-	    watch *getLink(int index) const;
-	    watch *findByPrice(int price) const;
-	    watch *findClassicWatches() const;
-	    watch *findSwitzerlandWithSkeleton() const;
-	    void showAll() const;
+    int findIndexLink(Type &element){
+        int result = -1;
+        for (int i = 0; i < index; ++i) {
+            if (*elements[i] == element){
+                result = i;
+            }
+        }
+        return result;
     };
    ```
   
